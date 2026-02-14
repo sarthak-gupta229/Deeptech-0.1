@@ -1,0 +1,4044 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DeepTech Bootcamp</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Hind:wght@300;400;500;600;700&family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,900&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      /* Reset and Base Styles */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Hind", sans-serif;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+      }
+
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6 {
+        font-family: "Montserrat", sans-serif;
+      }
+
+      /* Utility Classes */
+      .hidden {
+        display: none;
+      }
+      .block {
+        display: block;
+      }
+      .flex {
+        display: flex;
+      }
+      .items-center {
+        align-items: center;
+      }
+      .justify-between {
+        justify-content: space-between;
+      }
+      .relative {
+        position: relative;
+      }
+      .absolute {
+        position: absolute;
+      }
+      .w-full {
+        width: 100%;
+      }
+      .h-full {
+        height: 100%;
+      }
+      .sticky {
+        position: sticky;
+      }
+      .top-0 {
+        top: 0;
+      }
+      .z-50 {
+        z-index: 50;
+      }
+
+      /* Navbar Specific Styles */
+      .navbar {
+        background-color: white;
+        border-bottom: 1px solid #d2d2d2;
+        width: 100%;
+        position: sticky;
+        top: 0;
+        z-index: 50;
+      }
+
+      .container {
+        max-width: 100%;
+        padding: 0 1rem;
+        margin: 0 auto;
+      }
+
+      @media (min-width: 640px) {
+        .container {
+          padding: 0 1.5rem;
+        }
+      }
+      @media (min-width: 1024px) {
+        .container {
+          padding: 0 2rem;
+        }
+      }
+
+      .nav-content {
+        height: 4.5rem; /* h-18 equivalent approx 72px */
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+
+      /* Logo */
+      .logo-container {
+        flex-shrink: 0;
+        display: flex;
+        align-items: center;
+        margin-left: -0.5rem;
+      }
+
+      .logo-img {
+        height: 3rem; /* h-12 */
+        width: auto;
+        object-fit: contain;
+      }
+
+      /* Desktop Menu */
+      .desktop-menu {
+        display: none;
+      }
+
+      @media (min-width: 1280px) {
+        .desktop-menu {
+          display: flex;
+          align-items: center;
+          gap: 2rem; /* space-x-8 */
+        }
+      }
+
+      .menu-items {
+        display: flex;
+        align-items: center;
+        gap: 1.5rem; /* space-x-6 */
+      }
+
+      /* Nav Buttons */
+      .nav-btn {
+        background: none;
+        border: none;
+        cursor: pointer;
+        color: #666666;
+        padding: 0.5rem 0.25rem;
+        font-size: 16px;
+        font-weight: 500;
+        transition: color 0.2s;
+        display: flex;
+        align-items: center;
+        gap: 0.25rem;
+        font-family: inherit;
+      }
+
+      .nav-btn:hover {
+        color: #cc0033;
+      }
+
+      .nav-arrow {
+        width: 1rem;
+        height: 1rem;
+        transition: transform 0.2s;
+      }
+
+      .nav-arrow.rotate-180 {
+        transform: rotate(180deg);
+      }
+
+      /* Dropdowns */
+      .dropdown-menu {
+        position: absolute;
+        left: 0;
+        top: 100%;
+        margin-top: 0.25rem;
+        background-color: #ffedd2;
+        border: 1px solid #e5e7eb;
+        border-radius: 0.5rem;
+        box-shadow:
+          0 10px 15px -3px rgba(0, 0, 0, 0.1),
+          0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        padding: 0.5rem 0;
+        z-index: 50;
+        display: none; /* Hidden by default */
+      }
+
+      .dropdown-menu.show {
+        display: block;
+      }
+
+      .dropdown-menu.w-56 {
+        width: 14rem;
+      }
+      .dropdown-menu.w-64 {
+        width: 16rem;
+      }
+
+      .dropdown-item {
+        display: block;
+        padding: 0.625rem 1rem;
+        font-size: 14px;
+        color: #666666;
+        text-decoration: none;
+        transition: color 0.2s;
+      }
+
+      .dropdown-item:hover {
+        color: #cc0033;
+      }
+
+      /* Apply Now Button */
+      .apply-btn {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 0.75rem 1.5rem;
+        background-color: white;
+        border: 1px solid #cc0033;
+        border-radius: 0.5rem;
+        cursor: pointer;
+        transition: all 0.3s;
+      }
+
+      .apply-btn:hover {
+        background-color: #cc0033;
+      }
+
+      .apply-btn-dot {
+        width: 0.5rem;
+        height: 0.5rem;
+        border-radius: 50%;
+        background-color: #cc0033;
+        transition: background-color 0.08s;
+      }
+
+      .apply-btn:hover .apply-btn-dot {
+        background-color: white;
+      }
+
+      .apply-btn-text {
+        color: #cc0033;
+        font-weight: 600;
+        font-size: 1rem;
+        transition: color 0.3s;
+      }
+
+      .apply-btn:hover .apply-btn-text {
+        color: white;
+      }
+
+      /* Mobile Menu Button */
+      .mobile-menu-btn-container {
+        display: flex;
+        align-items: center;
+      }
+
+      @media (min-width: 1280px) {
+        .mobile-menu-btn-container {
+          display: none;
+        }
+      }
+
+      .mobile-menu-btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0.5rem;
+        border-radius: 0.375rem;
+        color: #374151;
+        background: none;
+        border: none;
+        cursor: pointer;
+      }
+
+      .mobile-menu-btn:hover {
+        color: #cc0033;
+      }
+
+      /* Mobile Menu */
+      .mobile-menu {
+        display: none;
+        border-top: 1px solid #f3f4f6;
+        background-color: white;
+      }
+
+      .mobile-menu.show {
+        display: block;
+      }
+
+      @media (min-width: 1280px) {
+        .mobile-menu {
+          display: none !important;
+        }
+      }
+
+      .mobile-menu-content {
+        padding: 1rem 1rem 1.5rem 1rem;
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+      }
+
+      .mobile-nav-item {
+        width: 100%;
+      }
+
+      .mobile-nav-btn {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0.75rem;
+        font-size: 1rem;
+        font-weight: 500;
+        color: #666666;
+        background: none;
+        border: none;
+        border-radius: 0.375rem;
+        cursor: pointer;
+        text-align: left;
+      }
+
+      .mobile-nav-btn:hover {
+        color: #cc0033;
+        background-color: #f9fafb;
+      }
+
+      .mobile-dropdown {
+        display: none;
+        margin-left: 1rem;
+        margin-top: 0.5rem;
+        display: flex;
+        flex-direction: column;
+        gap: 0.25rem;
+      }
+
+      /* Helper for JS toggling mobile dropdowns inline style will be used or class */
+      .mobile-dropdown.hidden {
+        display: none;
+      }
+
+      .mobile-dropdown:not(.hidden) {
+        display: flex;
+      }
+
+      .mobile-dropdown-item {
+        display: block;
+        padding: 0.5rem 0.75rem;
+        font-size: 0.875rem;
+        color: #666666;
+        text-decoration: none;
+        border-radius: 0.375rem;
+      }
+
+      .mobile-dropdown-item:hover {
+        color: #cc0033;
+        background-color: #f9fafb;
+      }
+
+      .mobile-apply-btn {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 0.75rem;
+        color: #cc0033;
+        font-weight: 600;
+        font-size: 1rem;
+        background: none;
+        border: none;
+        border-radius: 0.375rem;
+        cursor: pointer;
+        text-align: left;
+      }
+
+      .mobile-apply-btn:hover {
+        background-color: #f9fafb;
+      }
+
+      /* Animations */
+      @keyframes blink {
+        0% {
+          opacity: 1;
+        }
+        50% {
+          opacity: 0;
+        }
+        100% {
+          opacity: 1;
+        }
+      }
+
+      .animate-blink {
+        animation: blink 1.5s infinite;
+      }
+
+      /* Footer Styles */
+      footer {
+        position: relative;
+        background-color: #6a0017;
+        color: white;
+        /* font-family: 'Montserrat', sans-serif; Removed to allow inheritance of Hind for body */
+        overflow: hidden;
+      }
+
+      .footer-overlay {
+        position: absolute;
+        inset: 0;
+        z-index: 0;
+        pointer-events: none;
+        opacity: 1;
+        background-image: url("public/footpic/footerbackgroundavif.avif");
+        background-size: cover;
+        background-position: center;
+      }
+
+      .footer-content {
+        position: relative;
+        z-index: 10;
+        max-width: 1400px;
+        margin: 0 auto;
+        padding: 2.5rem 1.25rem;
+      }
+
+      @media (min-width: 640px) {
+        .footer-content {
+          padding: 2.5rem 2rem;
+        }
+      }
+      @media (min-width: 1024px) {
+        .footer-content {
+          padding: 2.5rem 5rem;
+        }
+      }
+
+      .footer-top {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        margin-bottom: 3rem;
+        gap: 2rem;
+      }
+
+      @media (min-width: 1024px) {
+        .footer-top {
+          flex-direction: row;
+          align-items: stretch;
+        }
+      }
+
+      /* Logo Section */
+      .footer-logo-section {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+        padding-bottom: 2rem;
+        min-width: 250px;
+      }
+
+      @media (min-width: 1024px) {
+        .footer-logo-section {
+          align-items: flex-start;
+          border-bottom: none;
+          border-right: 1px solid rgba(255, 255, 255, 0.2);
+          padding-bottom: 0;
+          padding-right: 4rem;
+        }
+      }
+
+      .footer-logo {
+        width: 12rem;
+        margin-bottom: 1rem;
+      }
+
+      .footer-tagline {
+        font-size: 1.25rem;
+        font-weight: 400;
+        letter-spacing: 0.05em;
+        color: white;
+      }
+
+      /* Building Section */
+      .footer-building-section {
+        flex: 2;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+        padding: 2rem 0;
+      }
+
+      @media (min-width: 1024px) {
+        .footer-building-section {
+          border-bottom: none;
+          border-right: 1px solid rgba(255, 255, 255, 0.2);
+          padding: 0 4rem;
+        }
+      }
+
+      .footer-building-img {
+        width: 100%;
+        max-width: 36rem;
+        height: auto;
+        object-fit: contain;
+      }
+
+      /* Links Section */
+      .footer-links-section {
+        flex: 1;
+        display: flex;
+        justify-content: center;
+        padding-top: 2rem;
+        gap: 2rem;
+      }
+
+      @media (min-width: 1024px) {
+        .footer-links-section {
+          justify-content: flex-start;
+          padding-top: 0;
+          padding-left: 5rem;
+        }
+      }
+
+      .footer-links-col {
+        text-align: left;
+      }
+
+      .footer-links-title {
+        font-size: 1.25rem;
+        font-weight: 700;
+        margin-bottom: 1rem;
+        white-space: nowrap;
+      }
+
+      .footer-links-list {
+        list-style: none;
+        font-size: 1rem;
+        color: rgba(255, 255, 255, 0.9);
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+      }
+
+      .footer-link {
+        color: inherit;
+        text-decoration: none;
+        transition: text-decoration 0.2s;
+        white-space: nowrap;
+      }
+
+      .footer-link:hover {
+        text-decoration: underline;
+      }
+
+      /* Horizontal Divider */
+      .footer-divider {
+        border-top: 1px solid rgba(255, 255, 255, 0.2);
+        width: 100%;
+        margin: 0.5rem 0;
+      }
+
+      /* Bottom Section */
+      .footer-bottom {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-between;
+        gap: 2rem;
+        margin-bottom: 1rem;
+      }
+
+      @media (min-width: 1024px) {
+        .footer-bottom {
+          flex-direction: row;
+          position: relative;
+        }
+        .footer-address {
+          position: absolute;
+          left: 50%;
+          transform: translateX(-50%);
+        }
+      }
+
+      .social-icons {
+        display: flex;
+        gap: 1rem;
+      }
+
+      .social-icon-btn {
+        background-color: white;
+        border-radius: 50%;
+        width: 2.5rem;
+        height: 2.5rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: background-color 0.2s;
+        flex-shrink: 0;
+      }
+
+      .social-icon-btn:hover {
+        background-color: #e5e7eb;
+      }
+
+      .footer-address {
+        display: flex;
+        align-items: center;
+        text-align: center;
+        gap: 0.5rem;
+        max-width: 400px;
+      }
+
+      .footer-address svg {
+        flex-shrink: 0;
+      }
+
+      .footer-apply-btn {
+        border: 1px solid rgba(255, 255, 255, 0.5);
+        border-radius: 0.5rem;
+        padding: 0.75rem 2.5rem;
+        color: white;
+        font-size: 1.25rem;
+        text-decoration: none;
+        transition: background-color 0.2s;
+        white-space: nowrap;
+      }
+
+      .footer-apply-btn:hover {
+        background-color: rgba(255, 255, 255, 0.1);
+      }
+
+      /* Copyright */
+      .footer-copyright {
+        text-align: center;
+        padding-top: 1rem;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+      }
+
+      .footer-copyright p {
+        font-size: 0.875rem;
+        opacity: 0.8;
+        line-height: 1.5;
+      }
+
+      /* Carousel Styles */
+      .carousel-container {
+        position: relative;
+        width: 100%;
+        height: 85vh;
+        overflow: hidden;
+        background-color: black;
+      }
+
+      .carousel-slide {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        opacity: 0;
+        transition: opacity 1s ease-in-out;
+        z-index: 1;
+      }
+
+      .carousel-slide.active {
+        opacity: 1;
+      }
+
+      .carousel-slide img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      /* Overlays */
+      .carousel-overlay-bottom {
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(
+          to top,
+          rgba(0, 0, 0, 0.9),
+          rgba(0, 0, 0, 0.2),
+          transparent
+        );
+        pointer-events: none;
+        z-index: 10;
+      }
+
+      .carousel-overlay-left {
+        position: absolute;
+        left: 0;
+        top: 0;
+        height: 100%;
+        width: 100%;
+        background: linear-gradient(
+          to right,
+          black,
+          rgba(0, 0, 0, 0.6),
+          transparent
+        );
+        pointer-events: none;
+        z-index: 10;
+      }
+
+      /* Content */
+      .carousel-content {
+        position: absolute;
+        bottom: 3rem;
+        left: 1.5rem;
+        z-index: 20;
+        max-width: 56rem;
+        padding-right: 1rem;
+      }
+
+      @media (min-width: 768px) {
+        .carousel-content {
+          bottom: 4rem;
+          left: 3rem;
+        }
+      }
+
+      .carousel-title {
+        font-size: 2.25rem;
+        font-weight: 400;
+        font-style: italic;
+        letter-spacing: -0.05em;
+        color: white;
+        margin-bottom: 0.5rem;
+        text-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+        white-space: nowrap;
+        opacity: 0;
+        transform: translateY(50px);
+        animation: slideUpFade 0.8s ease-out 0.2s forwards;
+      }
+
+      @media (min-width: 768px) {
+        .carousel-title {
+          font-size: 3.5rem;
+        }
+      }
+      @media (min-width: 1024px) {
+        .carousel-title {
+          font-size: 4.5rem;
+        }
+      }
+
+      .text-highlight {
+        color: #f3292a;
+      }
+
+      .carousel-subtitle {
+        font-size: 1.125rem;
+        font-weight: 700;
+        color: white;
+        margin-bottom: 1.5rem;
+        letter-spacing: 0.025em;
+        text-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        opacity: 0;
+        transform: translateY(50px);
+        animation: slideUpFade 0.8s ease-out 0.4s forwards;
+      }
+
+      @media (min-width: 768px) {
+        .carousel-subtitle {
+          font-size: 1.375rem;
+        }
+      }
+
+      .carousel-actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.75rem;
+        opacity: 0;
+        transform: translateY(50px);
+        animation: slideUpFade 0.8s ease-out 0.6s forwards;
+      }
+
+      .btn-primary {
+        padding: 0.625rem 1.75rem;
+        background-color: #d11333;
+        color: white;
+        font-size: 1rem;
+        font-weight: 700;
+        border-radius: 0.5rem;
+        border: none;
+        cursor: pointer;
+        box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        transition: all 0.3s;
+      }
+
+      .btn-primary:hover {
+        background-color: #a30029;
+        box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+        transform: translateY(-4px);
+      }
+
+      @media (min-width: 768px) {
+        .btn-primary {
+          padding: 0.875rem 2rem;
+        }
+      }
+
+      .btn-outline {
+        padding: 0.625rem 1.75rem;
+        background-color: transparent;
+        border: 2px solid white;
+        color: white;
+        font-size: 1rem;
+        font-weight: 700;
+        border-radius: 0.5rem;
+        cursor: pointer;
+        box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        transition: all 0.3s;
+      }
+
+      .btn-outline:hover {
+        background-color: rgba(255, 255, 255, 0.1);
+        box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+        transform: translateY(-4px);
+      }
+
+      @media (min-width: 768px) {
+        .btn-outline {
+          padding: 0.875rem 2rem;
+        }
+      }
+
+      /* Navigation Dots */
+      .carousel-dots {
+        position: absolute;
+        bottom: 2rem;
+        left: 50%;
+        transform: translateX(-50%);
+        display: flex;
+        gap: 0.5rem;
+        z-index: 20;
+      }
+
+      .dot {
+        width: 0.75rem;
+        height: 0.75rem;
+        border-radius: 9999px;
+        background-color: rgba(255, 255, 255, 0.5);
+        border: none;
+        cursor: pointer;
+        transition: all 0.3s;
+        padding: 0;
+      }
+
+      .dot:hover {
+        background-color: rgba(255, 255, 255, 0.8);
+      }
+
+      .dot.active {
+        background-color: white;
+        width: 2.5rem;
+      }
+
+      @keyframes slideUpFade {
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      /* About Section Styles */
+      .about-section {
+        background-color: #fdfbf7;
+        padding: 4rem 1.5rem;
+        margin-top: -1px; /* Remove any gap from black section if any */
+      }
+
+      @media (min-width: 768px) {
+        .about-section {
+          padding: 4rem 3rem;
+        }
+      }
+      @media (min-width: 1280px) {
+        .about-section {
+          padding: 4rem 8rem;
+        }
+      }
+
+      .about-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 1rem;
+        max-width: 1400px;
+        margin: 0 auto;
+      }
+
+      @media (min-width: 1024px) {
+        .about-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+        .quote-content {
+          grid-column: span 2;
+        }
+      }
+
+      .about-card {
+        background-color: white;
+        border-radius: 1rem;
+        padding: 1.5rem;
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+        overflow: hidden;
+        border: 1px solid rgba(0, 0, 0, 0.03);
+      }
+
+      .about-text-content {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-start;
+      }
+
+      .about-title {
+        font-size: 1.5rem;
+        font-weight: 700;
+        margin-bottom: 1rem;
+        color: #333;
+        line-height: 1.2;
+      }
+      @media (min-width: 768px) {
+        .about-title {
+          font-size: 2rem;
+        }
+      }
+
+      .about-subtitle {
+        font-weight: 600;
+        margin-bottom: 1rem;
+        color: #444;
+        line-height: 1.4;
+        font-size: 1rem;
+      }
+
+      .about-desc {
+        color: #666;
+        line-height: 1.6;
+        margin-bottom: 1.5rem;
+        font-size: 0.95rem;
+      }
+
+      .about-image-content {
+        padding: 0;
+        position: relative;
+        min-height: 300px;
+      }
+
+      .about-main-img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+      }
+
+      /* Quote */
+      .quote-wrapper {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 2rem;
+      }
+      @media (min-width: 768px) {
+        .quote-wrapper {
+          flex-direction: row;
+          align-items: center;
+          gap: 3rem;
+        }
+      }
+
+      .quote-img-wrapper {
+        flex-shrink: 0;
+        position: relative;
+      }
+
+      .quote-img {
+        height: 14rem;
+        width: auto;
+        object-fit: contain;
+        display: block;
+      }
+
+      .quote-text-wrapper {
+        flex: 1;
+      }
+
+      .quote-text {
+        font-size: 1.125rem;
+        color: #555;
+        margin-bottom: 1rem;
+        line-height: 1.6;
+      }
+
+      .quote-author {
+        font-weight: 700;
+        color: #cc0033;
+        font-style: italic;
+      }
+
+      /* Stats */
+      .stat-card {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 2.5rem 3rem;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .stat-bg-pattern {
+        position: absolute;
+        right: 0;
+        bottom: 0;
+        width: 8rem;
+        height: auto;
+        opacity: 0.1;
+        pointer-events: none;
+        z-index: 0;
+      }
+
+      .stat-info {
+        display: flex;
+        flex-direction: column;
+        position: relative;
+        z-index: 1;
+      }
+
+      .stat-number {
+        font-size: 5rem;
+        font-weight: 800;
+        line-height: 1;
+        margin-bottom: 0.5rem;
+        color: #1a1a1a;
+        letter-spacing: -0.05em;
+      }
+
+      .stat-desc {
+        color: #555;
+        font-size: 1.125rem;
+        line-height: 1.3;
+        max-width: 200px;
+      }
+
+      .stat-logos-group {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+        gap: 1.5rem;
+        position: relative;
+        z-index: 1;
+      }
+
+      .logo-row {
+        display: flex;
+        align-items: center;
+        gap: 1.5rem;
+      }
+
+      /* Logo Specific Sizing */
+      .logo-probo {
+        height: 4rem;
+        width: auto;
+      }
+      .logo-iit {
+        height: 5rem;
+        width: auto;
+      }
+      .logo-147 {
+        height: 2.5rem;
+        width: auto;
+      }
+
+      .logo-merlin {
+        height: 4rem;
+        width: auto;
+      }
+      .logo-st {
+        height: 2.5rem;
+        width: auto;
+      }
+      .logo-pranos {
+        height: 2rem;
+        width: auto;
+      }
+
+      /* Mentors Section */
+      .mentors-section {
+        background-color: #ffffff;
+        padding: 7rem 0;
+        overflow: hidden;
+        position: relative;
+      }
+
+      .mentors-header {
+        text-align: center;
+        margin-bottom: 4rem;
+        position: relative;
+        max-width: 80rem; /* max-w-7xl */
+        margin-left: auto;
+        margin-right: auto;
+        padding: 0 1rem;
+      }
+
+      .mentors-title {
+        font-size: 1.875rem;
+        font-weight: 700;
+        color: #d11333;
+      }
+      @media (min-width: 768px) {
+        .mentors-title {
+          font-size: 2.25rem;
+        }
+      }
+
+      .mentors-leaf-icon {
+        position: absolute;
+        top: 0;
+        display: none;
+        gap: 0.5rem;
+        transform: translateY(-50%);
+      }
+      @media (min-width: 768px) {
+        .mentors-leaf-icon {
+          display: flex;
+        }
+      }
+
+      .mentors-leaf-left {
+        left: 20%;
+      }
+      .mentors-leaf-right {
+        right: 20%;
+      }
+
+      .leaf-img {
+        width: 8rem;
+        height: 8rem;
+        object-fit: contain;
+      }
+      .leaf-left-transform {
+        transform: rotate(-12deg) scaleX(-1);
+      }
+      .leaf-right-transform {
+        transform: rotate(12deg);
+      }
+
+      .marquee-container {
+        width: 100%;
+        max-width: 72rem; /* max-w-6xl */
+        margin: 0 auto;
+        overflow: hidden;
+        position: relative;
+        padding: 0 3rem; /* px-12 */
+      }
+
+      .marquee-mask {
+        mask-image: linear-gradient(
+          to right,
+          transparent,
+          black 10%,
+          black 90%,
+          transparent
+        );
+        -webkit-mask-image: linear-gradient(
+          to right,
+          transparent,
+          black 10%,
+          black 90%,
+          transparent
+        );
+      }
+
+      .marquee-content {
+        display: inline-flex;
+        gap: 2rem;
+        animation: marquee 40s linear infinite;
+        padding: 3rem 0; /* py-12 */
+      }
+
+      .marquee-content:hover {
+        animation-play-state: paused;
+      }
+
+      @keyframes marquee {
+        0% {
+          transform: translateX(0);
+        }
+        100% {
+          transform: translateX(-50%);
+        }
+      }
+
+      .mentor-card {
+        position: relative;
+        width: 240px;
+        height: 300px;
+        background-color: white;
+        box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        overflow: hidden;
+        flex-shrink: 0;
+        transition: transform 0.3s;
+        border-top-left-radius: 60px;
+        border-bottom-right-radius: 60px;
+        border-top-right-radius: 1rem;
+        border-bottom-left-radius: 1rem;
+        cursor: pointer;
+      }
+
+      .mentor-card:hover {
+        transform: scale(1.05);
+      }
+
+      .mentor-img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      .mentor-overlay {
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(
+          to top,
+          rgba(0, 0, 0, 0.9),
+          rgba(0, 0, 0, 0.4),
+          transparent
+        );
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        padding: 1.5rem;
+        color: white;
+        white-space: normal;
+      }
+
+      .mentor-name {
+        font-size: 1.125rem;
+        font-weight: 700;
+        margin-bottom: 0.25rem;
+        line-height: 1.25;
+      }
+
+      .mentor-designation {
+        font-size: 0.75rem;
+        color: #e5e7eb;
+        font-weight: 500;
+        line-height: 1.4;
+      }
+
+      .mentor-role {
+        font-size: 0.625rem;
+        color: #d11333;
+        font-weight: 700;
+        margin-top: 0.5rem;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        background-color: rgba(255, 255, 255, 0.2);
+        width: max-content;
+        padding: 0.125rem 0.5rem;
+        border-radius: 0.25rem;
+      }
+
+      .mt-6 {
+        margin-top: 1.5rem;
+      }
+
+      /* Program Highlights */
+      .highlights-section {
+        background-color: #fcf7ef;
+        padding: 6rem 1.5rem 2rem;
+      }
+      @media (min-width: 768px) {
+        .highlights-section {
+          padding: 6rem 3rem 2rem;
+        }
+      }
+      @media (min-width: 1280px) {
+        .highlights-section {
+          padding: 8rem 8rem 2rem;
+        }
+      }
+
+      .highlights-container {
+        max-width: 1400px;
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+      }
+      @media (min-width: 1024px) {
+        .highlights-container {
+          flex-direction: row;
+          align-items: flex-start;
+          gap: 4rem;
+        }
+      }
+
+      .highlights-nav {
+        width: 100%;
+      }
+      @media (min-width: 1024px) {
+        .highlights-nav {
+          width: 30%;
+          flex-shrink: 0;
+        }
+      }
+
+      .highlights-tabs-wrapper {
+        display: flex;
+        flex-direction: column;
+        gap: 0.75rem;
+      }
+
+      .highlights-title {
+        color: #d11333;
+        font-size: 2.25rem;
+        font-weight: 700;
+        margin-bottom: 2rem;
+        font-family: "Montserrat", sans-serif;
+      }
+
+      .tab-btn {
+        display: block;
+        width: 100%;
+        text-align: left;
+        padding: 1.25rem 1.5rem;
+        margin-bottom: 0;
+        background-color: #fcf7ef;
+        border: 1px solid #d1d1d1;
+        border-radius: 0.5rem;
+        font-size: 0.9375rem;
+        font-weight: 500;
+        color: #555;
+        cursor: pointer;
+        transition: all 0.2s;
+        position: relative;
+        overflow: hidden;
+        font-family: "Montserrat", sans-serif;
+      }
+
+      .tab-btn:hover {
+        background-color: white;
+      }
+
+      .tab-btn.active {
+        background-color: white;
+        border-color: transparent;
+        box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+        color: #1e1e1e;
+        font-weight: 700;
+      }
+
+      .tab-indicator {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        width: 0.2rem;
+        background-color: #d11333;
+        display: none;
+      }
+      .tab-btn.active .tab-indicator {
+        display: block;
+      }
+      .tab-btn.hackathon-tab:not(.active) .tab-indicator {
+        display: block;
+        top: auto;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 0.2rem;
+      }
+      .tab-btn.hackathon-tab:not(.active) {
+        color: #d11333;
+        font-weight: 600;
+      }
+
+      /* Content Area */
+      .highlights-content-area {
+        width: 100%;
+        min-height: 600px;
+      }
+      @media (min-width: 1024px) {
+        .highlights-content-area {
+          width: 70%;
+        }
+      }
+
+      .highlight-tab-content {
+        display: none;
+        background-color: white;
+        border-radius: 1.5rem;
+        padding: 1.5rem;
+        box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+        animation: fadeIn 0.3s ease-out;
+        flex-direction: column;
+        gap: 2rem;
+      }
+      .highlight-tab-content.active-content {
+        display: flex;
+      }
+
+      @media (min-width: 768px) {
+        .highlight-tab-content {
+          padding: 3rem;
+        }
+        .highlight-tab-content.active-content {
+          flex-direction: row;
+          gap: 4rem;
+        }
+      }
+
+      .highlight-img-wrapper {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      @media (min-width: 768px) {
+        .highlight-img-wrapper {
+          width: 35%;
+          flex-shrink: 0;
+        }
+      }
+
+      .highlight-img-circle {
+        aspect-ratio: 1/1;
+        width: 100%;
+        max-width: 320px;
+        border-radius: 50%;
+        overflow: hidden;
+        position: relative;
+        background-color: #e5e7eb;
+        box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+      }
+
+      .highlight-img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      .highlight-text {
+        width: 100%;
+        padding-top: 1rem;
+        display: flex;
+        flex-direction: column;
+      }
+      @media (min-width: 768px) {
+        .highlight-text {
+          width: 65%;
+          padding-top: 0;
+        }
+      }
+
+      .highlight-heading {
+        color: #d11333;
+        font-size: 1.7rem;
+        font-weight: 700;
+        margin-bottom: 1.5rem;
+        font-family: "Montserrat", sans-serif;
+        white-space: nowrap;
+      }
+
+      .highlight-separator {
+        width: 100%;
+        height: 1px;
+        background-color: #e5e7eb;
+        margin-bottom: 1.5rem;
+      }
+
+      .highlight-subheading {
+        color: #3a3a3a;
+        font-size: 1.25rem;
+        font-weight: 700;
+        margin-bottom: 1.5rem;
+        line-height: 1.25;
+        font-family: "Montserrat", sans-serif;
+      }
+
+      .highlight-desc {
+        color: #2a2a2a;
+        font-size: 1.125rem;
+        line-height: 1.6;
+        margin-bottom: 2rem;
+      }
+
+      .btn-download-full {
+        width: 100%;
+        background-color: #d0072c;
+        color: white;
+        padding: 1rem;
+        border-radius: 0.75rem;
+        font-size: 1.125rem;
+        font-weight: 700;
+        border: none;
+        cursor: pointer;
+        transition: background-color 0.2s;
+        margin-top: auto;
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+      }
+      .btn-download-full:hover {
+        background-color: #a80623;
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateX(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateX(0);
+        }
+      }
+      /* Registration Form */
+      .registration-section {
+        background-color: white;
+        padding: 5rem 1.5rem;
+        position: relative;
+        overflow: hidden;
+      }
+      @media (min-width: 768px) {
+        .registration-section {
+          padding: 8rem 3rem;
+        }
+      }
+      @media (min-width: 1280px) {
+        .registration-section {
+          padding: 10rem 8rem;
+        }
+      }
+
+      .registration-container {
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+
+      .registration-header {
+        text-align: center;
+        margin-bottom: 4rem;
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .registration-title {
+        color: #d11333;
+        font-size: 1.5rem;
+        font-weight: 700;
+        font-family: "Montserrat", sans-serif;
+        text-align: center;
+        z-index: 2;
+        max-width: 1200px;
+        width: 100%;
+        position: relative;
+      }
+      @media (min-width: 768px) {
+        .registration-title {
+          font-size: 2.25rem;
+          white-space: nowrap;
+        }
+      }
+
+      /* Leaf Styling */
+      .leaf-deco {
+        position: absolute;
+        width: 100px;
+        opacity: 1;
+        z-index: 1;
+        top: -20px;
+      }
+      @media (min-width: 768px) {
+        .leaf-deco {
+          width: 160px;
+          top: -60px;
+        }
+      }
+
+      .leaf-left {
+        left: -40px;
+        top: 0;
+        transform: rotate(15deg) scaleX(-1);
+      }
+      .leaf-right {
+        right: -20px;
+        top: -30px;
+        transform: rotate(-10deg);
+      }
+
+      @media (min-width: 1024px) {
+        .leaf-left {
+          left: 1%;
+          top: -20px;
+        }
+        .leaf-right {
+          right: 5%;
+          top: -80px;
+        }
+      }
+
+      .registration-content {
+        display: flex;
+        flex-direction: column;
+        gap: 3rem;
+        justify-content: space-between;
+      }
+      @media (min-width: 1024px) {
+        .registration-content {
+          flex-direction: row;
+          align-items: center;
+          gap: 5rem;
+        }
+      }
+
+      .registration-text-col {
+        flex: 1;
+        font-family: "Montserrat", sans-serif;
+        color: #333;
+        font-size: 1.125rem;
+        line-height: 1.6;
+      }
+      .registration-text-col p {
+        margin-bottom: 1.5rem;
+      }
+      .registration-text-col strong {
+        font-weight: 700;
+        color: #000;
+      }
+      .text-highlight {
+        color: #d11333;
+        font-weight: 700;
+      }
+
+      .registration-form-col {
+        flex: 1;
+        max-width: 500px;
+        width: 100%;
+        margin: 0 auto;
+      }
+      @media (min-width: 1024px) {
+        .registration-form-col {
+          margin: 0;
+        }
+      }
+
+      .registration-form {
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+      }
+
+      .registration-form input {
+        width: 100%;
+        padding: 1rem 1.5rem;
+        background-color: #d65d6e;
+        border: none;
+        border-radius: 0.75rem;
+        color: white;
+        font-size: 1rem;
+        font-family: inherit;
+        outline: none;
+        transition: background-color 0.2s;
+      }
+      .registration-form input::placeholder {
+        color: rgba(255, 255, 255, 0.8);
+      }
+      .registration-form input:focus {
+        background-color: #c94c5d;
+      }
+
+      .submit-link {
+        background: none;
+        border: none;
+        color: #d11333;
+        font-weight: 700;
+        font-size: 1rem;
+        cursor: pointer;
+        align-self: flex-end;
+        margin-top: 0.5rem;
+        text-decoration: none;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        font-family: "Montserrat", sans-serif;
+      }
+      .submit-link:hover {
+        text-decoration: underline;
+      }
+      /* Blog Section */
+      .blog-section {
+        background-color: #fbf7ef;
+        padding: 5rem 1.5rem;
+      }
+      @media (min-width: 768px) {
+        .blog-section {
+          padding: 5rem 3rem;
+        }
+      }
+
+      .blog-container {
+        max-width: 1280px;
+        margin: 0 auto;
+      }
+
+      .blog-header {
+        text-align: center;
+        margin-bottom: 3rem;
+      }
+
+      .blog-title {
+        color: #d00636;
+        font-size: 1.875rem;
+        font-weight: 600;
+        font-family: "Montserrat", sans-serif;
+        margin-bottom: 0.75rem;
+      }
+
+      .blog-desc {
+        color: #555555;
+        font-size: 1rem;
+        line-height: 1.6;
+        max-width: 48rem;
+        margin: 0 auto;
+      }
+
+      .blog-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 2rem;
+        margin-bottom: 3rem;
+      }
+      @media (min-width: 768px) {
+        .blog-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+      @media (min-width: 1024px) {
+        .blog-grid {
+          grid-template-columns: repeat(3, 1fr);
+        }
+      }
+
+      .blog-card {
+        display: block;
+        text-decoration: none;
+        height: 100%;
+        color: inherit;
+      }
+      .blog-card:hover .blog-card-img {
+        transform: scale(1.05);
+      }
+      .blog-card:hover .blog-card-title {
+        color: #d00636;
+      }
+
+      .blog-card-inner {
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+      }
+
+      .blog-card-img-wrapper {
+        position: relative;
+        height: 10rem;
+        margin-bottom: 0.75rem;
+        overflow: hidden;
+        border-radius: 0.5rem;
+      }
+
+      .blog-card-img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.5s;
+      }
+
+      .blog-card-content {
+        display: flex;
+        flex-direction: column;
+        flex-grow: 1;
+      }
+
+      .blog-tag {
+        display: inline-block;
+        background-color: #ffedd2;
+        color: #c65830;
+        font-size: 0.75rem;
+        font-weight: 700;
+        padding: 0.375rem 0.75rem;
+        border-radius: 0.25rem;
+        margin-bottom: 0.75rem;
+      }
+
+      .blog-card-title {
+        font-size: 1.125rem;
+        font-weight: 700;
+        color: #1e1e1e;
+        margin-bottom: 0.5rem;
+        line-height: 1.375;
+        font-family: "Montserrat", sans-serif;
+        transition: color 0.2s;
+      }
+
+      .blog-card-desc {
+        font-size: 0.875rem;
+        color: #3a3a3a;
+        margin-bottom: 0.75rem;
+        line-height: 1.625;
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+      }
+
+      .blog-card-date {
+        margin-top: auto;
+        font-size: 0.8125rem;
+        color: #5d5d5d;
+        font-weight: 500;
+      }
+
+      .blog-view-more-container {
+        text-align: center;
+      }
+
+      .blog-view-more-btn {
+        display: inline-block;
+        background-color: #d00636;
+        color: white;
+        padding: 0.75rem 2rem;
+        border-radius: 0.5rem;
+        font-weight: 500;
+        text-decoration: none;
+        transition: background-color 0.2s;
+      }
+      .blog-view-more-btn:hover {
+        background-color: #b0052d;
+      }
+      /* FAQ Section */
+      .faq-section {
+        background-color: white;
+        padding-top: 5rem;
+        padding-bottom: 3rem;
+      }
+      .faq-container {
+        max-width: 64rem;
+        margin: 0 auto;
+        padding: 0 1rem;
+      }
+      @media (min-width: 640px) {
+        .faq-container {
+          padding: 0 1.5rem;
+        }
+      }
+
+      .faq-title {
+        text-align: center;
+        font-size: 2.25rem;
+        font-weight: 600;
+        color: #d00636;
+        margin-bottom: 3rem;
+        font-family: "Montserrat", sans-serif;
+      }
+
+      .faq-list {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+      }
+
+      .faq-item {
+        border: 1px solid rgb(222, 222, 222);
+        border-radius: 1rem;
+        overflow: hidden;
+        background-color: #fbf7ef;
+        transition: all 0.3s;
+      }
+      .faq-item:hover {
+        transform: scale(1.01);
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+      }
+      .faq-item.active {
+        background-color: #ffedd2;
+      }
+
+      .faq-question-btn {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 1rem;
+        padding: 1.375rem;
+        text-align: left;
+        background: none;
+        border: none;
+        cursor: pointer;
+        padding-left: 1.5rem;
+        padding-right: 1.5rem;
+      }
+
+      .faq-question-text {
+        font-size: 0.9375rem;
+        font-weight: 400;
+        line-height: 1.375;
+        color: rgb(58, 58, 58);
+        transition: color 0.3s;
+        font-family: inherit;
+      }
+      @media (min-width: 768px) {
+        .faq-question-text {
+          font-size: 1rem;
+        }
+      }
+
+      .faq-item.active .faq-question-text {
+        color: #cc0033;
+      }
+
+      .faq-icon-wrapper {
+        flex-shrink: 0;
+        margin-left: 1rem;
+      }
+      .faq-icon-svg {
+        transition: transform 0.3s;
+      }
+
+      .faq-vertical-line {
+        transform-origin: center;
+        transition: all 0.3s;
+      }
+      .faq-item.active .faq-vertical-line {
+        transform: scaleY(0);
+        opacity: 0;
+      }
+
+      .faq-answer-wrapper {
+        display: grid;
+        grid-template-rows: 0fr;
+        transition: grid-template-rows 0.3s ease-in-out;
+      }
+      .faq-item.active .faq-answer-wrapper {
+        grid-template-rows: 1fr;
+      }
+
+      .faq-answer-inner {
+        overflow: hidden;
+      }
+      .faq-answer-text {
+        padding: 0 1.25rem 1.25rem 1.25rem;
+        color: rgb(58, 58, 58);
+        font-size: 0.875rem;
+        line-height: 1.625;
+      }
+      @media (min-width: 768px) {
+        .faq-answer-text {
+          font-size: 0.9375rem;
+        }
+      }
+      /* Media Carousel Section */
+      .media-carousel-section {
+        padding: 8rem 0;
+        background-color: white;
+        overflow: hidden;
+      }
+      .media-marquee-wrapper {
+        position: relative;
+        overflow: hidden;
+        width: 100%;
+        margin-bottom: 2rem;
+      }
+      .media-track {
+        display: flex;
+        width: max-content;
+        gap: 1.5rem;
+      }
+      .track-left-to-right {
+        animation: scroll-l-r 60s linear infinite;
+      }
+      .track-right-to-left {
+        animation: scroll-r-l 60s linear infinite;
+      }
+      .media-img {
+        height: 180px;
+        width: 120px;
+        object-fit: cover;
+        border-radius: 0.5rem;
+        flex-shrink: 0;
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+      }
+      .media-center-text {
+        text-align: center;
+        margin: 2rem 0;
+        padding: 0 1rem;
+      }
+      .media-center-text h2 {
+        font-family: "Montserrat", sans-serif;
+        font-size: 2rem;
+        font-weight: 700;
+        color: #d00636;
+      }
+      @keyframes scroll-l-r {
+        0% {
+          transform: translateX(-50%);
+        }
+        100% {
+          transform: translateX(0);
+        }
+      }
+      @keyframes scroll-r-l {
+        0% {
+          transform: translateX(0);
+        }
+        100% {
+          transform: translateX(-50%);
+        }
+      }
+      @media (max-width: 768px) {
+        .media-img {
+          height: 160px;
+          width: 110px;
+        }
+        .media-center-text h2 {
+          font-size: 1.5rem;
+        }
+      }
+      /* Scroll Animations */
+      .animate-element {
+        opacity: 0;
+        transition: all 1s ease-out;
+      }
+      .slide-in-left {
+        transform: translateX(-100px);
+      }
+      .slide-in-right {
+        transform: translateX(100px);
+      }
+      .slide-in-up {
+        transform: translateY(100px);
+      }
+      .animate-element.visible {
+        opacity: 1;
+        transform: translate(0);
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Navbar -->
+    <nav class="navbar">
+      <div class="container">
+        <div class="nav-content">
+          <!-- Logo Section -->
+          <div class="logo-container">
+            <a
+              href="https://rishihood.edu.in/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <img
+                class="logo-img"
+                src="public/logo/coloredlogo.avif"
+                alt="Rishihood University"
+              />
+            </a>
+          </div>
+
+          <!-- Desktop Menu -->
+          <div class="desktop-menu">
+            <div class="menu-items">
+              <!-- About Dropdown -->
+              <div class="relative group" id="desktop-about-container">
+                <button class="nav-btn" id="desktop-about-btn">
+                  About
+                  <svg
+                    class="nav-arrow"
+                    id="desktop-about-arrow"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M19 9l-7 7-7-7"
+                    />
+                  </svg>
+                </button>
+                <!-- Dropdown -->
+                <div class="dropdown-menu w-56" id="desktop-about-dropdown">
+                  <a
+                    href="https://rishihood.edu.in/our-story"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="dropdown-item"
+                    >Our Story</a
+                  >
+                  <a
+                    href="https://rishihood.edu.in/rishihood-team"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="dropdown-item"
+                    >Team</a
+                  >
+                  <a
+                    href="https://rishihood.edu.in/board-of-founders"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="dropdown-item"
+                    >Board of Founders</a
+                  >
+                  <a
+                    href="https://rishihood.edu.in/careers"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="dropdown-item"
+                    >Careers</a
+                  >
+                </div>
+              </div>
+
+              <!-- Our Campus Dropdown -->
+              <div class="relative group" id="desktop-campus-container">
+                <button class="nav-btn" id="desktop-campus-btn">
+                  Our Campus
+                  <svg
+                    class="nav-arrow"
+                    id="desktop-campus-arrow"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M19 9l-7 7-7-7"
+                    />
+                  </svg>
+                </button>
+                <!-- Dropdown -->
+                <div class="dropdown-menu w-64" id="desktop-campus-dropdown">
+                  <a
+                    href="https://rishihood.edu.in/residences-and-dining"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="dropdown-item"
+                    >Residences & Dining</a
+                  >
+                  <a
+                    href="https://rishihood.edu.in/facilities"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="dropdown-item"
+                    >Facilities & Infrastructure</a
+                  >
+                  <a
+                    href="https://rishihood.edu.in/health-and-safety"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="dropdown-item"
+                    >Safety, Health & Accessibility</a
+                  >
+                </div>
+              </div>
+
+              <!-- Admissions Link -->
+              <a
+                href="https://rishihood.edu.in/admissions"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="nav-btn"
+                style="text-decoration: none"
+              >
+                Admissions
+              </a>
+            </div>
+
+            <!-- Apply Now Button -->
+            <a
+              href="#apply-now"
+              class="apply-btn"
+              style="text-decoration: none"
+            >
+              <div class="apply-btn-dot animate-blink"></div>
+              <span class="apply-btn-text">Apply Now</span>
+            </a>
+          </div>
+
+          <!-- Mobile Menu Button -->
+          <div class="mobile-menu-btn-container">
+            <button
+              class="mobile-menu-btn"
+              id="mobile-menu-toggle"
+              aria-controls="mobile-menu"
+              aria-expanded="false"
+            >
+              <span
+                style="
+                  position: absolute;
+                  width: 1px;
+                  height: 1px;
+                  padding: 0;
+                  margin: -1px;
+                  overflow: hidden;
+                  clip: rect(0, 0, 0, 0);
+                  white-space: nowrap;
+                  border-width: 0;
+                "
+                >Open main menu</span
+              >
+              <!-- Open Icon -->
+              <svg
+                id="icon-menu-open"
+                class="block"
+                style="width: 1.5rem; height: 1.5rem"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M4 6h16M4 12h16M4 18h16"
+                />
+              </svg>
+              <!-- Close Icon -->
+              <svg
+                id="icon-menu-close"
+                class="hidden"
+                style="width: 1.5rem; height: 1.5rem"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M6 18L18 6M6 6l12 12"
+                />
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Mobile Menu -->
+      <div class="mobile-menu" id="mobile-menu">
+        <div class="mobile-menu-content">
+          <!-- About -->
+          <div>
+            <button class="mobile-nav-btn" id="mobile-about-btn">
+              About
+              <svg
+                class="nav-arrow"
+                id="mobile-about-arrow"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M19 9l-7 7-7-7"
+                />
+              </svg>
+            </button>
+            <div class="mobile-dropdown hidden" id="mobile-about-dropdown">
+              <a
+                href="https://rishihood.edu.in/our-story"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="mobile-dropdown-item"
+                >Our Story</a
+              >
+              <a
+                href="https://rishihood.edu.in/rishihood-team"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="mobile-dropdown-item"
+                >Team</a
+              >
+              <a
+                href="https://rishihood.edu.in/board-of-founders"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="mobile-dropdown-item"
+                >Board of Founders</a
+              >
+              <a
+                href="https://rishihood.edu.in/careers"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="mobile-dropdown-item"
+                >Careers</a
+              >
+            </div>
+          </div>
+
+          <!-- Our Campus -->
+          <div>
+            <button class="mobile-nav-btn" id="mobile-campus-btn">
+              Our Campus
+              <svg
+                class="nav-arrow"
+                id="mobile-campus-arrow"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M19 9l-7 7-7-7"
+                />
+              </svg>
+            </button>
+            <div class="mobile-dropdown hidden" id="mobile-campus-dropdown">
+              <a
+                href="https://rishihood.edu.in/residences-and-dining"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="mobile-dropdown-item"
+                >Residences & Dining</a
+              >
+              <a
+                href="https://rishihood.edu.in/facilities"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="mobile-dropdown-item"
+                >Facilities & Infrastructure</a
+              >
+              <a
+                href="https://rishihood.edu.in/health-and-safety"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="mobile-dropdown-item"
+                >Safety, Health & Accessibility</a
+              >
+            </div>
+          </div>
+
+          <!-- Admissions -->
+          <a
+            href="https://rishihood.edu.in/admissions"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="mobile-nav-btn"
+            style="text-decoration: none"
+          >
+            Admissions
+          </a>
+
+          <!-- Apply Now -->
+          <a
+            href="#apply-now"
+            class="mobile-apply-btn"
+            style="
+              text-decoration: none;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+            "
+          >
+            <div class="apply-btn-dot animate-blink"></div>
+            Apply Now
+          </a>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Image Carousel -->
+    <section class="carousel-container" id="image-carousel">
+      <!-- Slides -->
+      <div class="carousel-slide active">
+        <img src="public/CarouselHero/herochip.jpeg" alt="Slide 1" />
+      </div>
+      <div class="carousel-slide">
+        <img src="public/CarouselHero/image-2.png" alt="Slide 2" />
+      </div>
+      <div class="carousel-slide">
+        <img
+          src="public/CarouselHero/image-3.png"
+          alt="Slide 3"
+          style="object-position: top center"
+        />
+      </div>
+      <div class="carousel-slide">
+        <img src="public/CarouselHero/image-4.png" alt="Slide 4" />
+      </div>
+      <div class="carousel-slide">
+        <img src="public/CarouselHero/image-5.png" alt="Slide 5" />
+      </div>
+
+      <!-- Overlays -->
+      <div class="carousel-overlay-bottom"></div>
+      <div class="carousel-overlay-left"></div>
+
+      <!-- Content -->
+      <div class="carousel-content">
+        <h1 class="carousel-title">
+          DeepTech <span class="text-highlight">BootCamp</span>
+        </h1>
+        <p class="carousel-subtitle">Design. Innovate. Dominate.</p>
+        <div class="carousel-actions">
+          <a
+            href="#apply-now"
+            class="btn-primary"
+            style="
+              text-decoration: none;
+              display: inline-flex;
+              align-items: center;
+              justify-content: center;
+            "
+            >Apply now</a
+          >
+          <button class="btn-outline">Download Brochure</button>
+        </div>
+      </div>
+
+      <!-- Dots -->
+      <div class="carousel-dots">
+        <button class="dot active" aria-label="Slide 1"></button>
+        <button class="dot" aria-label="Slide 2"></button>
+        <button class="dot" aria-label="Slide 3"></button>
+        <button class="dot" aria-label="Slide 4"></button>
+        <button class="dot" aria-label="Slide 5"></button>
+      </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about-section">
+      <div class="container">
+        <div class="about-grid">
+          <!-- Row 1: About Text & Image -->
+          <div
+            class="about-card about-text-content animate-element slide-in-left"
+          >
+            <h2 class="about-title">
+              About <span class="text-highlight">DeepTech Bootcamp</span>
+            </h2>
+            <p class="about-subtitle">
+              Aligned with the India Semiconductor Mission (ISM) a national
+              initiative to establish India as a global hub
+            </p>
+            <p class="about-desc">
+              The Deeptech BootCamp is a 7-day, on-campus learning experience
+              designed to help participants explore and engage with India's
+              rapidly evolving semiconductor and emerging tech ecosystem.
+            </p>
+            <button class="btn-primary mt-6">Download Brochure</button>
+          </div>
+          <div
+            class="about-card about-image-content animate-element slide-in-right"
+          >
+            <img
+              src="public/photos/about-2.png"
+              alt="DeepTech Bootcamp Session"
+              class="about-main-img"
+            />
+          </div>
+
+          <!-- Row 2: Quote -->
+          <div class="about-card quote-content animate-element slide-in-left">
+            <div class="quote-wrapper">
+              <div class="quote-img-wrapper">
+                <img
+                  src="public/logo/swami_vivekanand.png"
+                  alt="Swami Vivekananda"
+                  class="quote-img"
+                />
+              </div>
+              <div class="quote-text-wrapper">
+                <p class="quote-text">
+                  "We must also remember that the leaders of our societies have
+                  never been either generals or kings, but Rishis... If there
+                  have been sages and Rishis in the past, be sure that there
+                  will be many now."
+                </p>
+                <p class="quote-author">— Swami Vivekananda</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Row 3: Stats -->
+          <div class="about-card stat-card animate-element slide-in-up">
+            <img class="stat-bg-pattern" src="public/logo/leaf.png" alt="" />
+            <div class="stat-info">
+              <h3 class="stat-number">
+                55<span class="text-highlight">+</span>
+              </h3>
+              <p class="stat-desc">
+                Hours of Immersive<br />Learning in Deeptech
+              </p>
+            </div>
+            <div class="stat-logos-group">
+              <img src="public/logo/probo.png" alt="Probo" class="logo-probo" />
+              <div class="logo-row">
+                <img
+                  src="public/logo/iitKanpur.png"
+                  alt="IIT Kanpur"
+                  class="logo-iit"
+                />
+                <img src="public/logo/147.png" alt="147" class="logo-147" />
+              </div>
+            </div>
+          </div>
+          <div class="about-card stat-card animate-element slide-in-up">
+            <img class="stat-bg-pattern" src="public/logo/leaf.png" alt="" />
+            <div class="stat-info">
+              <h3 class="stat-number">
+                10<span class="text-highlight">+</span>
+              </h3>
+              <p class="stat-desc">
+                Industry Experts and<br />Innovation Mentors
+              </p>
+            </div>
+            <div class="stat-logos-group">
+              <img
+                src="public/logo/merlinhawk-aerospace.png"
+                alt="Merlinhawk"
+                class="logo-merlin"
+              />
+              <div class="logo-row">
+                <img
+                  src="public/logo/STMicroelectronics.png"
+                  alt="ST"
+                  class="logo-st"
+                />
+                <img
+                  src="public/logo/pranos.png"
+                  alt="Pranos"
+                  class="logo-pranos"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Mentors Section -->
+    <section class="mentors-section">
+      <div class="mentors-header">
+        <div class="mentors-leaf-icon mentors-leaf-left">
+          <img
+            src="public/logo/leaf.png"
+            alt="Decorative Leaf"
+            class="leaf-img leaf-left-transform"
+          />
+        </div>
+        <div class="mentors-leaf-icon mentors-leaf-right">
+          <img
+            src="public/logo/leaf.png"
+            alt="Decorative Leaf"
+            class="leaf-img leaf-right-transform"
+          />
+        </div>
+        <h2 class="mentors-title">Mentors at Bootcamp</h2>
+      </div>
+
+      <div class="marquee-container marquee-mask">
+        <div class="marquee-content" id="mentors-marquee">
+          <!-- Content populated by JS -->
+        </div>
+      </div>
+    </section>
+
+    <!-- Program Highlights Section -->
+    <section class="highlights-section">
+      <div class="highlights-container">
+        <!-- Navigation -->
+        <div class="highlights-nav">
+          <h2 class="highlights-title">Program Highlights</h2>
+          <div class="highlights-tabs-wrapper">
+            <button class="tab-btn active" data-tab="keynotes">
+              <div class="tab-indicator"></div>
+              Keynotes & Dialogues
+            </button>
+            <button class="tab-btn" data-tab="field-visits">
+              <div class="tab-indicator"></div>
+              Field Visits
+            </button>
+            <button class="tab-btn" data-tab="panels">
+              <div class="tab-indicator"></div>
+              Panels & Fireside Chats
+            </button>
+            <button class="tab-btn" data-tab="masterclasses">
+              <div class="tab-indicator"></div>
+              Masterclasses & Workshops
+            </button>
+            <button class="tab-btn hackathon-tab" data-tab="hackathons">
+              <div class="tab-indicator"></div>
+              Hackathons
+            </button>
+          </div>
+        </div>
+
+        <!-- Content Area -->
+        <div class="highlights-content-area">
+          <!-- Keynotes Content -->
+          <div class="highlight-tab-content active-content" id="keynotes">
+            <div class="highlight-img-wrapper">
+              <div class="highlight-img-circle">
+                <img
+                  src="public/photos/Keynotes-Dialogues.png"
+                  alt="Keynotes & Dialogues"
+                  class="highlight-img"
+                />
+              </div>
+            </div>
+            <div class="highlight-text">
+              <h3 class="highlight-heading">Keynotes & Dialogues</h3>
+              <div class="highlight-separator"></div>
+              <h4 class="highlight-subheading">
+                Strategic vision from India's tech architects
+              </h4>
+              <div class="highlight-separator"></div>
+              <p class="highlight-desc">
+                Decode national missions, AI timelines, and sovereignty
+                roadmaps—straight from policy shapers and global innovation
+                leaders.
+              </p>
+              <button class="btn-download-full">Download Brochure</button>
+            </div>
+          </div>
+
+          <!-- Field Visits Content -->
+          <div class="highlight-tab-content" id="field-visits">
+            <div class="highlight-img-wrapper">
+              <div class="highlight-img-circle">
+                <img
+                  src="public/photos/Field-Visits.png"
+                  alt="Field Visits"
+                  class="highlight-img"
+                />
+              </div>
+            </div>
+            <div class="highlight-text">
+              <h3 class="highlight-heading">Field Visits</h3>
+              <div class="highlight-separator"></div>
+              <h4 class="highlight-subheading">
+                Enter India's innovation nerve centers
+              </h4>
+              <div class="highlight-separator"></div>
+              <p class="highlight-desc">
+                Step inside India's premier R&D facilities—where national
+                innovation is engineered.
+              </p>
+              <button class="btn-download-full">Download Brochure</button>
+            </div>
+          </div>
+
+          <!-- Panels Content -->
+          <div class="highlight-tab-content" id="panels">
+            <div class="highlight-img-wrapper">
+              <div class="highlight-img-circle">
+                <img
+                  src="public/photos/Panels-Fireside.png"
+                  alt="Panels & Fireside Chats"
+                  class="highlight-img"
+                />
+              </div>
+            </div>
+            <div class="highlight-text">
+              <h3 class="highlight-heading">Panels & Fireside Chats</h3>
+              <div class="highlight-separator"></div>
+              <h4 class="highlight-subheading">
+                Real-time insights from the frontlines of innovation
+              </h4>
+              <div class="highlight-separator"></div>
+              <p class="highlight-desc">
+                Engage CTOs/CDOs of Fortune India firms, AI CEOs, DeepTech
+                founders, and VCs on business models, IP strategy, and scaling
+                deep-tech ventures.
+              </p>
+              <button class="btn-download-full">Download Brochure</button>
+            </div>
+          </div>
+
+          <!-- Masterclasses Content -->
+          <div class="highlight-tab-content" id="masterclasses">
+            <div class="highlight-img-wrapper">
+              <div class="highlight-img-circle">
+                <img
+                  src="public/photos/programhelight-3.png"
+                  alt="Masterclasses"
+                  class="highlight-img"
+                />
+              </div>
+            </div>
+            <div class="highlight-text">
+              <h3 class="highlight-heading">Masterclasses & Workshops</h3>
+              <div class="highlight-separator"></div>
+              <h4 class="highlight-subheading">Ideate. Build. Present. Win.</h4>
+              <div class="highlight-separator"></div>
+              <p class="highlight-desc">
+                Experience hands-on sessions on AI applications, advanced chip
+                design, and emerging deeptech innovations — blending technical
+                learning with real-world problem-solving.
+              </p>
+              <button class="btn-download-full">Download Brochure</button>
+            </div>
+          </div>
+
+          <!-- Hackathons Content -->
+          <div class="highlight-tab-content" id="hackathons">
+            <div class="highlight-img-wrapper">
+              <div class="highlight-img-circle">
+                <img
+                  src="public/photos/image-4.png"
+                  alt="Hackathons"
+                  class="highlight-img"
+                />
+              </div>
+            </div>
+            <div class="highlight-text">
+              <h3 class="highlight-heading">Hackathons</h3>
+              <div class="highlight-separator"></div>
+              <h4 class="highlight-subheading">Build. Compete. Innovate.</h4>
+              <div class="highlight-separator"></div>
+              <p class="highlight-desc">
+                Race against top talent to design and develop real deeptech
+                solutions applying AI, engineering, and problem-solving under
+                real-world constraints.
+              </p>
+              <button class="btn-download-full">Download Brochure</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Registration Section -->
+    <section class="registration-section" id="apply-now">
+      <div class="registration-container">
+        <!-- Header with leaves -->
+        <div class="registration-header">
+          <img src="public/logo/leaf.png" alt="" class="leaf-deco leaf-left" />
+          <h2 class="registration-title">Join India's Deeptech Revolution</h2>
+          <img src="public/logo/leaf.png" alt="" class="leaf-deco leaf-right" />
+        </div>
+
+        <div class="registration-content">
+          <!-- Text Content -->
+          <div class="registration-text-col">
+            <p>
+              Join this 7-day immersive bootcamp to understand key problem
+              statements, solve real challenges, and propel your career in
+              semiconductor innovation.
+            </p>
+            <p>
+              Apply Now to secure your spot and shape India's technological
+              future!
+            </p>
+            <p>
+              <strong
+                >All-inclusive: Meals, stay, field visits, networking.</strong
+              >
+            </p>
+            <p class="text-highlight">
+              Limited seats only. Apply before they're gone.
+            </p>
+          </div>
+
+          <!-- Form Content -->
+          <div class="registration-form-col">
+            <form class="registration-form" action="#" method="POST">
+              <input type="text" placeholder="Full Name" required />
+              <input type="email" placeholder="Email" required />
+              <input type="tel" placeholder="Contact No." required />
+              <button type="submit" class="submit-link">
+                Apply Now &rarr;
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Blog Section -->
+    <section class="blog-section">
+      <div class="blog-container">
+        <div class="blog-header">
+          <h2 class="blog-title">Explore Our Blogs</h2>
+          <p class="blog-desc">
+            Explore insights, stories, and articles on design, innovation, and
+            creative thinking by faculty, mentors, and students.
+          </p>
+        </div>
+
+        <div class="blog-grid">
+          <!-- Blog 1 -->
+          <a
+            href="https://rishihood.edu.in/blogs/featured-blogs/india’s-deep-tech-ambition-a-call-for-innovation"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="blog-card"
+          >
+            <div class="blog-card-inner">
+              <div class="blog-card-img-wrapper">
+                <img
+                  src="public/blogs/blog1.avif"
+                  alt="India's Deep Tech Ambition"
+                  class="blog-card-img"
+                />
+              </div>
+              <div class="blog-card-content">
+                <div class="mb-3">
+                  <span class="blog-tag">Artificial Inteligence</span>
+                </div>
+                <h3 class="blog-card-title">
+                  India's Deep Tech Ambition: A Call for Innovation
+                </h3>
+                <p class="blog-card-desc">
+                  Commerce Minister Piyush Goyal set the stage ablaze at Startup
+                  Mahakumbh 2025 (April,3rd) challenging India's startup
+                  ecosystem to pivot from consumer-driven ventures like
+                  artisanal ice creams to transformative technologies like AI
+                  and semiconductor chips.
+                </p>
+                <div class="blog-card-date">11 September 2025</div>
+              </div>
+            </div>
+          </a>
+
+          <!-- Blog 2 -->
+          <a
+            href="https://rishihood.edu.in/blogs/featured-blogs/sharing-numbers"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="blog-card"
+          >
+            <div class="blog-card-inner">
+              <div class="blog-card-img-wrapper">
+                <img
+                  src="public/blogs/blog2.avif"
+                  alt="The Next Silicon Valley?"
+                  class="blog-card-img"
+                />
+              </div>
+              <div class="blog-card-content">
+                <div class="mb-3">
+                  <span class="blog-tag">Entrepreneurship</span>
+                </div>
+                <h3 class="blog-card-title">
+                  The Next Silicon Valley? It Might Be a Remote Village in India
+                </h3>
+                <p class="blog-card-desc">
+                  From villages to governance to AI—India's future lies in
+                  reimagining talent where the world least expects it.
+                </p>
+                <div class="blog-card-date">05 June 2025</div>
+              </div>
+            </div>
+          </a>
+
+          <!-- Blog 3 -->
+          <a
+            href="https://rishihood.edu.in/blogs/featured-blogs/delimitation-woes-can-india-balance-democracy-and-representation-in-the-next-delimitation-exercise"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="blog-card"
+          >
+            <div class="blog-card-inner">
+              <div class="blog-card-img-wrapper">
+                <img
+                  src="public/blogs/blog3.avif"
+                  alt="Delimitation Woes"
+                  class="blog-card-img"
+                />
+              </div>
+              <div class="blog-card-content">
+                <div class="mb-3">
+                  <span class="blog-tag">National Transformation</span>
+                </div>
+                <h3 class="blog-card-title">
+                  Delimitation Woes: Can India balance Democracy and
+                  Representation in the Next Delimitation Exercise?
+                </h3>
+                <p class="blog-card-desc">
+                  Since the establishment of the Delimitation Commission in
+                  1952, the exercise of redrawing electoral boundaries continues
+                  to remain a matter of debate in the Indian Constitution. In a
+                  country as diverse and populous as India, delimitation is not
+                  merely limited to redrawing the boundaries
+                </p>
+                <div class="blog-card-date">11 July 2025</div>
+              </div>
+            </div>
+          </a>
+        </div>
+
+        <div class="blog-view-more-container">
+          <a
+            href="https://rishihood.edu.in/blogs/"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="blog-view-more-btn"
+          >
+            View more blogs
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq-section">
+      <div class="faq-container">
+        <h2 class="faq-title">FAQs</h2>
+        <div class="faq-list">
+          <!-- Item 1 -->
+          <div class="faq-item">
+            <button class="faq-question-btn" onclick="toggleFaq(this)">
+              <span class="faq-question-text">What is this program about?</span>
+              <span class="faq-icon-wrapper">
+                <svg
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  class="faq-icon-svg"
+                >
+                  <path
+                    d="M4 12H20"
+                    stroke="#CC0033"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                  />
+                  <path
+                    d="M12 4V20"
+                    stroke="#CC0033"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    class="faq-vertical-line"
+                  />
+                </svg>
+              </span>
+            </button>
+            <div class="faq-answer-wrapper">
+              <div class="faq-answer-inner">
+                <div class="faq-answer-text">
+                  This program offers immersive exposure to AI, deeptech,
+                  innovation strategy, and real-world technology applications
+                  through expert sessions, field visits, workshops, and
+                  competitive building experiences.
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Item 2 -->
+          <div class="faq-item">
+            <button class="faq-question-btn" onclick="toggleFaq(this)">
+              <span class="faq-question-text"
+                >Who should attend this program?</span
+              >
+              <span class="faq-icon-wrapper">
+                <svg
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  class="faq-icon-svg"
+                >
+                  <path
+                    d="M4 12H20"
+                    stroke="#CC0033"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                  />
+                  <path
+                    d="M12 4V20"
+                    stroke="#CC0033"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    class="faq-vertical-line"
+                  />
+                </svg>
+              </span>
+            </button>
+            <div class="faq-answer-wrapper">
+              <div class="faq-answer-inner">
+                <div class="faq-answer-text">
+                  Students, innovators, aspiring founders, engineers, and
+                  professionals interested in AI, deeptech, policy, startups,
+                  and emerging technologies will benefit the most.
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Item 3 -->
+          <div class="faq-item">
+            <button class="faq-question-btn" onclick="toggleFaq(this)">
+              <span class="faq-question-text"
+                >What makes this program different?</span
+              >
+              <span class="faq-icon-wrapper">
+                <svg
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  class="faq-icon-svg"
+                >
+                  <path
+                    d="M4 12H20"
+                    stroke="#CC0033"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                  />
+                  <path
+                    d="M12 4V20"
+                    stroke="#CC0033"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    class="faq-vertical-line"
+                  />
+                </svg>
+              </span>
+            </button>
+            <div class="faq-answer-wrapper">
+              <div class="faq-answer-inner">
+                <div class="faq-answer-text">
+                  Unlike traditional events, this program combines strategic
+                  insights, industry interactions, hands-on learning, field
+                  immersion, and a competitive hackathon experience.
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Item 4 -->
+          <div class="faq-item">
+            <button class="faq-question-btn" onclick="toggleFaq(this)">
+              <span class="faq-question-text"
+                >What will participants gain from the Hackathon?</span
+              >
+              <span class="faq-icon-wrapper">
+                <svg
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  class="faq-icon-svg"
+                >
+                  <path
+                    d="M4 12H20"
+                    stroke="#CC0033"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                  />
+                  <path
+                    d="M12 4V20"
+                    stroke="#CC0033"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    class="faq-vertical-line"
+                  />
+                </svg>
+              </span>
+            </button>
+            <div class="faq-answer-wrapper">
+              <div class="faq-answer-inner">
+                <div class="faq-answer-text">
+                  Participants will collaborate, compete, and build real-world
+                  deeptech solutions while applying technical skills,
+                  creativity, and problem-solving under practical constraints.
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Item 5 -->
+          <div class="faq-item">
+            <button class="faq-question-btn" onclick="toggleFaq(this)">
+              <span class="faq-question-text"
+                >Do I need advanced technical skills to participate?</span
+              >
+              <span class="faq-icon-wrapper">
+                <svg
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  class="faq-icon-svg"
+                >
+                  <path
+                    d="M4 12H20"
+                    stroke="#CC0033"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                  />
+                  <path
+                    d="M12 4V20"
+                    stroke="#CC0033"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    class="faq-vertical-line"
+                  />
+                </svg>
+              </span>
+            </button>
+            <div class="faq-answer-wrapper">
+              <div class="faq-answer-inner">
+                <div class="faq-answer-text">
+                  Not necessarily. While some sessions are technical, the
+                  program is designed to provide value for both technical and
+                  non-technical participants interested in innovation and
+                  strategy.
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Item 6 -->
+          <div class="faq-item">
+            <button class="faq-question-btn" onclick="toggleFaq(this)">
+              <span class="faq-question-text"
+                >What kind of speakers and mentors will be involved?</span
+              >
+              <span class="faq-icon-wrapper">
+                <svg
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  class="faq-icon-svg"
+                >
+                  <path
+                    d="M4 12H20"
+                    stroke="#CC0033"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                  />
+                  <path
+                    d="M12 4V20"
+                    stroke="#CC0033"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    class="faq-vertical-line"
+                  />
+                </svg>
+              </span>
+            </button>
+            <div class="faq-answer-wrapper">
+              <div class="faq-answer-inner">
+                <div class="faq-answer-text">
+                  The program features policy leaders, AI experts, CTOs/CDOs,
+                  deeptech founders, investors, and industry practitioners from
+                  India’s innovation ecosystem.
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Item 7 -->
+          <div class="faq-item">
+            <button class="faq-question-btn" onclick="toggleFaq(this)">
+              <span class="faq-question-text"
+                >What topics will be covered?</span
+              >
+              <span class="faq-icon-wrapper">
+                <svg
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  class="faq-icon-svg"
+                >
+                  <path
+                    d="M4 12H20"
+                    stroke="#CC0033"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                  />
+                  <path
+                    d="M12 4V20"
+                    stroke="#CC0033"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    class="faq-vertical-line"
+                  />
+                </svg>
+              </span>
+            </button>
+            <div class="faq-answer-wrapper">
+              <div class="faq-answer-inner">
+                <div class="faq-answer-text">
+                  Key themes include Artificial Intelligence, Deep Technology,
+                  Innovation Strategy, Business Models, Intellectual Property,
+                  Emerging Technologies, and Technology-led Problem Solving.
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ Scripts -->
+    <script>
+      function toggleFaq(button) {
+        const item = button.parentElement;
+        item.classList.toggle("active");
+        // Optional: Close others
+        /*
+        const allItems = document.querySelectorAll('.faq-item');
+        allItems.forEach(other => {
+            if(other !== item) other.classList.remove('active');
+        });
+        */
+      }
+    </script>
+
+    <!-- Media Carousel Section -->
+    <section class="media-carousel-section">
+      <!-- Top Row: Left to Right -->
+      <div class="media-marquee-wrapper">
+        <div class="media-track track-left-to-right">
+          <!-- Set 1 -->
+          <img
+            src="public/mediacarousel/image 230.png"
+            alt="Campus Life"
+            class="media-img"
+            loading="lazy"
+          />
+          <img
+            src="public/mediacarousel/image 231.png"
+            alt="Campus Life"
+            class="media-img"
+            loading="lazy"
+          />
+          <img
+            src="public/mediacarousel/image 232.png"
+            alt="Campus Life"
+            class="media-img"
+            loading="lazy"
+          />
+          <img
+            src="public/mediacarousel/image 234.png"
+            alt="Campus Life"
+            class="media-img"
+            loading="lazy"
+          />
+          <img
+            src="public/mediacarousel/image 235.png"
+            alt="Campus Life"
+            class="media-img"
+            loading="lazy"
+          />
+          <img
+            src="public/mediacarousel/image 236.png"
+            alt="Campus Life"
+            class="media-img"
+            loading="lazy"
+          />
+          <img
+            src="public/mediacarousel/image 237.png"
+            alt="Campus Life"
+            class="media-img"
+            loading="lazy"
+          />
+          <img
+            src="public/mediacarousel/image 238.png"
+            alt="Campus Life"
+            class="media-img"
+            loading="lazy"
+          />
+          <img
+            src="public/mediacarousel/image 239.png"
+            alt="Campus Life"
+            class="media-img"
+            loading="lazy"
+          />
+          <img
+            src="public/mediacarousel/image 240.png"
+            alt="Campus Life"
+            class="media-img"
+            loading="lazy"
+          />
+          <img
+            src="public/mediacarousel/image 241.png"
+            alt="Campus Life"
+            class="media-img"
+            loading="lazy"
+          />
+          <img
+            src="public/mediacarousel/image 243.png"
+            alt="Campus Life"
+            class="media-img"
+            loading="lazy"
+          />
+          <!-- Duplicate Set 1 -->
+          <img
+            src="public/mediacarousel/image 230.png"
+            alt="Campus Life"
+            class="media-img"
+            loading="lazy"
+          />
+          <img
+            src="public/mediacarousel/image 231.png"
+            alt="Campus Life"
+            class="media-img"
+            loading="lazy"
+          />
+          <img
+            src="public/mediacarousel/image 232.png"
+            alt="Campus Life"
+            class="media-img"
+            loading="lazy"
+          />
+          <img
+            src="public/mediacarousel/image 234.png"
+            alt="Campus Life"
+            class="media-img"
+            loading="lazy"
+          />
+          <img
+            src="public/mediacarousel/image 235.png"
+            alt="Campus Life"
+            class="media-img"
+            loading="lazy"
+          />
+          <img
+            src="public/mediacarousel/image 236.png"
+            alt="Campus Life"
+            class="media-img"
+            loading="lazy"
+          />
+          <img
+            src="public/mediacarousel/image 237.png"
+            alt="Campus Life"
+            class="media-img"
+            loading="lazy"
+          />
+          <img
+            src="public/mediacarousel/image 238.png"
+            alt="Campus Life"
+            class="media-img"
+            loading="lazy"
+          />
+          <img
+            src="public/mediacarousel/image 239.png"
+            alt="Campus Life"
+            class="media-img"
+            loading="lazy"
+          />
+          <img
+            src="public/mediacarousel/image 240.png"
+            alt="Campus Life"
+            class="media-img"
+            loading="lazy"
+          />
+          <img
+            src="public/mediacarousel/image 241.png"
+            alt="Campus Life"
+            class="media-img"
+            loading="lazy"
+          />
+          <img
+            src="public/mediacarousel/image 243.png"
+            alt="Campus Life"
+            class="media-img"
+            loading="lazy"
+          />
+        </div>
+      </div>
+
+      <!-- Center Text -->
+      <div class="media-center-text">
+        <h2>Experience the Rishihood Campus</h2>
+      </div>
+
+      <!-- Bottom Row: Right to Left -->
+      <div class="media-marquee-wrapper">
+        <div class="media-track track-right-to-left">
+          <!-- Set 2 -->
+          <img
+            src="public/mediacarousel/image 244.png"
+            alt="Campus Life"
+            class="media-img"
+            loading="lazy"
+          />
+          <img
+            src="public/mediacarousel/image 245.png"
+            alt="Campus Life"
+            class="media-img"
+            loading="lazy"
+          />
+          <img
+            src="public/mediacarousel/image 246.png"
+            alt="Campus Life"
+            class="media-img"
+            loading="lazy"
+          />
+          <img
+            src="public/mediacarousel/image 249.png"
+            alt="Campus Life"
+            class="media-img"
+            loading="lazy"
+          />
+          <img
+            src="public/mediacarousel/image 250.png"
+            alt="Campus Life"
+            class="media-img"
+            loading="lazy"
+          />
+          <img
+            src="public/mediacarousel/image 251.png"
+            alt="Campus Life"
+            class="media-img"
+            loading="lazy"
+          />
+          <img
+            src="public/mediacarousel/image 252.png"
+            alt="Campus Life"
+            class="media-img"
+            loading="lazy"
+          />
+          <img
+            src="public/mediacarousel/image 253.png"
+            alt="Campus Life"
+            class="media-img"
+            loading="lazy"
+          />
+          <img
+            src="public/mediacarousel/image 254.png"
+            alt="Campus Life"
+            class="media-img"
+            loading="lazy"
+          />
+          <img
+            src="public/mediacarousel/image 255.png"
+            alt="Campus Life"
+            class="media-img"
+            loading="lazy"
+          />
+          <img
+            src="public/mediacarousel/image 256.png"
+            alt="Campus Life"
+            class="media-img"
+            loading="lazy"
+          />
+          <!-- Duplicate Set 2 -->
+          <img
+            src="public/mediacarousel/image 244.png"
+            alt="Campus Life"
+            class="media-img"
+            loading="lazy"
+          />
+          <img
+            src="public/mediacarousel/image 245.png"
+            alt="Campus Life"
+            class="media-img"
+            loading="lazy"
+          />
+          <img
+            src="public/mediacarousel/image 246.png"
+            alt="Campus Life"
+            class="media-img"
+            loading="lazy"
+          />
+          <img
+            src="public/mediacarousel/image 249.png"
+            alt="Campus Life"
+            class="media-img"
+            loading="lazy"
+          />
+          <img
+            src="public/mediacarousel/image 250.png"
+            alt="Campus Life"
+            class="media-img"
+            loading="lazy"
+          />
+          <img
+            src="public/mediacarousel/image 251.png"
+            alt="Campus Life"
+            class="media-img"
+            loading="lazy"
+          />
+          <img
+            src="public/mediacarousel/image 252.png"
+            alt="Campus Life"
+            class="media-img"
+            loading="lazy"
+          />
+          <img
+            src="public/mediacarousel/image 253.png"
+            alt="Campus Life"
+            class="media-img"
+            loading="lazy"
+          />
+          <img
+            src="public/mediacarousel/image 254.png"
+            alt="Campus Life"
+            class="media-img"
+            loading="lazy"
+          />
+          <img
+            src="public/mediacarousel/image 255.png"
+            alt="Campus Life"
+            class="media-img"
+            loading="lazy"
+          />
+          <img
+            src="public/mediacarousel/image 256.png"
+            alt="Campus Life"
+            class="media-img"
+            loading="lazy"
+          />
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+      <div class="footer-overlay"></div>
+      <div class="footer-content">
+        <div class="footer-top">
+          <div class="footer-logo-section">
+            <div class="footer-logo">
+              <img
+                src="public/logo/rishihoodlogo.avif"
+                alt="Rishihood University"
+                style="width: 100%; height: auto"
+              />
+            </div>
+            <p class="footer-tagline">व्यक्ति | विचार | व्यवस्था</p>
+          </div>
+          <div class="footer-building-section">
+            <img
+              src="public/logo/rishihoodstructure.avif"
+              alt="University Structure"
+              class="footer-building-img"
+            />
+          </div>
+          <div class="footer-links-section">
+            <div class="footer-links-col">
+              <h3 class="footer-links-title">Resources</h3>
+              <ul class="footer-links-list">
+                <li>
+                  <a
+                    href="https://rishihood.edu.in/blogs"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="footer-link"
+                    >Blogs</a
+                  >
+                </li>
+                <li><a href="#" class="footer-link">Events</a></li>
+                <li><a href="#" class="footer-link">Media</a></li>
+              </ul>
+            </div>
+            <div class="footer-links-col">
+              <h3 class="footer-links-title">Quick Links</h3>
+              <ul class="footer-links-list">
+                <li>
+                  <a
+                    href="https://rishihood.edu.in/our-story"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="footer-link"
+                    >Our Story</a
+                  >
+                </li>
+                <li>
+                  <a href="#" class="footer-link">Schedule Campus Visit</a>
+                </li>
+                <li>
+                  <a href="#" class="footer-link">Mandatory Disclosures</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="footer-divider"></div>
+        <div class="footer-bottom">
+          <div class="social-icons">
+            <a
+              href="https://www.instagram.com/rishihooduni/?hl=en"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="social-icon-btn"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="#6A0017"
+                stroke-width="2.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                <path
+                  d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"
+                ></path>
+                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+              </svg>
+            </a>
+            <a
+              href="https://www.facebook.com/rishihood/"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="social-icon-btn"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="#6A0017"
+                stroke-width="2.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path
+                  d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"
+                ></path>
+              </svg>
+            </a>
+            <a
+              href="https://x.com/RishihoodUni/"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="social-icon-btn"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="18"
+                height="18"
+                viewBox="0 0 24 24"
+                fill="#6A0017"
+              >
+                <path
+                  d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"
+                ></path>
+              </svg>
+            </a>
+            <a
+              href="https://www.linkedin.com/school/rishihood/"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="social-icon-btn"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="#6A0017"
+                stroke-width="2.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path
+                  d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"
+                ></path>
+                <rect x="2" y="9" width="4" height="12"></rect>
+                <circle cx="4" cy="4" r="2"></circle>
+              </svg>
+            </a>
+            <a
+              href="https://www.youtube.com/@Rishihood"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="social-icon-btn"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="#6A0017"
+                stroke-width="2.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path
+                  d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.46 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.33 29 29 0 0 0-.46-5.33z"
+                ></path>
+                <polygon
+                  points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"
+                  fill="#6A0017"
+                  stroke="none"
+                ></polygon>
+              </svg>
+            </a>
+          </div>
+          <div class="footer-address">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="white"
+              stroke="none"
+              style="flex-shrink: 0"
+            >
+              <path
+                d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"
+              ></path>
+            </svg>
+            <span style="font-size: 1rem"
+              >NH-44 (GT Road), Delhi NCR, Sonipat, Haryana 131021</span
+            >
+          </div>
+          <a
+            href="https://apply.rishihood.edu.in/"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="footer-apply-btn"
+            >Apply Now</a
+          >
+        </div>
+        <div class="footer-copyright">
+          <p>
+            Rishihood University is established by Rishihood Foundation, <br />a
+            non-profit company under Section 8 of the Companies Act, 2013. All
+            Rights Reserved, 2026
+          </p>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        // Desktop Interactivity
+        const desktopAboutContainer = document.getElementById(
+          "desktop-about-container",
+        );
+        const desktopCampusContainer = document.getElementById(
+          "desktop-campus-container",
+        );
+        const aboutDropdown = document.getElementById("desktop-about-dropdown");
+        const campusDropdown = document.getElementById(
+          "desktop-campus-dropdown",
+        );
+        const aboutArrow = document.getElementById("desktop-about-arrow");
+        const campusArrow = document.getElementById("desktop-campus-arrow");
+
+        let aboutTimeout, campusTimeout;
+
+        function closeAbout() {
+          aboutDropdown.classList.remove("show");
+          aboutArrow.classList.remove("rotate-180");
+        }
+
+        function closeCampus() {
+          campusDropdown.classList.remove("show");
+          campusArrow.classList.remove("rotate-180");
+        }
+
+        function openAbout() {
+          closeCampus();
+          clearTimeout(aboutTimeout);
+          aboutDropdown.classList.add("show");
+          aboutArrow.classList.add("rotate-180");
+        }
+
+        function openCampus() {
+          closeAbout();
+          clearTimeout(campusTimeout);
+          campusDropdown.classList.add("show");
+          campusArrow.classList.add("rotate-180");
+        }
+
+        // About Events
+        desktopAboutContainer.addEventListener("mouseenter", openAbout);
+        desktopAboutContainer.addEventListener("mouseleave", () => {
+          aboutTimeout = setTimeout(closeAbout, 300);
+        });
+
+        // Campus Events
+        desktopCampusContainer.addEventListener("mouseenter", openCampus);
+        desktopCampusContainer.addEventListener("mouseleave", () => {
+          campusTimeout = setTimeout(closeCampus, 300);
+        });
+
+        // Mobile Interactivity
+        const mobileMenuToggle = document.getElementById("mobile-menu-toggle");
+        const mobileMenu = document.getElementById("mobile-menu");
+        const iconMenuOpen = document.getElementById("icon-menu-open");
+        const iconMenuClose = document.getElementById("icon-menu-close");
+        let isMobileMenuOpen = false;
+
+        mobileMenuToggle.addEventListener("click", () => {
+          isMobileMenuOpen = !isMobileMenuOpen;
+          if (isMobileMenuOpen) {
+            mobileMenu.classList.add("show");
+            iconMenuOpen.style.display = "none";
+            iconMenuClose.style.display = "block";
+          } else {
+            mobileMenu.classList.remove("show");
+            iconMenuOpen.style.display = "block";
+            iconMenuClose.style.display = "none";
+          }
+        });
+
+        // Mobile Dropdowns
+        const mobileAboutBtn = document.getElementById("mobile-about-btn");
+        const mobileAboutDropdown = document.getElementById(
+          "mobile-about-dropdown",
+        );
+        const mobileAboutArrow = document.getElementById("mobile-about-arrow");
+
+        const mobileCampusBtn = document.getElementById("mobile-campus-btn");
+        const mobileCampusDropdown = document.getElementById(
+          "mobile-campus-dropdown",
+        );
+        const mobileCampusArrow = document.getElementById(
+          "mobile-campus-arrow",
+        );
+
+        mobileAboutBtn.addEventListener("click", () => {
+          const isHidden = mobileAboutDropdown.classList.contains("hidden");
+          if (isHidden) {
+            mobileAboutDropdown.classList.remove("hidden");
+            mobileAboutArrow.classList.add("rotate-180");
+          } else {
+            mobileAboutDropdown.classList.add("hidden");
+            mobileAboutArrow.classList.remove("rotate-180");
+          }
+        });
+
+        mobileCampusBtn.addEventListener("click", () => {
+          const isHidden = mobileCampusDropdown.classList.contains("hidden");
+          if (isHidden) {
+            mobileCampusDropdown.classList.remove("hidden");
+            mobileCampusArrow.classList.add("rotate-180");
+          } else {
+            mobileCampusDropdown.classList.add("hidden");
+            mobileCampusArrow.classList.remove("rotate-180");
+          }
+        });
+
+        // Carousel Logic
+        const slides = document.querySelectorAll(".carousel-slide");
+        const dots = document.querySelectorAll(".dot");
+        let currentSlide = 0;
+        const totalSlides = slides.length;
+        let slideInterval;
+
+        function showSlide(index) {
+          slides.forEach((slide, i) => {
+            if (i === index) {
+              slide.classList.add("active");
+            } else {
+              slide.classList.remove("active");
+            }
+          });
+
+          dots.forEach((dot, i) => {
+            if (i === index) {
+              dot.classList.add("active");
+            } else {
+              dot.classList.remove("active");
+            }
+          });
+
+          currentSlide = index;
+        }
+
+        function nextSlide() {
+          showSlide((currentSlide + 1) % totalSlides);
+        }
+
+        function startSlideTimer() {
+          if (slideInterval) clearInterval(slideInterval);
+          slideInterval = setInterval(nextSlide, 5000);
+        }
+
+        if (slides.length > 0) {
+          startSlideTimer();
+
+          dots.forEach((dot, index) => {
+            dot.addEventListener("click", () => {
+              showSlide(index);
+              startSlideTimer(); // Reset timer on interaction
+            });
+          });
+        }
+
+        // Mentors Carousel Data and Logic
+        const mentors = [
+          {
+            name: "Prof. N. Vyas",
+            designation: "Professor, Indian Institute of Technology Kanpur",
+            image: "public/mentors/prof-N.vyas.jpg",
+          },
+          {
+            name: "Mr. Rajesh Ranjan",
+            designation: "Designated Partner, O2 Angels Network",
+            image: "public/mentors/mr-rajesh-ranjan.jpeg",
+          },
+          {
+            name: "Aparna Gupta",
+            designation: "Principal Expert & Advisor to the CEO, ANRF",
+            image: "public/mentors/aparna-gupta.webp",
+          },
+          {
+            name: "Satish A.V.",
+            designation: "Chief Operating Officer, Orangewood Labs",
+            image: "public/mentors/Satish-AV.jpeg",
+          },
+          {
+            name: "Sachin Gupta",
+            designation: "Founder and CEO, Probo",
+            image: "public/mentors/sachin-gupta .jpeg",
+          },
+          {
+            name: "Cmde Bharat Nagpal",
+            designation: "CEO, Merlinhawk Composites and Engineering Pvt. Ltd.",
+            image: "public/mentors/Cmde-Bharat-Bhushan-Nagpal.png",
+          },
+          {
+            name: "Prof. K. Gopinath",
+            designation: "Professor, Rishihood University",
+            role: "Moderator",
+            image: "public/mentors/Prof.-K.-Gopinath.webp",
+          },
+          {
+            name: "Rahul Seth",
+            designation: "Founder, Industrial 47 & Investor, Pranos Fusion",
+            image: "public/mentors/rahul-seth.avif",
+          },
+          {
+            name: "Dr. Manoj Kumar",
+            designation: "Director – Innovation, STMicroelectronics",
+            image: "public/mentors/dr-manoj-kumar.jpg",
+          },
+          {
+            name: "Alok Pandey",
+            designation:
+              "Chief Executive Officer, Atal Incubation Centre (AIC) – IIT Delhi",
+            image: "public/mentors/Alok-Pandey.png",
+          },
+          {
+            name: "Nishit Gupta",
+            designation: "Director (Technology), ISM and Scientist-E, MeitY",
+            image: "public/mentors/nishit-gupta.png",
+          },
+          {
+            name: "Deekhit Bhattacharya",
+            designation:
+              "Corporate Lawyer, Author & Analyst on Geopolitics and Technology",
+            image: "public/mentors/deekhit-bhattacharya.png",
+          },
+          {
+            name: "Prof. Gautam R Desiraju",
+            designation:
+              "Professor, Rishihood University | Author and Thought Leader",
+            role: "Moderator",
+            image: "public/mentors/Gautam_R_Desiraju-01.jpg",
+          },
+        ];
+
+        const mentorsMarquee = document.getElementById("mentors-marquee");
+        // Duplicate data to ensure seamless scroll
+        const allMentors = [...mentors, ...mentors];
+
+        if (mentorsMarquee) {
+          allMentors.forEach((mentor) => {
+            const card = document.createElement("div");
+            card.className = "mentor-card";
+
+            card.innerHTML = `
+              <img src="${mentor.image}" alt="${mentor.name}" class="mentor-img" loading="lazy">
+              <div class="mentor-overlay">
+                <h3 class="mentor-name">${mentor.name}</h3>
+                <p class="mentor-designation">${mentor.designation}</p>
+                ${mentor.role ? `<span class="mentor-role">${mentor.role}</span>` : ""}
+              </div>
+            `;
+
+            // Add error handling for images
+            const img = card.querySelector("img");
+            img.onerror = () => {
+              img.src = "https://placehold.co/240x300?text=No+Image";
+            };
+
+            mentorsMarquee.appendChild(card);
+          });
+        }
+
+        // Program Highlights Tabs
+        const tabBtns = document.querySelectorAll(".tab-btn");
+        const tabContents = document.querySelectorAll(".highlight-tab-content");
+
+        tabBtns.forEach((btn) => {
+          btn.addEventListener("click", () => {
+            // Remove active class from all buttons
+            tabBtns.forEach((b) => b.classList.remove("active"));
+            // Add active class to clicked button
+            btn.classList.add("active");
+
+            // Hide all content
+            tabContents.forEach((c) => c.classList.remove("active-content"));
+
+            // Show target content
+            const targetId = btn.getAttribute("data-tab");
+            const targetContent = document.getElementById(targetId);
+            if (targetContent) {
+              targetContent.classList.add("active-content");
+            }
+          });
+        });
+      });
+    </script>
+    <script>
+      // Intersection Observer for Scroll Animations
+      document.addEventListener("DOMContentLoaded", function () {
+        const observerOptions = {
+          root: null,
+          rootMargin: "0px",
+          threshold: 0.1,
+        };
+
+        const observer = new IntersectionObserver((entries, observer) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("visible");
+              observer.unobserve(entry.target); // Animate only once
+            }
+          });
+        }, observerOptions);
+
+        const animatedElements = document.querySelectorAll(".animate-element");
+        animatedElements.forEach((el) => observer.observe(el));
+      });
+    </script>
+  </body>
+</html>
