@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>DeepTech Bootcamp</title>
     <link
-      href="https://fonts.googleapis.com/css2?family=Hind:wght@300;400;500;600;700&family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,900&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Hind:wght@300;400;500;600;700&family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
       rel="stylesheet"
     />
     <style>
@@ -729,7 +729,7 @@
 
       .carousel-title {
         font-size: 2rem; /* Reduced for mobile */
-        font-weight: 400;
+        font-weight: 700;
         font-style: italic;
         letter-spacing: -0.05em;
         color: white;
@@ -738,6 +738,9 @@
         text-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
         opacity: 0;
         transform: translateY(50px);
+      }
+
+      .visible .carousel-title {
         animation: slideUpFade 0.8s ease-out 0.2s forwards;
       }
 
@@ -754,18 +757,38 @@
       }
 
       .text-highlight {
-        color: #f3292a;
+        color: #d00737;
+        font-weight: 700;
+      }
+
+      .typing-cursor {
+        font-weight: 100;
+        color: #d00737;
+        animation: blink 1s step-end infinite;
+      }
+
+      @keyframes blink {
+        from,
+        to {
+          opacity: 1;
+        }
+        50% {
+          opacity: 0;
+        }
       }
 
       .carousel-subtitle {
         font-size: 1rem;
-        font-weight: 700;
+        font-weight: 400;
         color: white;
         margin-bottom: 1.5rem;
         letter-spacing: 0.025em;
         text-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
         opacity: 0;
         transform: translateY(50px);
+      }
+
+      .visible .carousel-subtitle {
         animation: slideUpFade 0.8s ease-out 0.4s forwards;
       }
 
@@ -781,15 +804,18 @@
         gap: 0.75rem;
         opacity: 0;
         transform: translateY(50px);
+      }
+
+      .visible .carousel-actions {
         animation: slideUpFade 0.8s ease-out 0.6s forwards;
       }
 
       .btn-primary {
         padding: 0.625rem 1.25rem; /* Reduced padding */
-        background-color: #d11333;
+        background-color: #d00737;
         color: white;
         font-size: 1rem;
-        font-weight: 700;
+        font-weight: 500;
         border-radius: 0.5rem;
         border: none;
         cursor: pointer;
@@ -801,10 +827,17 @@
         min-width: 140px;
       }
 
-      .btn-primary:hover {
-        background-color: #a30029;
+      .btn-primary:hover,
+      .btn-primary:active {
+        background-color: #ffffff;
+        color: #000000;
         box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
-        transform: translateY(-4px);
+        transform: translateY(-2px);
+      }
+
+      .btn-primary:active {
+        transform: scale(0.98);
+        box-shadow: 0 5px 10px -3px rgba(0, 0, 0, 0.1);
       }
 
       @media (min-width: 768px) {
@@ -820,7 +853,7 @@
         border: 2px solid white;
         color: white;
         font-size: 1rem;
-        font-weight: 700;
+        font-weight: 500;
         border-radius: 0.5rem;
         cursor: pointer;
         box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
@@ -885,25 +918,26 @@
       /* About Section Styles */
       .about-section {
         background-color: #fdfbf7;
-        padding: 2.5rem 1rem; /* Reduced mobile padding to fix extra space issue */
-        margin-top: -1px; /* Remove any gap from black section if any */
+        padding: 0.5rem 0.5rem;
+        margin-top: -1px;
+        overflow-x: hidden;
       }
 
       @media (min-width: 768px) {
         .about-section {
-          padding: 4rem 3rem;
+          padding: 1rem 2rem;
         }
       }
       @media (min-width: 1280px) {
         .about-section {
-          padding: 4rem 8rem;
+          padding: 1rem 4rem;
         }
       }
 
       .about-grid {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
-        gap: 0.75rem;
+        gap: 0.5rem; /* Reduced gap */
         max-width: 1400px;
         margin: 0 auto;
       }
@@ -934,7 +968,7 @@
       .about-card {
         background-color: white;
         border-radius: 1rem;
-        padding: 1.5rem;
+        padding: 0.75rem; /* Further reduced padding */
         box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
         overflow: hidden;
         border: 1px solid rgba(0, 0, 0, 0.03);
@@ -950,7 +984,7 @@
       .about-title {
         font-size: 1.5rem;
         font-weight: 700;
-        margin-bottom: 1rem;
+        margin-bottom: 0.5rem; /* Reduced margin */
         color: #333;
         line-height: 1.2;
       }
@@ -962,7 +996,7 @@
 
       .about-subtitle {
         font-weight: 600;
-        margin-bottom: 1rem;
+        margin-bottom: 0.5rem; /* Reduced margin */
         color: #444;
         line-height: 1.4;
         font-size: 1rem;
@@ -971,14 +1005,14 @@
       .about-desc {
         color: #666;
         line-height: 1.6;
-        margin-bottom: 1.5rem;
+        margin-bottom: 0.5rem; /* Further reduced margin */
         font-size: 0.95rem;
       }
 
       .about-image-content {
         padding: 0;
         position: relative;
-        min-height: 300px;
+        min-height: 150px; /* Further reduced min-height */
       }
 
       .about-main-img {
@@ -1009,7 +1043,7 @@
       }
 
       .quote-img {
-        height: 14rem;
+        height: 8rem; /* Reduced height */
         width: auto;
         object-fit: contain;
         display: block;
@@ -1038,19 +1072,127 @@
         flex-direction: column;
         justify-content: space-between;
         align-items: flex-start;
-        padding: 1.25rem;
+        padding: 0.75rem; /* Reduced padding */
         position: relative;
         overflow: hidden;
         height: 100%;
         gap: 1rem;
       }
 
+      /* Compact Desktop Layout adjustments */
       @media (min-width: 1024px) {
+        .about-section {
+          padding: 4rem 10rem; /* Reduced padding */
+        }
+        .about-grid {
+          grid-template-columns: repeat(2, 1fr);
+          gap: 0.75rem; /* Tighter gap */
+        }
+
+        .about-text-content,
+        .about-image-content {
+          grid-column: span 1;
+        }
+        .about-title {
+          font-size: 1.75rem; /* Slightly smaller for fit */
+          margin-bottom: 0.25rem;
+        }
+        .about-desc {
+          margin-bottom: 0.5rem;
+          font-size: 0.9rem;
+          line-height: 1.4;
+        }
+        .mt-6 {
+          margin-top: 0.75rem; /* Compact button margin */
+        }
+
+        .about-image-content {
+          min-height: auto;
+          height: 100%;
+          max-height: 280px; /* Limit image height */
+        }
+
+        .quote-content {
+          grid-column: span 2;
+          padding: 2.5rem 3rem 0 3rem; /* Remove bottom padding */
+          display: flex;
+          align-items: flex-end;
+        }
+        .quote-wrapper {
+          gap: 2.5rem;
+          align-items: flex-end; /* Align image to bottom */
+          padding-bottom: 0;
+        }
+        .quote-img {
+          height: 11rem; /* Restored larger image size */
+        }
+        .quote-text-wrapper {
+          padding-bottom: 2.5rem; /* Lift text up */
+        }
+        .quote-text {
+          font-size: 1.1rem;
+          margin-bottom: 0.75rem;
+        }
+
+        /* Stat Cards */
         .stat-card {
-          flex-direction: row;
+          flex-direction: row; /* Horizontal layout to reduce height */
           align-items: center;
-          padding: 2.5rem 3rem;
-          gap: 0;
+          justify-content: space-between;
+          padding: 2rem 3rem;
+          gap: 2rem;
+        }
+        .stat-info {
+          margin-bottom: 0;
+          width: auto;
+        }
+
+        .stat-logos-group {
+          align-items: flex-end; /* Align right on desktop */
+          width: auto;
+          margin-top: 0;
+          gap: 0 !important; /* Reset gap to control via padding/margin */
+        }
+        /* Style specifically for the first image in the group (Probo/Merlinhawk) */
+        .stat-logos-group > img:first-child {
+          border-bottom: 1px solid #e0e0e0;
+          padding-bottom: 0.15rem; /* Tighter line */
+          margin-bottom: 0.5rem;
+          width: auto; /* Allow line to match logo width */
+          object-fit: contain;
+          object-position: right;
+          height: 3.5rem;
+          position: relative; /* Shift upward */
+          top: -0.25rem;
+        }
+
+        /* Increase Merlinhawk size specifically */
+        .stat-logos-group > img.logo-merlin {
+          height: 6rem !important;
+          width: auto;
+          margin-top: -1rem; /* Adjust positioning for larger logo */
+          margin-bottom: 0.5rem;
+        }
+
+        .logo-row {
+          gap: 1.5rem;
+          justify-content: flex-end; /* Align secondary logos to right */
+          width: 100%;
+        }
+
+        .stat-number {
+          font-size: 3rem;
+          margin-bottom: 0.25rem;
+        }
+
+        .logo-iit,
+        .logo-st,
+        .logo-pranos {
+          height: 2rem;
+        }
+
+        .logo-147 {
+          height: 2rem;
         }
       }
 
@@ -1074,18 +1216,11 @@
 
       .stat-number {
         font-size: 2.5rem;
-        font-weight: 800;
+        font-weight: 600;
         line-height: 1;
         margin-bottom: 0.25rem;
         color: #1a1a1a;
         letter-spacing: -0.05em;
-      }
-
-      @media (min-width: 1024px) {
-        .stat-number {
-          font-size: 5rem;
-          margin-bottom: 0.5rem;
-        }
       }
 
       .stat-desc {
@@ -1105,7 +1240,7 @@
         display: flex;
         flex-direction: column;
         align-items: flex-start;
-        gap: 0.75rem;
+        gap: 0.5rem;
         position: relative;
         z-index: 1;
         width: 100%;
@@ -1166,7 +1301,7 @@
           height: 5rem;
         }
         .logo-147 {
-          height: 2.5rem;
+          height: 5rem;
         }
         .logo-merlin {
           height: 4rem;
@@ -1360,6 +1495,37 @@
         margin-top: 1.5rem;
       }
 
+      /* Logo Animation Section */
+      .logo-animation-section {
+        position: relative;
+        height: 40vh;
+        background: linear-gradient(to bottom, #fcf7ef 0%, #ffffff 100%);
+        overflow: hidden;
+        display: flex;
+        align-items: flex-end;
+        justify-content: center;
+        padding-bottom: 8vh;
+      }
+
+      .logo-animation-container {
+        position: relative;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .animated-logo {
+        width: 150px;
+        height: auto;
+        opacity: 0.4;
+        transform: scale(0.6);
+        transition:
+          transform 0.1s ease-out,
+          opacity 0.1s ease-out;
+        will-change: transform, opacity;
+      }
+
       /* Program Highlights */
       .highlights-section {
         background-color: #fcf7ef;
@@ -1432,6 +1598,35 @@
         position: relative;
         overflow: hidden;
         font-family: "Montserrat", sans-serif;
+        opacity: 0;
+        transform: translateX(-50px);
+      }
+
+      @keyframes slideInLeft {
+        to {
+          opacity: 1;
+          transform: translateX(0);
+        }
+      }
+
+      .visible-tabs .tab-btn {
+        animation: slideInLeft 0.5s ease-out forwards;
+      }
+
+      .visible-tabs .tab-btn:nth-child(1) {
+        animation-delay: 0.1s;
+      }
+      .visible-tabs .tab-btn:nth-child(2) {
+        animation-delay: 0.2s;
+      }
+      .visible-tabs .tab-btn:nth-child(3) {
+        animation-delay: 0.3s;
+      }
+      .visible-tabs .tab-btn:nth-child(4) {
+        animation-delay: 0.4s;
+      }
+      .visible-tabs .tab-btn:nth-child(5) {
+        animation-delay: 0.5s;
       }
 
       .tab-btn:hover {
@@ -1489,12 +1684,25 @@
         border-radius: 1.5rem;
         padding: 1rem; /* Reduced mobile padding */
         box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
-        animation: fadeIn 0.3s ease-out;
         flex-direction: column;
-        gap: 1rem; /* Reduced mobile gap */
+        gap: 1.5rem;
       }
+
+      @keyframes zoomOutReveal {
+        from {
+          opacity: 0;
+          transform: scale(1.1);
+        }
+        to {
+          opacity: 1;
+          transform: scale(1);
+        }
+      }
+
       .highlight-tab-content.active-content {
         display: flex;
+        flex-direction: column;
+        animation: zoomOutReveal 0.5s ease-out forwards;
       }
 
       @media (min-width: 768px) {
@@ -1540,6 +1748,51 @@
         width: 100%;
         height: 100%;
         object-fit: cover;
+      }
+      .highlight-img.scaled-img {
+        transform: scale(1.1);
+      }
+      .highlight-img.scaled-img-sm {
+        transform: scale(1.1);
+      }
+
+      /* Flip Card Styles */
+      .flip-card {
+        background-color: transparent;
+        width: 100%;
+        height: 100%;
+        perspective: 1000px;
+        cursor: pointer;
+      }
+
+      .flip-card-inner {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        text-align: center;
+        transition: transform 0.6s;
+        transform-style: preserve-3d;
+      }
+
+      .flip-card:hover .flip-card-inner,
+      .flip-card.auto-flip .flip-card-inner {
+        transform: rotateY(180deg);
+      }
+
+      .flip-card-front,
+      .flip-card-back {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        -webkit-backface-visibility: hidden;
+        backface-visibility: hidden;
+        border-radius: 50%;
+        overflow: hidden;
+      }
+
+      .flip-card-back {
+        transform: rotateY(180deg);
+        background-color: #e5e7eb;
       }
 
       .highlight-text {
@@ -2166,13 +2419,13 @@
         transition: all 1s ease-out;
       }
       .slide-in-left {
-        transform: translateX(-100px);
+        transform: translateX(-50px);
       }
       .slide-in-right {
-        transform: translateX(100px);
+        transform: translateX(50px);
       }
       .slide-in-up {
-        transform: translateY(100px);
+        transform: translateY(50px);
       }
       .animate-element.visible {
         opacity: 1;
@@ -2539,7 +2792,8 @@
       <div class="carousel-overlay-left"></div>
 
       <!-- Content -->
-      <div class="carousel-content">
+      <!-- Content -->
+      <div class="carousel-content animate-element">
         <h1 class="carousel-title">
           DeepTech <span class="text-highlight">BootCamp</span>
         </h1>
@@ -2579,7 +2833,8 @@
             class="about-card about-text-content animate-element slide-in-left"
           >
             <h2 class="about-title">
-              About <span class="text-highlight">DeepTech Bootcamp</span>
+              About <span class="text-highlight" id="typing-text"></span
+              ><span class="typing-cursor">|</span>
             </h2>
             <p class="about-subtitle">
               Aligned with the India Semiconductor Mission (ISM) a national
@@ -2595,11 +2850,15 @@
           <div
             class="about-card about-image-content animate-element slide-in-right"
           >
-            <img
-              src="public/photos/about-2.png"
+            <video
+              src="public/videos/about-video.mp4"
               alt="DeepTech Bootcamp Session"
               class="about-main-img"
-            />
+              autoplay
+              loop
+              muted
+              playsinline
+            ></video>
           </div>
 
           <!-- Row 2: Quote -->
@@ -2744,11 +3003,24 @@
           <div class="highlight-tab-content active-content" id="keynotes">
             <div class="highlight-img-wrapper">
               <div class="highlight-img-circle">
-                <img
-                  src="public/photos/Keynotes-Dialogues.png"
-                  alt="Keynotes & Dialogues"
-                  class="highlight-img"
-                />
+                <div class="flip-card">
+                  <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                      <img
+                        src="public/photos/Keynotes-Dialogues.png"
+                        alt="Keynotes & Dialogues"
+                        class="highlight-img scaled-img-sm"
+                      />
+                    </div>
+                    <div class="flip-card-back">
+                      <img
+                        src="public/photos/Keynotes-Dialogues-logo.png"
+                        alt="Keynotes & Dialogues Logo"
+                        class="highlight-img scaled-img-sm"
+                      />
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
             <div class="highlight-text">
@@ -2759,9 +3031,8 @@
               </h4>
               <div class="highlight-separator"></div>
               <p class="highlight-desc">
-                Decode national missions, AI timelines, and sovereignty
-                roadmaps—straight from policy shapers and global innovation
-                leaders.
+                Decode national missions, AI timelines, and sovereignty roadmaps
+                straight from policy shapers and global innovation leaders.
               </p>
               <button class="btn-download-full">Download Brochure</button>
             </div>
@@ -2771,11 +3042,24 @@
           <div class="highlight-tab-content" id="field-visits">
             <div class="highlight-img-wrapper">
               <div class="highlight-img-circle">
-                <img
-                  src="public/photos/Field-Visits.png"
-                  alt="Field Visits"
-                  class="highlight-img"
-                />
+                <div class="flip-card">
+                  <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                      <img
+                        src="public/photos/Field-Visits.png"
+                        alt="Field Visits"
+                        class="highlight-img scaled-img"
+                      />
+                    </div>
+                    <div class="flip-card-back">
+                      <img
+                        src="public/photos/Field-Visits-logo.png"
+                        alt="Field Visits Logo"
+                        class="highlight-img scaled-img"
+                      />
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
             <div class="highlight-text">
@@ -2786,7 +3070,7 @@
               </h4>
               <div class="highlight-separator"></div>
               <p class="highlight-desc">
-                Step inside India's premier R&D facilities—where national
+                Step inside India's premier R&D facilities where national
                 innovation is engineered.
               </p>
               <button class="btn-download-full">Download Brochure</button>
@@ -2797,11 +3081,24 @@
           <div class="highlight-tab-content" id="panels">
             <div class="highlight-img-wrapper">
               <div class="highlight-img-circle">
-                <img
-                  src="public/photos/Panels-Fireside.png"
-                  alt="Panels & Fireside Chats"
-                  class="highlight-img"
-                />
+                <div class="flip-card">
+                  <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                      <img
+                        src="public/photos/Panels-Fireside.png"
+                        alt="Panels & Fireside Chats"
+                        class="highlight-img scaled-img-sm"
+                      />
+                    </div>
+                    <div class="flip-card-back">
+                      <img
+                        src="public/photos/Panels-Fireside-logo.png"
+                        alt="Panels & Fireside Chats Logo"
+                        class="highlight-img scaled-img-sm"
+                      />
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
             <div class="highlight-text">
@@ -2824,11 +3121,24 @@
           <div class="highlight-tab-content" id="masterclasses">
             <div class="highlight-img-wrapper">
               <div class="highlight-img-circle">
-                <img
-                  src="public/photos/programhelight-3.png"
-                  alt="Masterclasses"
-                  class="highlight-img"
-                />
+                <div class="flip-card">
+                  <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                      <img
+                        src="public/photos/programhelight-3.png"
+                        alt="Masterclasses"
+                        class="highlight-img scaled-img"
+                      />
+                    </div>
+                    <div class="flip-card-back">
+                      <img
+                        src="public/photos/MasterclassesWorkshops-logo.png"
+                        alt="Masterclasses Logo"
+                        class="highlight-img scaled-img"
+                      />
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
             <div class="highlight-text">
@@ -2838,8 +3148,8 @@
               <div class="highlight-separator"></div>
               <p class="highlight-desc">
                 Experience hands-on sessions on AI applications, advanced chip
-                design, and emerging deeptech innovations — blending technical
-                learning with real-world problem-solving.
+                design, and emerging deeptech innovations blending technical
+                learning with real world problem solving.
               </p>
               <button class="btn-download-full">Download Brochure</button>
             </div>
@@ -2849,11 +3159,24 @@
           <div class="highlight-tab-content" id="hackathons">
             <div class="highlight-img-wrapper">
               <div class="highlight-img-circle">
-                <img
-                  src="public/photos/image-4.png"
-                  alt="Hackathons"
-                  class="highlight-img"
-                />
+                <div class="flip-card">
+                  <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                      <img
+                        src="public/photos/image-4.png"
+                        alt="Hackathons"
+                        class="highlight-img scaled-img"
+                      />
+                    </div>
+                    <div class="flip-card-back">
+                      <img
+                        src="public/photos/Hackathon-logo.png"
+                        alt="Hackathons Logo"
+                        class="highlight-img scaled-img"
+                      />
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
             <div class="highlight-text">
@@ -2863,13 +3186,25 @@
               <div class="highlight-separator"></div>
               <p class="highlight-desc">
                 Race against top talent to design and develop real deeptech
-                solutions applying AI, engineering, and problem-solving under
-                real-world constraints.
+                solutions applying AI, engineering, and problem solving under
+                real world constraints.
               </p>
               <button class="btn-download-full">Download Brochure</button>
             </div>
           </div>
         </div>
+      </div>
+    </section>
+
+    <!-- Logo Animation Section -->
+    <section class="logo-animation-section" id="logo-animation">
+      <div class="logo-animation-container">
+        <img
+          src="public/logo/logo_only.avif"
+          alt="Rishihood Logo"
+          class="animated-logo"
+          id="animated-logo"
+        />
       </div>
     </section>
 
@@ -4129,25 +4464,107 @@
         // Program Highlights Tabs
         const tabBtns = document.querySelectorAll(".tab-btn");
         const tabContents = document.querySelectorAll(".highlight-tab-content");
+        const highlightsSection = document.querySelector(".highlights-section");
+
+        function switchTab(btn) {
+          // Remove active class from all buttons
+          tabBtns.forEach((b) => b.classList.remove("active"));
+          // Add active class to clicked button
+          btn.classList.add("active");
+
+          // Hide all content
+          tabContents.forEach((c) => c.classList.remove("active-content"));
+
+          // Show target content
+          const targetId = btn.getAttribute("data-tab");
+          const targetContent = document.getElementById(targetId);
+          if (targetContent) {
+            targetContent.classList.add("active-content");
+
+            // Auto-flip the image after 1 second
+            setTimeout(() => {
+              const flipCard = targetContent.querySelector(".flip-card");
+              if (flipCard) {
+                flipCard.classList.add("auto-flip");
+
+                // Remove auto-flip after animation completes to allow re-flipping
+                setTimeout(() => {
+                  flipCard.classList.remove("auto-flip");
+                }, 2000);
+              }
+            }, 1000);
+          }
+        }
 
         tabBtns.forEach((btn) => {
           btn.addEventListener("click", () => {
-            // Remove active class from all buttons
-            tabBtns.forEach((b) => b.classList.remove("active"));
-            // Add active class to clicked button
-            btn.classList.add("active");
-
-            // Hide all content
-            tabContents.forEach((c) => c.classList.remove("active-content"));
-
-            // Show target content
-            const targetId = btn.getAttribute("data-tab");
-            const targetContent = document.getElementById(targetId);
-            if (targetContent) {
-              targetContent.classList.add("active-content");
-            }
+            switchTab(btn);
           });
         });
+
+        // Staggered animation observer
+        const tabsWrapper = document.querySelector(".highlights-tabs-wrapper");
+        const tabsObserver = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                tabsWrapper.classList.add("visible-tabs");
+              } else {
+                tabsWrapper.classList.remove("visible-tabs");
+              }
+            });
+          },
+          { threshold: 0.2 },
+        );
+
+        if (tabsWrapper) {
+          tabsObserver.observe(tabsWrapper);
+        }
+
+        // Logo Animation on Scroll
+        const logoSection = document.querySelector(".logo-animation-section");
+        const animatedLogo = document.getElementById("animated-logo");
+
+        if (logoSection && animatedLogo) {
+          window.addEventListener("scroll", () => {
+            const rect = logoSection.getBoundingClientRect();
+            const sectionHeight = logoSection.offsetHeight;
+            const viewportHeight = window.innerHeight;
+
+            // Calculate how much of the section has been scrolled through
+            // Progress goes from 0 (section just entering viewport) to 1 (section leaving viewport)
+            let scrollProgress = 0;
+
+            if (rect.top < viewportHeight && rect.bottom > 0) {
+              // Section is visible
+              scrollProgress = Math.max(
+                0,
+                Math.min(
+                  1,
+                  (viewportHeight - rect.top) /
+                    (sectionHeight + viewportHeight),
+                ),
+              );
+            }
+
+            // Animate logo based on scroll progress
+            // Scale: grows from 0.6 to 2.5
+            const scale = 0.6 + scrollProgress * 1.9;
+
+            // Opacity: fades in then out
+            // 0 to 0.5: fade in from 0.4 to 1
+            // 0.5 to 1: fade out from 1 to 0
+            let opacity;
+            if (scrollProgress < 0.5) {
+              opacity = 0.4 + scrollProgress * 2 * 0.6;
+            } else {
+              opacity = 1 - (scrollProgress - 0.5) * 2;
+            }
+
+            animatedLogo.style.transform = `scale(${scale})`;
+            animatedLogo.style.opacity = opacity;
+          });
+        }
       });
     </script>
     <script>
@@ -4163,13 +4580,58 @@
           entries.forEach((entry) => {
             if (entry.isIntersecting) {
               entry.target.classList.add("visible");
-              observer.unobserve(entry.target); // Animate only once
+            } else {
+              entry.target.classList.remove("visible"); // Remove class to re-trigger animation
             }
           });
         }, observerOptions);
 
         const animatedElements = document.querySelectorAll(".animate-element");
         animatedElements.forEach((el) => observer.observe(el));
+      });
+    </script>
+    <script>
+      // Typing Animation
+      document.addEventListener("DOMContentLoaded", () => {
+        const textElement = document.getElementById("typing-text");
+        const texts = [
+          "DeepTech Bootcamp",
+          "डीप टेक बूटकैंप",
+          "டீப் டெக் பூட்கேம்ப்",
+          "ডিপটেক বুটক্যাম্প",
+        ];
+        let textIndex = 0;
+        let charIndex = 0;
+        let isDeleting = false;
+
+        function type() {
+          const currentText = texts[textIndex];
+          let typeSpeed = 100;
+
+          if (isDeleting) {
+            charIndex--;
+            typeSpeed = 50;
+          } else {
+            charIndex++;
+            typeSpeed = 100;
+          }
+
+          textElement.textContent = currentText.substring(0, charIndex);
+
+          if (!isDeleting && charIndex === currentText.length) {
+            isDeleting = true;
+            typeSpeed = 2000; // Pause at end
+          } else if (isDeleting && charIndex === 0) {
+            isDeleting = false;
+            textIndex = (textIndex + 1) % texts.length;
+            typeSpeed = 500; // Pause before new word
+          }
+
+          setTimeout(type, typeSpeed);
+        }
+
+        // Start typing after a short delay
+        setTimeout(type, 1000);
       });
     </script>
   </body>
