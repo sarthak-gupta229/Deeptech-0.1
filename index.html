@@ -648,9 +648,15 @@
       .carousel-container {
         position: relative;
         width: 100%;
-        height: 85vh;
+        height: 85vh; /* Keep standard height */
         overflow: hidden;
         background-color: black;
+      }
+
+      @media (max-width: 640px) {
+        .carousel-container {
+          height: 75vh; /* Reduce height slightly on mobile to fit content better */
+        }
       }
 
       .carousel-slide {
@@ -706,29 +712,30 @@
       /* Content */
       .carousel-content {
         position: absolute;
-        bottom: 3rem;
-        left: 1.5rem;
+        bottom: 5rem; /* Increase bottom space for dots */
+        left: 1rem;
+        right: 1rem; /* Use right instead of width for ensuring it stays within screen */
         z-index: 20;
         max-width: 56rem;
-        padding-right: 1rem;
       }
 
       @media (min-width: 768px) {
         .carousel-content {
           bottom: 4rem;
           left: 3rem;
+          right: auto;
         }
       }
 
       .carousel-title {
-        font-size: 2.25rem;
+        font-size: 2rem; /* Reduced for mobile */
         font-weight: 400;
         font-style: italic;
         letter-spacing: -0.05em;
         color: white;
         margin-bottom: 0.5rem;
+        line-height: 1.1;
         text-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
-        white-space: nowrap;
         opacity: 0;
         transform: translateY(50px);
         animation: slideUpFade 0.8s ease-out 0.2s forwards;
@@ -737,6 +744,7 @@
       @media (min-width: 768px) {
         .carousel-title {
           font-size: 3.5rem;
+          white-space: nowrap;
         }
       }
       @media (min-width: 1024px) {
@@ -750,7 +758,7 @@
       }
 
       .carousel-subtitle {
-        font-size: 1.125rem;
+        font-size: 1rem;
         font-weight: 700;
         color: white;
         margin-bottom: 1.5rem;
@@ -777,7 +785,7 @@
       }
 
       .btn-primary {
-        padding: 0.625rem 1.75rem;
+        padding: 0.625rem 1.25rem; /* Reduced padding */
         background-color: #d11333;
         color: white;
         font-size: 1rem;
@@ -787,6 +795,10 @@
         cursor: pointer;
         box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
         transition: all 0.3s;
+        white-space: nowrap;
+        flex: 1; /* Allow buttons to grow on mobile */
+        text-align: center;
+        min-width: 140px;
       }
 
       .btn-primary:hover {
@@ -798,11 +810,12 @@
       @media (min-width: 768px) {
         .btn-primary {
           padding: 0.875rem 2rem;
+          flex: initial;
         }
       }
 
       .btn-outline {
-        padding: 0.625rem 1.75rem;
+        padding: 0.625rem 1.25rem; /* Reduced padding */
         background-color: transparent;
         border: 2px solid white;
         color: white;
@@ -812,6 +825,10 @@
         cursor: pointer;
         box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
         transition: all 0.3s;
+        white-space: nowrap;
+        flex: 1; /* Allow buttons to grow on mobile */
+        text-align: center;
+        min-width: 180px;
       }
 
       .btn-outline:hover {
@@ -823,6 +840,7 @@
       @media (min-width: 768px) {
         .btn-outline {
           padding: 0.875rem 2rem;
+          flex: initial;
         }
       }
 
@@ -867,7 +885,7 @@
       /* About Section Styles */
       .about-section {
         background-color: #fdfbf7;
-        padding: 4rem 1.5rem;
+        padding: 2.5rem 1rem; /* Reduced mobile padding to fix extra space issue */
         margin-top: -1px; /* Remove any gap from black section if any */
       }
 
@@ -884,16 +902,30 @@
 
       .about-grid {
         display: grid;
-        grid-template-columns: 1fr;
-        gap: 1rem;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 0.75rem;
         max-width: 1400px;
         margin: 0 auto;
+      }
+
+      /* Mobile: content spans full width, stats share row */
+      .about-text-content,
+      .about-image-content,
+      .quote-content {
+        grid-column: span 2;
       }
 
       @media (min-width: 1024px) {
         .about-grid {
           grid-template-columns: repeat(2, 1fr);
+          gap: 1rem;
         }
+
+        .about-text-content,
+        .about-image-content {
+          grid-column: span 1;
+        }
+
         .quote-content {
           grid-column: span 2;
         }
@@ -1003,11 +1035,23 @@
       /* Stats */
       .stat-card {
         display: flex;
+        flex-direction: column;
         justify-content: space-between;
-        align-items: center;
-        padding: 2.5rem 3rem;
+        align-items: flex-start;
+        padding: 1.25rem;
         position: relative;
         overflow: hidden;
+        height: 100%;
+        gap: 1rem;
+      }
+
+      @media (min-width: 1024px) {
+        .stat-card {
+          flex-direction: row;
+          align-items: center;
+          padding: 2.5rem 3rem;
+          gap: 0;
+        }
       }
 
       .stat-bg-pattern {
@@ -1029,61 +1073,110 @@
       }
 
       .stat-number {
-        font-size: 5rem;
+        font-size: 2.5rem;
         font-weight: 800;
         line-height: 1;
-        margin-bottom: 0.5rem;
+        margin-bottom: 0.25rem;
         color: #1a1a1a;
         letter-spacing: -0.05em;
       }
 
+      @media (min-width: 1024px) {
+        .stat-number {
+          font-size: 5rem;
+          margin-bottom: 0.5rem;
+        }
+      }
+
       .stat-desc {
         color: #555;
-        font-size: 1.125rem;
+        font-size: 0.875rem;
         line-height: 1.3;
-        max-width: 200px;
+      }
+
+      @media (min-width: 1024px) {
+        .stat-desc {
+          font-size: 1.125rem;
+          max-width: 200px;
+        }
       }
 
       .stat-logos-group {
         display: flex;
         flex-direction: column;
-        align-items: flex-end;
-        gap: 1.5rem;
+        align-items: flex-start;
+        gap: 0.75rem;
         position: relative;
         z-index: 1;
+        width: 100%;
+      }
+
+      @media (min-width: 1024px) {
+        .stat-logos-group {
+          align-items: flex-end;
+          gap: 1.5rem;
+          width: auto;
+        }
       }
 
       .logo-row {
         display: flex;
         align-items: center;
-        gap: 1.5rem;
+        gap: 1rem;
+      }
+
+      @media (min-width: 1024px) {
+        .logo-row {
+          gap: 1.5rem;
+        }
       }
 
       /* Logo Specific Sizing */
       .logo-probo {
-        height: 4rem;
+        height: 2.5rem;
         width: auto;
       }
       .logo-iit {
-        height: 5rem;
+        height: 3rem;
         width: auto;
       }
       .logo-147 {
-        height: 2.5rem;
+        height: 1.5rem;
         width: auto;
       }
 
       .logo-merlin {
-        height: 4rem;
-        width: auto;
-      }
-      .logo-st {
         height: 2.5rem;
         width: auto;
       }
-      .logo-pranos {
-        height: 2rem;
+      .logo-st {
+        height: 1.5rem;
         width: auto;
+      }
+      .logo-pranos {
+        height: 1.25rem;
+        width: auto;
+      }
+
+      @media (min-width: 1024px) {
+        .logo-probo {
+          height: 4rem;
+        }
+        .logo-iit {
+          height: 5rem;
+        }
+        .logo-147 {
+          height: 2.5rem;
+        }
+        .logo-merlin {
+          height: 4rem;
+        }
+        .logo-st {
+          height: 2.5rem;
+        }
+        .logo-pranos {
+          height: 2rem;
+        }
       }
 
       /* Mentors Section */
@@ -1270,7 +1363,7 @@
       /* Program Highlights */
       .highlights-section {
         background-color: #fcf7ef;
-        padding: 6rem 1.5rem 2rem;
+        padding: 4rem 1rem 2rem; /* Reduced mobile padding */
       }
       @media (min-width: 768px) {
         .highlights-section {
@@ -1381,11 +1474,12 @@
       /* Content Area */
       .highlights-content-area {
         width: 100%;
-        min-height: 600px;
+        min-height: auto; /* Allow height to fit content on mobile */
       }
       @media (min-width: 1024px) {
         .highlights-content-area {
           width: 70%;
+          min-height: 600px; /* Keep height stability for desktop */
         }
       }
 
@@ -1393,11 +1487,11 @@
         display: none;
         background-color: white;
         border-radius: 1.5rem;
-        padding: 1.5rem;
+        padding: 1rem; /* Reduced mobile padding */
         box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
         animation: fadeIn 0.3s ease-out;
         flex-direction: column;
-        gap: 2rem;
+        gap: 1rem; /* Reduced mobile gap */
       }
       .highlight-tab-content.active-content {
         display: flex;
@@ -1429,12 +1523,17 @@
       .highlight-img-circle {
         aspect-ratio: 1/1;
         width: 100%;
-        max-width: 320px;
+        max-width: 140px; /* Further reduced for mobile */
         border-radius: 50%;
         overflow: hidden;
         position: relative;
         background-color: #e5e7eb;
         box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+      }
+      @media (min-width: 768px) {
+        .highlight-img-circle {
+          max-width: 320px;
+        }
       }
 
       .highlight-img {
@@ -1445,7 +1544,7 @@
 
       .highlight-text {
         width: 100%;
-        padding-top: 1rem;
+        padding-top: 0.5rem; /* Reduced padding */
         display: flex;
         flex-direction: column;
       }
@@ -1458,34 +1557,54 @@
 
       .highlight-heading {
         color: #d11333;
-        font-size: 1.7rem;
+        font-size: 1.35rem; /* Reduced font size */
         font-weight: 700;
-        margin-bottom: 1.5rem;
+        margin-bottom: 0.5rem; /* Reduced margin */
         font-family: "Montserrat", sans-serif;
-        white-space: nowrap;
+        white-space: normal; /* Allow wrap on mobile */
+        line-height: 1.3;
+      }
+      @media (min-width: 768px) {
+        .highlight-heading {
+          font-size: 1.7rem;
+          margin-bottom: 1.5rem;
+          white-space: nowrap;
+        }
       }
 
       .highlight-separator {
         width: 100%;
         height: 1px;
         background-color: #e5e7eb;
-        margin-bottom: 1.5rem;
+        margin-bottom: 0.75rem; /* Reduced margin */
       }
 
       .highlight-subheading {
         color: #3a3a3a;
-        font-size: 1.25rem;
+        font-size: 1rem; /* Reduced font size */
         font-weight: 700;
-        margin-bottom: 1.5rem;
-        line-height: 1.25;
+        margin-bottom: 0.5rem; /* Reduced margin */
+        line-height: 1.3;
         font-family: "Montserrat", sans-serif;
+      }
+      @media (min-width: 768px) {
+        .highlight-subheading {
+          font-size: 1.25rem;
+          margin-bottom: 1.5rem;
+        }
       }
 
       .highlight-desc {
         color: #2a2a2a;
-        font-size: 1.125rem;
-        line-height: 1.6;
-        margin-bottom: 2rem;
+        font-size: 0.9375rem; /* Reduced font size */
+        line-height: 1.5;
+        margin-bottom: 1rem; /* Reduced margin */
+      }
+      @media (min-width: 768px) {
+        .highlight-desc {
+          font-size: 1.125rem;
+          margin-bottom: 2rem;
+        }
       }
 
       .btn-download-full {
@@ -1519,7 +1638,7 @@
       /* Registration Form */
       .registration-section {
         background-color: white;
-        padding: 5rem 1.5rem;
+        padding: 2.5rem 1rem; /* Further reduced padding */
         position: relative;
         overflow: hidden;
       }
@@ -1541,7 +1660,7 @@
 
       .registration-header {
         text-align: center;
-        margin-bottom: 4rem;
+        margin-bottom: 2rem; /* Reduced margin */
         position: relative;
         display: flex;
         justify-content: center;
@@ -1606,8 +1725,11 @@
       .registration-content {
         display: flex;
         flex-direction: column;
-        gap: 3rem;
+        gap: 1.5rem; /* Reduced gap */
         justify-content: space-between;
+        position: relative;
+        z-index: 10;
+        width: 100%;
       }
       @media (min-width: 1024px) {
         .registration-content {
@@ -1618,14 +1740,16 @@
       }
 
       .registration-text-col {
-        flex: 1;
+        width: 100%;
+        flex: initial; /* Don't force flex grow on mobile */
         font-family: "Montserrat", sans-serif;
         color: #333;
-        font-size: 1.125rem;
-        line-height: 1.6;
+        font-size: 1rem; /* Slightly smaller */
+        line-height: 1.5;
+        text-align: left;
       }
       .registration-text-col p {
-        margin-bottom: 1.5rem;
+        margin-bottom: 0.75rem; /* Reduced margin */
       }
       .registration-text-col strong {
         font-weight: 700;
@@ -1637,34 +1761,42 @@
       }
 
       .registration-form-col {
-        flex: 1;
-        max-width: 500px;
         width: 100%;
+        flex: initial; /* Don't force flex grow on mobile */
+        max-width: 100%; /* Ensure full width on mobile */
         margin: 0 auto;
       }
       @media (min-width: 1024px) {
         .registration-form-col {
+          max-width: 500px;
           margin: 0;
+          flex: 1;
+        }
+        .registration-text-col {
+          flex: 1;
+          font-size: 1.125rem;
         }
       }
 
       .registration-form {
         display: flex;
         flex-direction: column;
-        gap: 1.5rem;
+        gap: 1rem; /* Reduced gap */
+        width: 100%;
       }
 
       .registration-form input {
         width: 100%;
-        padding: 1rem 1.5rem;
+        padding: 0.75rem 1rem; /* Reduced padding */
         background-color: #d65d6e;
         border: none;
-        border-radius: 0.75rem;
+        border-radius: 0.5rem; /* Slightly reduced radius */
         color: white;
         font-size: 1rem;
         font-family: inherit;
         outline: none;
         transition: background-color 0.2s;
+        height: auto; /* Ensure height doesn't force weirdness */
       }
       .registration-form input::placeholder {
         color: rgba(255, 255, 255, 0.8);
