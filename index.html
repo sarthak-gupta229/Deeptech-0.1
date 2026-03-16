@@ -356,6 +356,7 @@
         background-color: #f9fafb;
       }
 
+      .mobile-connect-btn,
       .mobile-apply-btn {
         width: 100%;
         display: flex;
@@ -372,6 +373,7 @@
         text-align: left;
       }
 
+      .mobile-connect-btn:hover,
       .mobile-apply-btn:hover {
         background-color: #f9fafb;
       }
@@ -966,7 +968,8 @@
       .about-card {
         background-color: white;
         border-radius: 1rem;
-        padding: 0.75rem; /* Further reduced padding */
+        padding: 2rem; /* Increased padding */
+        box-sizing: border-box;
         box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
         overflow: hidden;
         border: 1px solid rgba(0, 0, 0, 0.03);
@@ -982,7 +985,7 @@
       .about-title {
         font-size: 1.5rem;
         font-weight: 700;
-        margin-bottom: 0.5rem; /* Reduced margin */
+        margin-bottom: 1.25rem; /* Equalised increased margin */
         color: #333;
         line-height: 1.2;
       }
@@ -994,7 +997,7 @@
 
       .about-subtitle {
         font-weight: 600;
-        margin-bottom: 0.5rem; /* Reduced margin */
+        margin-bottom: 1.25rem; /* Equalised increased margin */
         color: #444;
         line-height: 1.4;
         font-size: 1rem;
@@ -1003,7 +1006,7 @@
       .about-desc {
         color: #666;
         line-height: 1.6;
-        margin-bottom: 0.5rem; /* Further reduced margin */
+        margin-bottom: 1.25rem; /* Equalised increased margin */
         font-size: 0.95rem;
       }
 
@@ -1093,10 +1096,10 @@
         }
         .about-title {
           font-size: 1.75rem; /* Slightly smaller for fit */
-          margin-bottom: 0.25rem;
+          margin-bottom: 1.25rem; /* Equalised increased margin */
         }
         .about-desc {
-          margin-bottom: 0.5rem;
+          margin-bottom: 1.25rem; /* Equalised increased margin */
           font-size: 0.9rem;
           line-height: 1.4;
         }
@@ -1107,7 +1110,6 @@
         .about-image-content {
           min-height: auto;
           height: 100%;
-          max-height: 280px; /* Limit image height */
         }
 
         .quote-content {
@@ -1497,6 +1499,161 @@
         margin-top: 1.5rem;
       }
 
+      /* Modi Quote Section */
+      .modi-quote-section {
+        background-color: #ffffff;
+        min-height: 100vh;
+        padding: 1.5rem 1rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      @media (min-width: 768px) {
+        .modi-quote-section {
+          padding: 4rem 3rem;
+        }
+      }
+      @media (min-width: 1280px) {
+        .modi-quote-section {
+          padding: 4rem 8rem;
+        }
+      }
+
+      .modi-quote-card {
+        background-color: #fcf7ef;
+        border-radius: 1.25rem;
+        max-width: 1100px;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        overflow: hidden;
+      }
+      @media (min-width: 768px) {
+        .modi-quote-card {
+          flex-direction: row;
+          align-items: stretch;
+          min-height: 420px;
+        }
+      }
+
+      /* Image column — portrait, no circle, fills height */
+      .modi-quote-img-col {
+        flex-shrink: 0;
+        width: 100%;
+        height: 400px; /* tall on mobile */
+        position: relative;
+        overflow: hidden;
+      }
+      /* Bottom fade gradient — blends image into card bg on mobile */
+      .modi-quote-img-col::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 35%;
+        background: linear-gradient(to bottom, transparent, #fcf7ef);
+        pointer-events: none;
+      }
+      @media (min-width: 768px) {
+        .modi-quote-img-col {
+          width: 38%;
+          height: auto;
+        }
+        /* Remove gradient fade on desktop — full portrait visible */
+        .modi-quote-img-col::after {
+          display: none;
+        }
+      }
+
+      .modi-quote-img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: top center;
+        display: block;
+      }
+
+      /* Text column */
+      .modi-quote-text-col {
+        flex: 1;
+        padding: 1.25rem 1.25rem 2rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 1rem;
+      }
+      @media (min-width: 768px) {
+        .modi-quote-text-col {
+          padding: 3rem 2.5rem;
+          gap: 1.25rem;
+        }
+      }
+
+      /* Top row: open-quote + horizontal rule */
+      .modi-quote-header {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+      }
+      .modi-quote-open {
+        font-size: 2.75rem;
+        line-height: 1;
+        color: #c8861a;
+        font-family: Georgia, serif;
+        flex-shrink: 0;
+        margin-top: -0.25rem;
+      }
+      .modi-quote-rule {
+        flex: 1;
+        height: 1px;
+        background-color: #d4a96a;
+      }
+
+      /* Quote body */
+      .modi-quote-text {
+        font-size: 0.95rem;
+        font-weight: 400; /* normal weight on mobile */
+        color: #1a1a1a;
+        line-height: 1.8;
+        font-family: "Montserrat", sans-serif;
+        margin: 0;
+      }
+      @media (min-width: 768px) {
+        .modi-quote-text {
+          font-size: 1rem;
+          font-weight: 700;
+        }
+      }
+
+      /* Attribution */
+      .modi-quote-author {
+        font-size: 0.9rem;
+        color: #c8861a;
+        font-style: italic;
+        font-family: Georgia, serif;
+        line-height: 1.6;
+        margin: 0;
+      }
+
+      /* Bottom row: horizontal rule + close-quote */
+      .modi-quote-footer {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+      }
+      .modi-quote-footer .modi-quote-rule {
+        flex: 1;
+      }
+      .modi-quote-close {
+        font-size: 2.75rem;
+        line-height: 1;
+        color: #c8861a;
+        font-family: Georgia, serif;
+        flex-shrink: 0;
+        margin-bottom: -0.25rem;
+      }
+
       /* Logo Animation Section */
       .logo-animation-section {
         position: relative;
@@ -1531,16 +1688,16 @@
       /* Program Highlights */
       .highlights-section {
         background-color: #fcf7ef;
-        padding: 4rem 1rem 2rem; /* Reduced mobile padding */
+        padding: 4rem 1rem 4rem; /* Equal top and bottom padding */
       }
       @media (min-width: 768px) {
         .highlights-section {
-          padding: 6rem 3rem 2rem;
+          padding: 6rem 3rem 6rem;
         }
       }
       @media (min-width: 1280px) {
         .highlights-section {
-          padding: 8rem 8rem 2rem;
+          padding: 8rem 8rem 8rem;
         }
       }
 
@@ -1554,7 +1711,7 @@
       @media (min-width: 1024px) {
         .highlights-container {
           flex-direction: row;
-          align-items: flex-start;
+          align-items: stretch;
           gap: 4rem;
         }
       }
@@ -1570,9 +1727,14 @@
       }
 
       .highlights-tabs-wrapper {
-        display: flex;
+        display: none;
         flex-direction: column;
         gap: 0.75rem;
+      }
+      @media (min-width: 1024px) {
+        .highlights-tabs-wrapper {
+          display: flex;
+        }
       }
 
       .highlights-title {
@@ -1676,7 +1838,8 @@
       @media (min-width: 1024px) {
         .highlights-content-area {
           width: 70%;
-          min-height: 600px; /* Keep height stability for desktop */
+          display: flex;
+          flex-direction: column;
         }
       }
 
@@ -1688,6 +1851,7 @@
         box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
         flex-direction: column;
         gap: 1.5rem;
+        flex: 1;
       }
 
       @keyframes zoomOutReveal {
@@ -1862,20 +2026,90 @@
         }
       }
 
-      .btn-download-full {
-        width: 100%;
+      /* Next arrow button — positioned in bottom-right corner of the card */
+      .highlight-next-btn {
+        position: absolute;
+        bottom: 1.25rem;
+        right: 1.25rem;
+        width: 2.75rem;
+        height: 2.75rem;
+        border-radius: 50%;
         background-color: #d0072c;
-        color: white;
-        padding: 1rem;
-        border-radius: 0.75rem;
-        font-size: 1.125rem;
-        font-weight: 700;
         border: none;
         cursor: pointer;
-        transition: background-color 0.2s;
-        margin-top: auto;
-        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        display: none; /* Hidden on mobile */
+        align-items: center;
+        justify-content: center;
+        box-shadow: none;
+        transition:
+          background-color 0.2s,
+          transform 0.2s;
+        z-index: 10;
       }
+      @media (min-width: 1024px) {
+        .highlight-next-btn {
+          display: flex; /* Show on desktop */
+        }
+      }
+      .highlight-next-btn:hover {
+        background-color: #a8001f;
+        transform: translateX(3px);
+      }
+      .highlight-next-btn svg {
+        width: 1.25rem;
+        height: 1.25rem;
+        color: white;
+        fill: none;
+        stroke: white;
+        stroke-width: 2.5;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+      }
+
+      .mobile-highlight-arrows {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 2rem;
+        margin-top: 1.5rem;
+      }
+      @media (min-width: 1024px) {
+        .mobile-highlight-arrows {
+          display: none;
+        }
+      }
+
+      .highlight-arrow-btn {
+        width: 3.5rem;
+        height: 3.5rem;
+        border-radius: 50%;
+        background-color: #d0072c;
+        border: none;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: transform 0.2s;
+      }
+      .highlight-arrow-btn:active {
+        transform: scale(0.95);
+      }
+      .highlight-arrow-btn svg {
+        width: 1.5rem;
+        height: 1.5rem;
+        color: white;
+        fill: none;
+        stroke: white;
+        stroke-width: 2.5;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+      }
+      /* Make the tab-content card position:relative so the button can be absolute */
+      .highlight-tab-content {
+        position: relative;
+      }
+
+
 
       @keyframes fadeIn {
         from {
@@ -2346,73 +2580,6 @@
           font-size: 0.9375rem;
         }
       }
-      /* Media Carousel Section */
-      .media-carousel-section {
-        padding: 8rem 0;
-        background-color: white;
-        overflow: hidden;
-      }
-      .media-marquee-wrapper {
-        position: relative;
-        overflow: hidden;
-        width: 100%;
-        margin-bottom: 2rem;
-      }
-      .media-track {
-        display: flex;
-        width: max-content;
-        gap: 1.5rem;
-      }
-      .track-left-to-right {
-        animation: scroll-l-r 60s linear infinite;
-      }
-      .track-right-to-left {
-        animation: scroll-r-l 60s linear infinite;
-      }
-      .media-img {
-        height: 180px;
-        width: 120px;
-        object-fit: cover;
-        border-radius: 0.5rem;
-        flex-shrink: 0;
-        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-      }
-      .media-center-text {
-        text-align: center;
-        margin: 2rem 0;
-        padding: 0 1rem;
-      }
-      .media-center-text h2 {
-        font-family: "Montserrat", sans-serif;
-        font-size: 2rem;
-        font-weight: 700;
-        color: #d00636;
-      }
-      @keyframes scroll-l-r {
-        0% {
-          transform: translateX(-50%);
-        }
-        100% {
-          transform: translateX(0);
-        }
-      }
-      @keyframes scroll-r-l {
-        0% {
-          transform: translateX(0);
-        }
-        100% {
-          transform: translateX(-50%);
-        }
-      }
-      @media (max-width: 768px) {
-        .media-img {
-          height: 160px;
-          width: 110px;
-        }
-        .media-center-text h2 {
-          font-size: 1.5rem;
-        }
-      }
       /* Scroll Animations */
       .animate-element {
         opacity: 0;
@@ -2430,6 +2597,135 @@
       .animate-element.visible {
         opacity: 1;
         transform: translate(0);
+      }
+
+      /* Connect With Us Button & Modal Styles */
+      .connect-nav-btn {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 0.75rem 1.5rem;
+        background-color: transparent;
+        border: 1px solid #cc0033;
+        border-radius: 0.5rem;
+        cursor: pointer;
+        transition: all 0.3s;
+        font-family: inherit;
+        font-weight: 600;
+        font-size: 1rem;
+        color: #cc0033;
+        text-decoration: none;
+        box-sizing: border-box;
+      }
+      .connect-nav-btn:hover {
+        background-color: #cc0033;
+        color: white;
+      }
+      .connect-dropdown-arrow {
+        font-size: 0.75rem;
+      }
+
+      .connect-modal-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.7);
+        z-index: 10000;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.3s ease;
+      }
+      .connect-modal-overlay.active {
+        opacity: 1;
+        pointer-events: auto;
+      }
+      .connect-modal {
+        background-color: #fcf7ef;
+        width: 90%;
+        max-width: 400px;
+        border-radius: 1rem;
+        padding: 1.5rem 1.75rem;
+        position: relative;
+        transform: translateY(20px);
+        transition: transform 0.3s ease;
+        box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        max-height: 90vh;
+        overflow-y: auto;
+      }
+      .connect-modal-overlay.active .connect-modal {
+        transform: translateY(0);
+      }
+      .connect-modal-close {
+        position: absolute;
+        top: 0.75rem;
+        right: 1rem;
+        background: none;
+        border: none;
+        font-size: 1.5rem;
+        cursor: pointer;
+        color: #333;
+        line-height: 1;
+      }
+      .connect-modal-close:hover {
+        color: #cc0033;
+      }
+      .connect-form {
+        display: flex;
+        flex-direction: column;
+        gap: 0.85rem;
+      }
+      .connect-form-group {
+        display: flex;
+        flex-direction: column;
+        gap: 0.3rem;
+      }
+      .connect-form-group label {
+        font-family: inherit;
+        font-size: 0.75rem;
+        font-weight: 600;
+        color: #1a1a1a;
+      }
+      .connect-form-group input,
+      .connect-form-group select,
+      .connect-form-group textarea {
+        width: 100%;
+        padding: 0.5rem 0.75rem;
+        border: 1px solid #e0cba8;
+        border-radius: 0.4rem;
+        font-family: inherit;
+        font-size: 0.85rem;
+        background-color: #ffffff;
+        outline: none;
+        transition: border-color 0.2s;
+      }
+      .connect-form-group input:focus,
+      .connect-form-group select:focus,
+      .connect-form-group textarea:focus {
+        border-color: #c8861a;
+      }
+      .connect-form-group textarea {
+        resize: vertical;
+        min-height: 80px;
+      }
+      .connect-submit-btn {
+        background-color: #d00737;
+        color: white;
+        font-weight: 600;
+        padding: 0.6rem 1rem;
+        border: none;
+        border-radius: 0.4rem;
+        font-size: 0.9rem;
+        cursor: pointer;
+        transition: background-color 0.2s;
+        margin-top: 0.25rem;
+      }
+      .connect-submit-btn:hover {
+        background-color: #a0052a;
       }
     </style>
   </head>
@@ -2565,15 +2861,22 @@
               </a>
             </div>
 
-            <!-- Apply Now Button -->
-            <a
-              href="#apply-now"
-              class="apply-btn"
-              style="text-decoration: none"
-            >
-              <div class="apply-btn-dot animate-blink"></div>
-              <span class="apply-btn-text">Apply Now</span>
-            </a>
+            <div style="display: flex; gap: 0.75rem; align-items: stretch;">
+              <!-- Connect With Us Button -->
+              <button class="connect-nav-btn" onclick="openConnectModal()">
+                <span>Connect with us</span>
+              </button>
+
+              <!-- Apply Now Button -->
+              <a
+                href="#apply-now"
+                class="apply-btn"
+                style="text-decoration: none"
+              >
+                <div class="apply-btn-dot animate-blink"></div>
+                <span class="apply-btn-text">Apply Now</span>
+              </a>
+            </div>
           </div>
 
           <!-- Mobile Menu Button -->
@@ -2746,6 +3049,22 @@
             Admissions
           </a>
 
+          <!-- Connect With Us -->
+          <button
+            class="mobile-connect-btn"
+            onclick="openConnectModal(); document.getElementById('mobile-menu').classList.remove('show'); document.getElementById('icon-menu-open').style.display = 'block'; document.getElementById('icon-menu-close').style.display = 'none';"
+            style="
+              text-decoration: none;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              border: 1px solid #cc0033;
+              margin-bottom: 0.5rem;
+            "
+          >
+            Connect with us
+          </button>
+
           <!-- Apply Now -->
           <a
             href="#apply-now"
@@ -2799,6 +3118,7 @@
         </h1>
         <p class="carousel-subtitle">Design. Innovate. Dominate.</p>
         <div class="carousel-actions">
+          <button class="btn-outline">Download Brochure</button>
           <a
             href="#apply-now"
             class="btn-primary"
@@ -2807,10 +3127,13 @@
               display: inline-flex;
               align-items: center;
               justify-content: center;
+              font-size: 1.25rem;
+              font-weight: 600;
+              padding: 0.75rem 1.5rem;
+              box-shadow: 0 8px 25px rgba(208, 7, 55, 0.5);
             "
             >Apply now</a
           >
-          <button class="btn-outline">Download Brochure</button>
         </div>
       </div>
 
@@ -2888,14 +3211,19 @@
             <img class="stat-bg-pattern" src="public/logo/leaf.png" alt="" />
             <div class="stat-info">
               <h3 class="stat-number" id="stat-hours">
-                <span class="stat-count">55</span><span class="text-highlight">+</span>
+                <span class="stat-count">55</span
+                ><span class="text-highlight">+</span>
               </h3>
               <p class="stat-desc">
                 Hours of Immersive<br />Learning in Deeptech
               </p>
             </div>
             <div class="stat-logos-group">
-              <img src="public/logo/STMicroelectronics.png" alt="ST" class="logo-st" />
+              <img
+                src="public/logo/STMicroelectronics.png"
+                alt="ST"
+                class="logo-st"
+              />
               <div class="logo-row">
                 <img
                   src="public/logo/iitKanpur.png"
@@ -2910,7 +3238,8 @@
             <img class="stat-bg-pattern" src="public/logo/leaf.png" alt="" />
             <div class="stat-info">
               <h3 class="stat-number" id="stat-mentors">
-                <span class="stat-count">10</span><span class="text-highlight">+</span>
+                <span class="stat-count">10</span
+                ><span class="text-highlight">+</span>
               </h3>
               <p class="stat-desc">
                 Industry Experts and<br />Innovation Mentors
@@ -2998,24 +3327,11 @@
           <div class="highlight-tab-content active-content" id="keynotes">
             <div class="highlight-img-wrapper">
               <div class="highlight-img-circle">
-                <div class="flip-card">
-                  <div class="flip-card-inner">
-                    <div class="flip-card-front">
-                      <img
-                        src="public/photos/Keynotes-Dialogues.png"
-                        alt="Keynotes & Dialogues"
-                        class="highlight-img scaled-img-sm"
-                      />
-                    </div>
-                    <div class="flip-card-back">
-                      <img
-                        src="public/photos/Keynotes-Dialogues-logo.png"
-                        alt="Keynotes & Dialogues Logo"
-                        class="highlight-img scaled-img-sm"
-                      />
-                    </div>
-                  </div>
-                </div>
+                <img
+                  src="public/photos/Keynotes-Dialogues-logo.png"
+                  alt="Keynotes & Dialogues"
+                  class="highlight-img scaled-img-sm"
+                />
               </div>
             </div>
             <div class="highlight-text">
@@ -3029,7 +3345,24 @@
                 Decode national missions, AI timelines, and sovereignty roadmaps
                 straight from policy shapers and global innovation leaders.
               </p>
-              <button class="btn-download-full">Download Brochure</button>
+              <button
+                class="highlight-next-btn"
+                id="next-btn-keynotes"
+                aria-label="Next highlight"
+                onclick="highlightNextTab()"
+              >
+                <svg viewBox="0 0 24 24"><path d="M9 18l6-6-6-6" /></svg>
+              </button>
+              
+              <!-- Mobile Arrows -->
+              <div class="mobile-highlight-arrows">
+                <button class="highlight-arrow-btn" aria-label="Previous highlight" onclick="highlightPrevTab()">
+                  <svg viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6" /></svg>
+                </button>
+                <button class="highlight-arrow-btn" aria-label="Next highlight" onclick="highlightNextTab()">
+                  <svg viewBox="0 0 24 24"><path d="M9 18l6-6-6-6" /></svg>
+                </button>
+              </div>
             </div>
           </div>
 
@@ -3037,24 +3370,11 @@
           <div class="highlight-tab-content" id="field-visits">
             <div class="highlight-img-wrapper">
               <div class="highlight-img-circle">
-                <div class="flip-card">
-                  <div class="flip-card-inner">
-                    <div class="flip-card-front">
-                      <img
-                        src="public/photos/Field-Visits.png"
-                        alt="Field Visits"
-                        class="highlight-img scaled-img"
-                      />
-                    </div>
-                    <div class="flip-card-back">
-                      <img
-                        src="public/photos/Field-Visits-logo.png"
-                        alt="Field Visits Logo"
-                        class="highlight-img scaled-img"
-                      />
-                    </div>
-                  </div>
-                </div>
+                <img
+                  src="public/photos/Field-Visits-logo.png"
+                  alt="Field Visits"
+                  class="highlight-img scaled-img"
+                />
               </div>
             </div>
             <div class="highlight-text">
@@ -3068,7 +3388,24 @@
                 Step inside India's premier R&D facilities where national
                 innovation is engineered.
               </p>
-              <button class="btn-download-full">Download Brochure</button>
+              <button
+                class="highlight-next-btn"
+                id="next-btn-field-visits"
+                aria-label="Next highlight"
+                onclick="highlightNextTab()"
+              >
+                <svg viewBox="0 0 24 24"><path d="M9 18l6-6-6-6" /></svg>
+              </button>
+              
+              <!-- Mobile Arrows -->
+              <div class="mobile-highlight-arrows">
+                <button class="highlight-arrow-btn" aria-label="Previous highlight" onclick="highlightPrevTab()">
+                  <svg viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6" /></svg>
+                </button>
+                <button class="highlight-arrow-btn" aria-label="Next highlight" onclick="highlightNextTab()">
+                  <svg viewBox="0 0 24 24"><path d="M9 18l6-6-6-6" /></svg>
+                </button>
+              </div>
             </div>
           </div>
 
@@ -3076,24 +3413,11 @@
           <div class="highlight-tab-content" id="panels">
             <div class="highlight-img-wrapper">
               <div class="highlight-img-circle">
-                <div class="flip-card">
-                  <div class="flip-card-inner">
-                    <div class="flip-card-front">
-                      <img
-                        src="public/photos/Panels-Fireside.png"
-                        alt="Panels & Fireside Chats"
-                        class="highlight-img scaled-img-sm"
-                      />
-                    </div>
-                    <div class="flip-card-back">
-                      <img
-                        src="public/photos/Panels-Fireside-logo.png"
-                        alt="Panels & Fireside Chats Logo"
-                        class="highlight-img scaled-img-sm"
-                      />
-                    </div>
-                  </div>
-                </div>
+                <img
+                  src="public/photos/Panels-Fireside-logo.png"
+                  alt="Panels & Fireside Chats"
+                  class="highlight-img scaled-img-sm"
+                />
               </div>
             </div>
             <div class="highlight-text">
@@ -3108,7 +3432,24 @@
                 founders, and VCs on business models, IP strategy, and scaling
                 deep-tech ventures.
               </p>
-              <button class="btn-download-full">Download Brochure</button>
+              <button
+                class="highlight-next-btn"
+                id="next-btn-panels"
+                aria-label="Next highlight"
+                onclick="highlightNextTab()"
+              >
+                <svg viewBox="0 0 24 24"><path d="M9 18l6-6-6-6" /></svg>
+              </button>
+              
+              <!-- Mobile Arrows -->
+              <div class="mobile-highlight-arrows">
+                <button class="highlight-arrow-btn" aria-label="Previous highlight" onclick="highlightPrevTab()">
+                  <svg viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6" /></svg>
+                </button>
+                <button class="highlight-arrow-btn" aria-label="Next highlight" onclick="highlightNextTab()">
+                  <svg viewBox="0 0 24 24"><path d="M9 18l6-6-6-6" /></svg>
+                </button>
+              </div>
             </div>
           </div>
 
@@ -3116,24 +3457,11 @@
           <div class="highlight-tab-content" id="masterclasses">
             <div class="highlight-img-wrapper">
               <div class="highlight-img-circle">
-                <div class="flip-card">
-                  <div class="flip-card-inner">
-                    <div class="flip-card-front">
-                      <img
-                        src="public/photos/programhelight-3.png"
-                        alt="Masterclasses"
-                        class="highlight-img scaled-img"
-                      />
-                    </div>
-                    <div class="flip-card-back">
-                      <img
-                        src="public/photos/MasterclassesWorkshops-logo.png"
-                        alt="Masterclasses Logo"
-                        class="highlight-img scaled-img"
-                      />
-                    </div>
-                  </div>
-                </div>
+                <img
+                  src="public/photos/MasterclassesWorkshops-logo.png"
+                  alt="Masterclasses & Workshops"
+                  class="highlight-img scaled-img"
+                />
               </div>
             </div>
             <div class="highlight-text">
@@ -3146,7 +3474,24 @@
                 design, and emerging deeptech innovations blending technical
                 learning with real world problem solving.
               </p>
-              <button class="btn-download-full">Download Brochure</button>
+              <button
+                class="highlight-next-btn"
+                id="next-btn-masterclasses"
+                aria-label="Next highlight"
+                onclick="highlightNextTab()"
+              >
+                <svg viewBox="0 0 24 24"><path d="M9 18l6-6-6-6" /></svg>
+              </button>
+              
+              <!-- Mobile Arrows -->
+              <div class="mobile-highlight-arrows">
+                <button class="highlight-arrow-btn" aria-label="Previous highlight" onclick="highlightPrevTab()">
+                  <svg viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6" /></svg>
+                </button>
+                <button class="highlight-arrow-btn" aria-label="Next highlight" onclick="highlightNextTab()">
+                  <svg viewBox="0 0 24 24"><path d="M9 18l6-6-6-6" /></svg>
+                </button>
+              </div>
             </div>
           </div>
 
@@ -3154,24 +3499,11 @@
           <div class="highlight-tab-content" id="hackathons">
             <div class="highlight-img-wrapper">
               <div class="highlight-img-circle">
-                <div class="flip-card">
-                  <div class="flip-card-inner">
-                    <div class="flip-card-front">
-                      <img
-                        src="public/photos/image-4.png"
-                        alt="Hackathons"
-                        class="highlight-img scaled-img"
-                      />
-                    </div>
-                    <div class="flip-card-back">
-                      <img
-                        src="public/photos/Hackathon-logo.png"
-                        alt="Hackathons Logo"
-                        class="highlight-img scaled-img"
-                      />
-                    </div>
-                  </div>
-                </div>
+                <img
+                  src="public/photos/Hackathon-logo.png"
+                  alt="Hackathons"
+                  class="highlight-img scaled-img"
+                />
               </div>
             </div>
             <div class="highlight-text">
@@ -3184,8 +3516,65 @@
                 solutions applying AI, engineering, and problem solving under
                 real world constraints.
               </p>
-              <button class="btn-download-full">Download Brochure</button>
+              <button
+                class="highlight-next-btn"
+                id="next-btn-hackathons"
+                aria-label="Next highlight"
+                onclick="highlightNextTab()"
+              >
+                <svg viewBox="0 0 24 24"><path d="M9 18l6-6-6-6" /></svg>
+              </button>
+              
+              <!-- Mobile Arrows -->
+              <div class="mobile-highlight-arrows">
+                <button class="highlight-arrow-btn" aria-label="Previous highlight" onclick="highlightPrevTab()">
+                  <svg viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6" /></svg>
+                </button>
+                <button class="highlight-arrow-btn" aria-label="Next highlight" onclick="highlightNextTab()">
+                  <svg viewBox="0 0 24 24"><path d="M9 18l6-6-6-6" /></svg>
+                </button>
+              </div>
             </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PM Modi Quote Section -->
+    <section class="modi-quote-section">
+      <div class="modi-quote-card">
+        <!-- Portrait photo -->
+        <div class="modi-quote-img-col">
+          <img
+            src="public/photos/NarendraModi1.avif"
+            alt="Shri Narendra Modi Ji"
+            class="modi-quote-img"
+          />
+        </div>
+        <!-- Quote text -->
+        <div class="modi-quote-text-col">
+          <!-- Top: open-quote + rule -->
+          <div class="modi-quote-header">
+            <span class="modi-quote-open">&ldquo;</span>
+            <div class="modi-quote-rule"></div>
+          </div>
+          <!-- Body -->
+          <p class="modi-quote-text">
+            It is encouraging to see that institutions such as Rishihood
+            University are valuable contributors to this vision with dynamic
+            curricula and unique programs to nurture the leaders of tomorrow.
+            This aligns seamlessly with India's broader goal of empowering its
+            youth to build a Viksit Bharat by 2047."
+          </p>
+          <!-- Attribution -->
+          <p class="modi-quote-author">
+            Shri Narendra Modi Ji<br />
+            (Prime Minister of India)
+          </p>
+          <!-- Bottom: rule + close-quote -->
+          <div class="modi-quote-footer">
+            <div class="modi-quote-rule"></div>
+            <span class="modi-quote-close">&rdquo;</span>
           </div>
         </div>
       </div>
@@ -3680,120 +4069,6 @@
       }
     </script>
 
-    <!-- Media Carousel Section -->
-    <section class="media-carousel-section">
-      <!-- Top Row: Left to Right -->
-      <div class="media-marquee-wrapper">
-        <div class="media-track track-left-to-right">
-          <!-- Set 1: Old PNGs interleaved with new JPGs -->
-          <img src="public/mediacarousel/image 230.png" alt="Campus Life" class="media-img" loading="lazy" />
-          <img src="public/mediacarousel/IMG_2865.JPG" alt="Campus Life" class="media-img" loading="lazy" />
-          <img src="public/mediacarousel/image 231.png" alt="Campus Life" class="media-img" loading="lazy" />
-          <img src="public/mediacarousel/IMG_2922.JPG" alt="Campus Life" class="media-img" loading="lazy" />
-          <img src="public/mediacarousel/image 232.png" alt="Campus Life" class="media-img" loading="lazy" />
-          <img src="public/mediacarousel/IMG_3060.JPG" alt="Campus Life" class="media-img" loading="lazy" />
-          <img src="public/mediacarousel/image 234.png" alt="Campus Life" class="media-img" loading="lazy" />
-          <img src="public/mediacarousel/IMG_3129.JPG" alt="Campus Life" class="media-img" loading="lazy" />
-          <img src="public/mediacarousel/image 235.png" alt="Campus Life" class="media-img" loading="lazy" />
-          <img src="public/mediacarousel/IMG_3142.JPG" alt="Campus Life" class="media-img" loading="lazy" />
-          <img src="public/mediacarousel/image 236.png" alt="Campus Life" class="media-img" loading="lazy" />
-          <img src="public/mediacarousel/IMG_3152.JPG" alt="Campus Life" class="media-img" loading="lazy" />
-          <img src="public/mediacarousel/image 237.png" alt="Campus Life" class="media-img" loading="lazy" />
-          <img src="public/mediacarousel/IMG_3164.JPG" alt="Campus Life" class="media-img" loading="lazy" />
-          <img src="public/mediacarousel/image 238.png" alt="Campus Life" class="media-img" loading="lazy" />
-          <img src="public/mediacarousel/IMG_3174.JPG" alt="Campus Life" class="media-img" loading="lazy" />
-          <img src="public/mediacarousel/image 239.png" alt="Campus Life" class="media-img" loading="lazy" />
-          <img src="public/mediacarousel/IMG_3183.JPG" alt="Campus Life" class="media-img" loading="lazy" />
-          <img src="public/mediacarousel/image 240.png" alt="Campus Life" class="media-img" loading="lazy" />
-          <img src="public/mediacarousel/IMG_3211.JPG" alt="Campus Life" class="media-img" loading="lazy" />
-          <img src="public/mediacarousel/image 241.png" alt="Campus Life" class="media-img" loading="lazy" />
-          <img src="public/mediacarousel/IMG_3251.JPG" alt="Campus Life" class="media-img" loading="lazy" />
-          <img src="public/mediacarousel/image 243.png" alt="Campus Life" class="media-img" loading="lazy" />
-          <img src="public/mediacarousel/IMG_3256.JPG" alt="Campus Life" class="media-img" loading="lazy" />
-          <!-- Duplicate Set 1 for seamless scroll -->
-          <img src="public/mediacarousel/image 230.png" alt="Campus Life" class="media-img" loading="lazy" />
-          <img src="public/mediacarousel/IMG_2865.JPG" alt="Campus Life" class="media-img" loading="lazy" />
-          <img src="public/mediacarousel/image 231.png" alt="Campus Life" class="media-img" loading="lazy" />
-          <img src="public/mediacarousel/IMG_2922.JPG" alt="Campus Life" class="media-img" loading="lazy" />
-          <img src="public/mediacarousel/image 232.png" alt="Campus Life" class="media-img" loading="lazy" />
-          <img src="public/mediacarousel/IMG_3060.JPG" alt="Campus Life" class="media-img" loading="lazy" />
-          <img src="public/mediacarousel/image 234.png" alt="Campus Life" class="media-img" loading="lazy" />
-          <img src="public/mediacarousel/IMG_3129.JPG" alt="Campus Life" class="media-img" loading="lazy" />
-          <img src="public/mediacarousel/image 235.png" alt="Campus Life" class="media-img" loading="lazy" />
-          <img src="public/mediacarousel/IMG_3142.JPG" alt="Campus Life" class="media-img" loading="lazy" />
-          <img src="public/mediacarousel/image 236.png" alt="Campus Life" class="media-img" loading="lazy" />
-          <img src="public/mediacarousel/IMG_3152.JPG" alt="Campus Life" class="media-img" loading="lazy" />
-          <img src="public/mediacarousel/image 237.png" alt="Campus Life" class="media-img" loading="lazy" />
-          <img src="public/mediacarousel/IMG_3164.JPG" alt="Campus Life" class="media-img" loading="lazy" />
-          <img src="public/mediacarousel/image 238.png" alt="Campus Life" class="media-img" loading="lazy" />
-          <img src="public/mediacarousel/IMG_3174.JPG" alt="Campus Life" class="media-img" loading="lazy" />
-          <img src="public/mediacarousel/image 239.png" alt="Campus Life" class="media-img" loading="lazy" />
-          <img src="public/mediacarousel/IMG_3183.JPG" alt="Campus Life" class="media-img" loading="lazy" />
-          <img src="public/mediacarousel/image 240.png" alt="Campus Life" class="media-img" loading="lazy" />
-          <img src="public/mediacarousel/IMG_3211.JPG" alt="Campus Life" class="media-img" loading="lazy" />
-          <img src="public/mediacarousel/image 241.png" alt="Campus Life" class="media-img" loading="lazy" />
-          <img src="public/mediacarousel/IMG_3251.JPG" alt="Campus Life" class="media-img" loading="lazy" />
-          <img src="public/mediacarousel/image 243.png" alt="Campus Life" class="media-img" loading="lazy" />
-          <img src="public/mediacarousel/IMG_3256.JPG" alt="Campus Life" class="media-img" loading="lazy" />
-        </div>
-      </div>
-
-      <!-- Center Text -->
-      <div class="media-center-text">
-        <h2>Experience the Rishihood Campus</h2>
-      </div>
-
-      <!-- Bottom Row: Right to Left -->
-      <div class="media-marquee-wrapper">
-        <div class="media-track track-right-to-left">
-          <!-- Set 2: Old PNGs interleaved with new JPGs -->
-          <img src="public/mediacarousel/image 244.png" alt="Campus Life" class="media-img" loading="lazy" />
-          <img src="public/mediacarousel/IMG_3278.JPG" alt="Campus Life" class="media-img" loading="lazy" />
-          <img src="public/mediacarousel/image 245.png" alt="Campus Life" class="media-img" loading="lazy" />
-          <img src="public/mediacarousel/IMG_3288.JPG" alt="Campus Life" class="media-img" loading="lazy" />
-          <img src="public/mediacarousel/image 246.png" alt="Campus Life" class="media-img" loading="lazy" />
-          <img src="public/mediacarousel/IMG_3299.JPG" alt="Campus Life" class="media-img" loading="lazy" />
-          <img src="public/mediacarousel/image 249.png" alt="Campus Life" class="media-img" loading="lazy" />
-          <img src="public/mediacarousel/IMG_3310.JPG" alt="Campus Life" class="media-img" loading="lazy" />
-          <img src="public/mediacarousel/image 250.png" alt="Campus Life" class="media-img" loading="lazy" />
-          <img src="public/mediacarousel/IMG_3328.JPG" alt="Campus Life" class="media-img" loading="lazy" />
-          <img src="public/mediacarousel/image 251.png" alt="Campus Life" class="media-img" loading="lazy" />
-          <img src="public/mediacarousel/IMG_3623.JPG" alt="Campus Life" class="media-img" loading="lazy" />
-          <img src="public/mediacarousel/image 252.png" alt="Campus Life" class="media-img" loading="lazy" />
-          <img src="public/mediacarousel/IMG_3876.JPG" alt="Campus Life" class="media-img" loading="lazy" />
-          <img src="public/mediacarousel/image 253.png" alt="Campus Life" class="media-img" loading="lazy" />
-          <img src="public/mediacarousel/IMG_4083.JPG" alt="Campus Life" class="media-img" loading="lazy" />
-          <img src="public/mediacarousel/image 254.png" alt="Campus Life" class="media-img" loading="lazy" />
-          <img src="public/mediacarousel/Keynotes-Dialogues_f.jpg" alt="Campus Life" class="media-img" loading="lazy" />
-          <img src="public/mediacarousel/image 255.png" alt="Campus Life" class="media-img" loading="lazy" />
-          <img src="public/mediacarousel/MasterclassesWorkshops_f.jpg" alt="Campus Life" class="media-img" loading="lazy" />
-          <img src="public/mediacarousel/image 256.png" alt="Campus Life" class="media-img" loading="lazy" />
-          <!-- Duplicate Set 2 for seamless scroll -->
-          <img src="public/mediacarousel/image 244.png" alt="Campus Life" class="media-img" loading="lazy" />
-          <img src="public/mediacarousel/IMG_3278.JPG" alt="Campus Life" class="media-img" loading="lazy" />
-          <img src="public/mediacarousel/image 245.png" alt="Campus Life" class="media-img" loading="lazy" />
-          <img src="public/mediacarousel/IMG_3288.JPG" alt="Campus Life" class="media-img" loading="lazy" />
-          <img src="public/mediacarousel/image 246.png" alt="Campus Life" class="media-img" loading="lazy" />
-          <img src="public/mediacarousel/IMG_3299.JPG" alt="Campus Life" class="media-img" loading="lazy" />
-          <img src="public/mediacarousel/image 249.png" alt="Campus Life" class="media-img" loading="lazy" />
-          <img src="public/mediacarousel/IMG_3310.JPG" alt="Campus Life" class="media-img" loading="lazy" />
-          <img src="public/mediacarousel/image 250.png" alt="Campus Life" class="media-img" loading="lazy" />
-          <img src="public/mediacarousel/IMG_3328.JPG" alt="Campus Life" class="media-img" loading="lazy" />
-          <img src="public/mediacarousel/image 251.png" alt="Campus Life" class="media-img" loading="lazy" />
-          <img src="public/mediacarousel/IMG_3623.JPG" alt="Campus Life" class="media-img" loading="lazy" />
-          <img src="public/mediacarousel/image 252.png" alt="Campus Life" class="media-img" loading="lazy" />
-          <img src="public/mediacarousel/IMG_3876.JPG" alt="Campus Life" class="media-img" loading="lazy" />
-          <img src="public/mediacarousel/image 253.png" alt="Campus Life" class="media-img" loading="lazy" />
-          <img src="public/mediacarousel/IMG_4083.JPG" alt="Campus Life" class="media-img" loading="lazy" />
-          <img src="public/mediacarousel/image 254.png" alt="Campus Life" class="media-img" loading="lazy" />
-          <img src="public/mediacarousel/Keynotes-Dialogues_f.jpg" alt="Campus Life" class="media-img" loading="lazy" />
-          <img src="public/mediacarousel/image 255.png" alt="Campus Life" class="media-img" loading="lazy" />
-          <img src="public/mediacarousel/MasterclassesWorkshops_f.jpg" alt="Campus Life" class="media-img" loading="lazy" />
-          <img src="public/mediacarousel/image 256.png" alt="Campus Life" class="media-img" loading="lazy" />
-        </div>
-      </div>
-    </section>
-
     <!-- Footer -->
     <footer>
       <div class="footer-overlay"></div>
@@ -4191,6 +4466,16 @@
             image: "public/mentors/Satish-AV.jpeg",
           },
           {
+            name: "Shobhit Mathur",
+            designation: "Co-Founder & Vice Chancellor, Rishihood University",
+            image: "public/mentors/Shobhit Mathur.avif",
+          },
+          {
+            name: "Sahil Aggarwal",
+            designation: "Co-Founder & CEO, Rishihood University",
+            image: "public/mentors/SahilAggarwal.avif",
+          },
+          {
             name: "Sachin Gupta",
             designation: "Founder and CEO, Probo",
             image: "public/mentors/sachin-gupta .jpeg",
@@ -4203,7 +4488,6 @@
           {
             name: "Prof. K. Gopinath",
             designation: "Professor, Rishihood University",
-            role: "Moderator",
             image: "public/mentors/Prof.-K.-Gopinath.webp",
           },
           {
@@ -4223,11 +4507,6 @@
             image: "public/mentors/Alok-Pandey.png",
           },
           {
-            name: "Nishit Gupta",
-            designation: "Director (Technology), ISM and Scientist-E, MeitY",
-            image: "public/mentors/nishit-gupta.png",
-          },
-          {
             name: "Deekhit Bhattacharya",
             designation:
               "Corporate Lawyer, Author & Analyst on Geopolitics and Technology",
@@ -4237,7 +4516,6 @@
             name: "Prof. Gautam R Desiraju",
             designation:
               "Professor, Rishihood University | Author and Thought Leader",
-            role: "Moderator",
             image: "public/mentors/Gautam_R_Desiraju-01.jpg",
           },
         ];
@@ -4310,6 +4588,26 @@
             switchTab(btn);
           });
         });
+
+        // Next-tab arrow button
+        window.highlightNextTab = function () {
+          const tabBtnsArr = Array.from(tabBtns);
+          const activeIndex = tabBtnsArr.findIndex((b) =>
+            b.classList.contains("active"),
+          );
+          const nextIndex = (activeIndex + 1) % tabBtnsArr.length;
+          switchTab(tabBtnsArr[nextIndex]);
+        };
+        
+        // Previous-tab arrow button
+        window.highlightPrevTab = function () {
+          const tabBtnsArr = Array.from(tabBtns);
+          const activeIndex = tabBtnsArr.findIndex((b) =>
+            b.classList.contains("active"),
+          );
+          const prevIndex = (activeIndex - 1 + tabBtnsArr.length) % tabBtnsArr.length;
+          switchTab(tabBtnsArr[prevIndex]);
+        };
 
         // Staggered animation observer
         const tabsWrapper = document.querySelector(".highlights-tabs-wrapper");
@@ -4417,15 +4715,17 @@
         }
 
         const statConfigs = [
-          { id: "stat-hours",   target: 55, duration: 1800 },
+          { id: "stat-hours", target: 55, duration: 1800 },
           { id: "stat-mentors", target: 10, duration: 1400 },
         ];
 
         const countObserver = new IntersectionObserver(
-          function(entries) {
-            entries.forEach(function(entry) {
+          function (entries) {
+            entries.forEach(function (entry) {
               if (entry.isIntersecting) {
-                var cfg = statConfigs.find(function(c) { return c.id === entry.target.id; });
+                var cfg = statConfigs.find(function (c) {
+                  return c.id === entry.target.id;
+                });
                 if (cfg) {
                   var span = entry.target.querySelector(".stat-count");
                   if (span) animateCount(span, cfg.target, cfg.duration);
@@ -4433,11 +4733,11 @@
               }
             });
           },
-          { threshold: 0.4 }
+          { threshold: 0.4 },
         );
 
-        document.addEventListener("DOMContentLoaded", function() {
-          statConfigs.forEach(function(cfg) {
+        document.addEventListener("DOMContentLoaded", function () {
+          statConfigs.forEach(function (cfg) {
             var el = document.getElementById(cfg.id);
             if (el) countObserver.observe(el);
           });
@@ -4486,6 +4786,62 @@
 
         // Start typing after a short delay
         setTimeout(type, 1000);
+      });
+    </script>
+    <!-- Connect With Us Modal -->
+    <div class="connect-modal-overlay" id="connectModalOverlay">
+      <div class="connect-modal">
+        <button class="connect-modal-close" onclick="closeConnectModal()">&times;</button>
+        <form class="connect-form" onsubmit="event.preventDefault(); closeConnectModal(); alert('Thank you for connecting with us! We will get back to you shortly.');">
+          <div class="connect-form-group">
+            <label for="connectName">Name</label>
+            <input type="text" id="connectName" placeholder="Jane Smith" required />
+          </div>
+          <div class="connect-form-group">
+            <label for="connectEmail">Email</label>
+            <input type="email" id="connectEmail" placeholder="jane@gmail.com" required />
+          </div>
+          <div class="connect-form-group">
+            <label for="connectPhone">Phone Number</label>
+            <input type="tel" id="connectPhone" placeholder="Enter phone no." required />
+          </div>
+          <div class="connect-form-group">
+            <label for="connectInterest">I am interested in</label>
+            <select id="connectInterest" required>
+              <option value="" disabled selected>Select an option</option>
+              <option value="Joining the Bootcamp">Joining the Bootcamp</option>
+              <option value="Mentorship">Mentorship</option>
+              <option value="Curriculum Details">Curriculum Details</option>
+              <option value="Career Support / Placements">Career Support / Placements</option>
+              <option value="Partnerships">Partnerships</option>
+              <option value="General Inquiry">General Inquiry</option>
+            </select>
+          </div>
+          <div class="connect-form-group">
+            <label for="connectHelp">If Others, please specify / What would you like help with?</label>
+            <textarea id="connectHelp" placeholder="write here..." required></textarea>
+          </div>
+          <button type="submit" class="connect-submit-btn">Submit</button>
+        </form>
+      </div>
+    </div>
+
+    <script>
+      function openConnectModal() {
+        document.getElementById("connectModalOverlay").classList.add("active");
+        document.body.style.overflow = "hidden"; // Prevent background scroll
+      }
+
+      function closeConnectModal() {
+        document.getElementById("connectModalOverlay").classList.remove("active");
+        document.body.style.overflow = "";
+      }
+
+      // Close modal on outside click
+      document.getElementById("connectModalOverlay").addEventListener("click", function(e) {
+        if (e.target === this) {
+          closeConnectModal();
+        }
       });
     </script>
   </body>
