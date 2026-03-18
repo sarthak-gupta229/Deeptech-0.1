@@ -1911,11 +1911,11 @@
       }
 
       .highlight-img-circle {
-        aspect-ratio: 1/1;
         width: 100%;
-        max-width: 140px; /* Further reduced for mobile */
+        max-width: 140px;
+        aspect-ratio: 1 / 1;
         border-radius: 50%;
-        overflow: hidden;
+        overflow: visible;
         position: relative;
         background-color: #e5e7eb;
         box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
@@ -1942,7 +1942,7 @@
       .flip-card {
         background-color: transparent;
         width: 100%;
-        height: 100%;
+        aspect-ratio: 1 / 1;
         perspective: 1000px;
         cursor: pointer;
       }
@@ -3348,12 +3348,24 @@
           <!-- Keynotes Content -->
           <div class="highlight-tab-content active-content" id="keynotes">
             <div class="highlight-img-wrapper">
-              <div class="highlight-img-circle">
-                <img
-                  src="public/photos/Keynotes-Dialogues-logo.png"
-                  alt="Keynotes & Dialogues"
-                  class="highlight-img scaled-img-sm"
-                />
+              <div class="highlight-img-circle flip-card">
+                <div class="flip-card-inner">
+                  <div class="flip-card-front">
+                    <img
+                      src="public/photos/Keynotes-Dialogues.JPG"
+                      alt="Keynotes & Dialogues Front"
+                      class="highlight-img scaled-img-sm"
+                      style="object-position: left center;"
+                    />
+                  </div>
+                  <div class="flip-card-back">
+                    <img
+                      src="public/photos/Keynotes-Dialogues-logo.png"
+                      alt="Keynotes & Dialogues Back"
+                      class="highlight-img scaled-img-sm"
+                    />
+                  </div>
+                </div>
               </div>
             </div>
             <div class="highlight-text">
@@ -3399,12 +3411,23 @@
           <!-- Field Visits Content -->
           <div class="highlight-tab-content" id="field-visits">
             <div class="highlight-img-wrapper">
-              <div class="highlight-img-circle">
-                <img
-                  src="public/photos/Field-Visits-logo.png"
-                  alt="Field Visits"
-                  class="highlight-img scaled-img"
-                />
+              <div class="highlight-img-circle flip-card">
+                <div class="flip-card-inner">
+                  <div class="flip-card-front">
+                    <img
+                      src="public/photos/Field-Visits.png"
+                      alt="Field Visits Front"
+                      class="highlight-img scaled-img"
+                    />
+                  </div>
+                  <div class="flip-card-back">
+                    <img
+                      src="public/photos/Field-Visits-logo.png"
+                      alt="Field Visits Back"
+                      class="highlight-img scaled-img"
+                    />
+                  </div>
+                </div>
               </div>
             </div>
             <div class="highlight-text">
@@ -3450,12 +3473,23 @@
           <!-- Panels Content -->
           <div class="highlight-tab-content" id="panels">
             <div class="highlight-img-wrapper">
-              <div class="highlight-img-circle">
-                <img
-                  src="public/photos/Panels-Fireside-logo.png"
-                  alt="Panels & Fireside Chats"
-                  class="highlight-img scaled-img-sm"
-                />
+              <div class="highlight-img-circle flip-card">
+                <div class="flip-card-inner">
+                  <div class="flip-card-front">
+                    <img
+                      src="public/photos/Panels-Fireside.jpg"
+                      alt="Panels & Fireside Chats Front"
+                      class="highlight-img scaled-img-sm"
+                    />
+                  </div>
+                  <div class="flip-card-back">
+                    <img
+                      src="public/photos/Panels-Fireside-logo.png"
+                      alt="Panels & Fireside Chats Back"
+                      class="highlight-img scaled-img-sm"
+                    />
+                  </div>
+                </div>
               </div>
             </div>
             <div class="highlight-text">
@@ -3502,12 +3536,23 @@
           <!-- Masterclasses Content -->
           <div class="highlight-tab-content" id="masterclasses">
             <div class="highlight-img-wrapper">
-              <div class="highlight-img-circle">
-                <img
-                  src="public/photos/MasterclassesWorkshops-logo.png"
-                  alt="Masterclasses & Workshops"
-                  class="highlight-img scaled-img"
-                />
+              <div class="highlight-img-circle flip-card">
+                <div class="flip-card-inner">
+                  <div class="flip-card-front">
+                    <img
+                      src="public/photos/MasterclassesWorkshops.JPG"
+                      alt="Masterclasses & Workshops Front"
+                      class="highlight-img scaled-img"
+                    />
+                  </div>
+                  <div class="flip-card-back">
+                    <img
+                      src="public/photos/MasterclassesWorkshops-logo.png"
+                      alt="Masterclasses & Workshops Back"
+                      class="highlight-img scaled-img"
+                    />
+                  </div>
+                </div>
               </div>
             </div>
             <div class="highlight-text">
@@ -3552,12 +3597,23 @@
           <!-- Hackathons Content -->
           <div class="highlight-tab-content" id="hackathons">
             <div class="highlight-img-wrapper">
-              <div class="highlight-img-circle">
-                <img
-                  src="public/photos/Hackathon-logo.png"
-                  alt="Hackathons"
-                  class="highlight-img scaled-img"
-                />
+              <div class="highlight-img-circle flip-card">
+                <div class="flip-card-inner">
+                  <div class="flip-card-front">
+                    <img
+                      src="public/photos/Hackathon.JPG"
+                      alt="Hackathons Front"
+                      class="highlight-img scaled-img"
+                    />
+                  </div>
+                  <div class="flip-card-back">
+                    <img
+                      src="public/photos/Hackathon-logo.png"
+                      alt="Hackathons Back"
+                      class="highlight-img scaled-img"
+                    />
+                  </div>
+                </div>
               </div>
             </div>
             <div class="highlight-text">
