@@ -2480,6 +2480,9 @@
         background-color: white;
         padding-top: 5rem;
         padding-bottom: 3rem;
+        height: fit-content;
+        position: relative;
+        z-index: 10;
       }
       .faq-container {
         max-width: 64rem;
@@ -4132,6 +4135,935 @@
         */
       }
     </script>
+
+    <!-- Experience the Rishihood Campus Section -->
+    <style>
+      .campus-carousel-section {
+        padding: 40px 0; /* Fallback padding */
+        background: #fff;
+        overflow: hidden;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+      }
+
+      .campus-carousel-title-wrap {
+        text-align: center;
+        padding: 30px 20px;
+      }
+
+      .campus-carousel-title {
+        font-size: 2rem;
+        font-weight: 700;
+        color: #cc0033;
+        margin: 0 0 10px;
+        font-family: "Inter", sans-serif;
+        letter-spacing: -0.5px;
+      }
+
+      .campus-carousel-subtitle {
+        font-size: 1rem;
+        color: #555;
+        font-weight: 400;
+        max-width: 600px;
+        margin: 0 auto;
+        line-height: 1.6;
+        font-family: "Inter", sans-serif;
+      }
+
+      .carousel-row {
+        overflow: hidden;
+        padding: 8px 0;
+        position: relative;
+      }
+
+      .carousel-row::before,
+      .carousel-row::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        width: 40px;
+        z-index: 2;
+        pointer-events: none;
+      }
+
+      .carousel-row::before {
+        left: 0;
+        background: linear-gradient(to right, #fff, transparent);
+      }
+
+      .carousel-row::after {
+        right: 0;
+        background: linear-gradient(to left, #fff, transparent);
+      }
+
+      .carousel-track {
+        display: flex;
+        gap: 14px;
+        width: max-content;
+        backface-visibility: hidden;
+        transform-style: preserve-3d;
+      }
+
+      .carousel-track-ltr {
+        animation: scrollLTR 60s linear infinite;
+      }
+
+      .carousel-track-rtl {
+        animation: scrollRTL 60s linear infinite;
+      }
+
+      /* Top row: landscape images */
+      .campus-img-landscape {
+        flex-shrink: 0;
+        width: 120px;
+        height: 130px;
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+        transition: transform 0.3s ease;
+        transform: translateZ(0);
+        backface-visibility: hidden;
+      }
+
+      .campus-img-landscape:hover {
+        transform: scale(1.03);
+      }
+
+      /* Bottom row: portrait images */
+      .campus-img-portrait {
+        flex-shrink: 0;
+        width: 120px;
+        height: 160px;
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+        transition: transform 0.3s ease;
+        transform: translateZ(0);
+        backface-visibility: hidden;
+      }
+
+      .campus-img-portrait:hover {
+        transform: scale(1.03);
+      }
+
+      .campus-img-landscape img,
+      .campus-img-portrait img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+      }
+
+      @keyframes scrollLTR {
+        0% {
+          transform: translate3d(-50%, 0, 0);
+        }
+        100% {
+          transform: translate3d(0%, 0, 0);
+        }
+      }
+
+      @keyframes scrollRTL {
+        0% {
+          transform: translate3d(0%, 0, 0);
+        }
+        100% {
+          transform: translate3d(-50%, 0, 0);
+        }
+      }
+
+      @media (max-width: 768px) {
+        .campus-carousel-title {
+          font-size: 1.4rem;
+        }
+
+        .campus-carousel-subtitle {
+          font-size: 0.85rem;
+        }
+
+        .campus-img-landscape {
+          width: 90px;
+          height: 100px;
+          border-radius: 8px;
+        }
+
+        .campus-img-portrait {
+          width: 90px;
+          height: 120px;
+          border-radius: 8px;
+        }
+
+        .carousel-track {
+          gap: 10px;
+        }
+
+        .campus-carousel-section {
+          padding: 30px 0;
+        }
+      }
+    </style>
+
+    <section class="campus-carousel-section" id="campus-carousel">
+      <!-- Top Carousel: Left to Right -->
+      <div class="carousel-row">
+        <div class="carousel-track carousel-track-ltr">
+          <!-- First set -->
+          <div class="campus-img-landscape">
+            <img
+              src="public/mediacarousel/IMG_3129_converted.avif"
+              alt="Rishihood Campus"
+              loading="lazy"
+              decoding="async"
+            />
+          </div>
+          <div class="campus-img-landscape">
+            <img
+              src="public/mediacarousel/IMG_2594.avif"
+              alt="Rishihood Campus"
+              loading="lazy"
+              decoding="async"
+            />
+          </div>
+          <div class="campus-img-landscape">
+            <img
+              src="public/mediacarousel/IMG_4553_converted.avif"
+              alt="Rishihood Campus"
+              loading="lazy"
+              decoding="async"
+            />
+          </div>
+          <div class="campus-img-landscape">
+            <img
+              src="public/mediacarousel/IMG_2849.avif"
+              alt="Rishihood Campus"
+              loading="lazy"
+              decoding="async"
+            />
+          </div>
+          <div class="campus-img-landscape">
+            <img
+              src="public/mediacarousel/IMG_3251_converted.avif"
+              alt="Rishihood Campus"
+              loading="lazy"
+              decoding="async"
+            />
+          </div>
+          <div class="campus-img-landscape">
+            <img
+              src="public/mediacarousel/IMG_2516.avif"
+              alt="Rishihood Campus"
+              loading="lazy"
+              decoding="async"
+            />
+          </div>
+          <div class="campus-img-landscape">
+            <img
+              src="public/mediacarousel/IMG_3878_converted.avif"
+              alt="Rishihood Campus"
+              loading="lazy"
+              decoding="async"
+            />
+          </div>
+          <div class="campus-img-landscape">
+            <img
+              src="public/mediacarousel/IMG_4614.avif"
+              alt="Rishihood Campus"
+              loading="lazy"
+              decoding="async"
+            />
+          </div>
+          <div class="campus-img-landscape">
+            <img
+              src="public/mediacarousel/IMG_2882.avif"
+              alt="Rishihood Campus"
+              loading="lazy"
+              decoding="async"
+            />
+          </div>
+          <div class="campus-img-landscape">
+            <img
+              src="public/mediacarousel/IMG_3467_converted.avif"
+              alt="Rishihood Campus"
+              loading="lazy"
+              decoding="async"
+            />
+          </div>
+          <div class="campus-img-landscape">
+            <img
+              src="public/mediacarousel/IMG_2637.avif"
+              alt="Rishihood Campus"
+              loading="lazy"
+              decoding="async"
+            />
+          </div>
+          <div class="campus-img-landscape">
+            <img
+              src="public/mediacarousel/IMG_4581_converted.avif"
+              alt="Rishihood Campus"
+              loading="lazy"
+              decoding="async"
+            />
+          </div>
+          <div class="campus-img-landscape">
+            <img
+              src="public/mediacarousel/IMG_3504_converted.avif"
+              alt="Rishihood Campus"
+              loading="lazy"
+              decoding="async"
+            />
+          </div>
+          <div class="campus-img-landscape">
+            <img
+              src="public/mediacarousel/IMG_2812.avif"
+              alt="Rishihood Campus"
+              loading="lazy"
+              decoding="async"
+            />
+          </div>
+          <div class="campus-img-landscape">
+            <img
+              src="public/mediacarousel/IMG_3288_converted.avif"
+              alt="Rishihood Campus"
+              loading="lazy"
+              decoding="async"
+            />
+          </div>
+          <div class="campus-img-landscape">
+            <img
+              src="public/mediacarousel/IMG_4623.avif"
+              alt="Rishihood Campus"
+              loading="lazy"
+              decoding="async"
+            />
+          </div>
+          <div class="campus-img-landscape">
+            <img
+              src="public/mediacarousel/IMG_2909.avif"
+              alt="Rishihood Campus"
+              loading="lazy"
+              decoding="async"
+            />
+          </div>
+          <div class="campus-img-landscape">
+            <img
+              src="public/mediacarousel/IMG_3580_converted.avif"
+              alt="Rishihood Campus"
+              loading="lazy"
+              decoding="async"
+            />
+          </div>
+          <div class="campus-img-landscape">
+            <img
+              src="public/mediacarousel/IMG_2628.avif"
+              alt="Rishihood Campus"
+              loading="lazy"
+              decoding="async"
+            />
+          </div>
+          <div class="campus-img-landscape">
+            <img
+              src="public/mediacarousel/IMG_4185.avif"
+              alt="Rishihood Campus"
+              loading="lazy"
+              decoding="async"
+            />
+          </div>
+          <div class="campus-img-landscape">
+            <img
+              src="public/mediacarousel/IMG_3142_converted.avif"
+              alt="Rishihood Campus"
+              loading="lazy"
+              decoding="async"
+            />
+          </div>
+          <div class="campus-img-landscape">
+            <img
+              src="public/mediacarousel/IMG_2665 (1).avif"
+              alt="Rishihood Campus"
+              loading="lazy"
+              decoding="async"
+            />
+          </div>
+          <div class="campus-img-landscape">
+            <img
+              src="public/mediacarousel/IMG_3925_converted.avif"
+              alt="Rishihood Campus"
+              loading="lazy"
+              decoding="async"
+            />
+          </div>
+          <!-- Duplicate set for seamless loop -->
+          <div class="campus-img-landscape">
+            <img
+              src="public/mediacarousel/IMG_3129_converted.avif"
+              alt="Rishihood Campus"
+              loading="lazy"
+              decoding="async"
+            />
+          </div>
+          <div class="campus-img-landscape">
+            <img
+              src="public/mediacarousel/IMG_2594.avif"
+              alt="Rishihood Campus"
+              loading="lazy"
+              decoding="async"
+            />
+          </div>
+          <div class="campus-img-landscape">
+            <img
+              src="public/mediacarousel/IMG_4553_converted.avif"
+              alt="Rishihood Campus"
+              loading="lazy"
+              decoding="async"
+            />
+          </div>
+          <div class="campus-img-landscape">
+            <img
+              src="public/mediacarousel/IMG_2849.avif"
+              alt="Rishihood Campus"
+              loading="lazy"
+              decoding="async"
+            />
+          </div>
+          <div class="campus-img-landscape">
+            <img
+              src="public/mediacarousel/IMG_3251_converted.avif"
+              alt="Rishihood Campus"
+              loading="lazy"
+              decoding="async"
+            />
+          </div>
+          <div class="campus-img-landscape">
+            <img
+              src="public/mediacarousel/IMG_2516.avif"
+              alt="Rishihood Campus"
+              loading="lazy"
+              decoding="async"
+            />
+          </div>
+          <div class="campus-img-landscape">
+            <img
+              src="public/mediacarousel/IMG_3878_converted.avif"
+              alt="Rishihood Campus"
+              loading="lazy"
+              decoding="async"
+            />
+          </div>
+          <div class="campus-img-landscape">
+            <img
+              src="public/mediacarousel/IMG_4614.avif"
+              alt="Rishihood Campus"
+              loading="lazy"
+              decoding="async"
+            />
+          </div>
+          <div class="campus-img-landscape">
+            <img
+              src="public/mediacarousel/IMG_2882.avif"
+              alt="Rishihood Campus"
+              loading="lazy"
+              decoding="async"
+            />
+          </div>
+          <div class="campus-img-landscape">
+            <img
+              src="public/mediacarousel/IMG_3467_converted.avif"
+              alt="Rishihood Campus"
+              loading="lazy"
+              decoding="async"
+            />
+          </div>
+          <div class="campus-img-landscape">
+            <img
+              src="public/mediacarousel/IMG_2637.avif"
+              alt="Rishihood Campus"
+              loading="lazy"
+              decoding="async"
+            />
+          </div>
+          <div class="campus-img-landscape">
+            <img
+              src="public/mediacarousel/IMG_4581_converted.avif"
+              alt="Rishihood Campus"
+              loading="lazy"
+              decoding="async"
+            />
+          </div>
+          <div class="campus-img-landscape">
+            <img
+              src="public/mediacarousel/IMG_3504_converted.avif"
+              alt="Rishihood Campus"
+              loading="lazy"
+              decoding="async"
+            />
+          </div>
+          <div class="campus-img-landscape">
+            <img
+              src="public/mediacarousel/IMG_2812.avif"
+              alt="Rishihood Campus"
+              loading="lazy"
+              decoding="async"
+            />
+          </div>
+          <div class="campus-img-landscape">
+            <img
+              src="public/mediacarousel/IMG_3288_converted.avif"
+              alt="Rishihood Campus"
+              loading="lazy"
+              decoding="async"
+            />
+          </div>
+          <div class="campus-img-landscape">
+            <img
+              src="public/mediacarousel/IMG_4623.avif"
+              alt="Rishihood Campus"
+              loading="lazy"
+              decoding="async"
+            />
+          </div>
+          <div class="campus-img-landscape">
+            <img
+              src="public/mediacarousel/IMG_2909.avif"
+              alt="Rishihood Campus"
+              loading="lazy"
+              decoding="async"
+            />
+          </div>
+          <div class="campus-img-landscape">
+            <img
+              src="public/mediacarousel/IMG_3580_converted.avif"
+              alt="Rishihood Campus"
+              loading="lazy"
+              decoding="async"
+            />
+          </div>
+          <div class="campus-img-landscape">
+            <img
+              src="public/mediacarousel/IMG_2628.avif"
+              alt="Rishihood Campus"
+              loading="lazy"
+              decoding="async"
+            />
+          </div>
+          <div class="campus-img-landscape">
+            <img
+              src="public/mediacarousel/IMG_4185.avif"
+              alt="Rishihood Campus"
+              loading="lazy"
+              decoding="async"
+            />
+          </div>
+          <div class="campus-img-landscape">
+            <img
+              src="public/mediacarousel/IMG_3142_converted.avif"
+              alt="Rishihood Campus"
+              loading="lazy"
+              decoding="async"
+            />
+          </div>
+          <div class="campus-img-landscape">
+            <img
+              src="public/mediacarousel/IMG_2665 (1).avif"
+              alt="Rishihood Campus"
+              loading="lazy"
+              decoding="async"
+            />
+          </div>
+          <div class="campus-img-landscape">
+            <img
+              src="public/mediacarousel/IMG_3925_converted.avif"
+              alt="Rishihood Campus"
+              loading="lazy"
+              decoding="async"
+            />
+          </div>
+        </div>
+      </div>
+
+      <!-- Title -->
+      <div class="campus-carousel-title-wrap">
+        <h2 class="campus-carousel-title">Experience the Rishihood Campus</h2>
+      </div>
+
+      <!-- Bottom Carousel: Right to Left -->
+      <div class="carousel-row">
+        <div class="carousel-track carousel-track-rtl">
+          <!-- First set -->
+          <div class="campus-img-portrait">
+            <img
+              src="public/mediacarousel/IMG_2620.avif"
+              alt="Rishihood Campus"
+              loading="lazy"
+              decoding="async"
+            />
+          </div>
+          <div class="campus-img-portrait">
+            <img
+              src="public/mediacarousel/IMG_3174_converted.avif"
+              alt="Rishihood Campus"
+              loading="lazy"
+              decoding="async"
+            />
+          </div>
+          <div class="campus-img-portrait">
+            <img
+              src="public/mediacarousel/IMG_4548.avif"
+              alt="Rishihood Campus"
+              loading="lazy"
+              decoding="async"
+            />
+          </div>
+          <div class="campus-img-portrait">
+            <img
+              src="public/mediacarousel/IMG_2898.avif"
+              alt="Rishihood Campus"
+              loading="lazy"
+              decoding="async"
+            />
+          </div>
+          <div class="campus-img-portrait">
+            <img
+              src="public/mediacarousel/IMG_3211_converted.avif"
+              alt="Rishihood Campus"
+              loading="lazy"
+              decoding="async"
+            />
+          </div>
+          <div class="campus-img-portrait">
+            <img
+              src="public/mediacarousel/IMG_2638.avif"
+              alt="Rishihood Campus"
+              loading="lazy"
+              decoding="async"
+            />
+          </div>
+          <div class="campus-img-portrait">
+            <img
+              src="public/mediacarousel/IMG_3640_converted.avif"
+              alt="Rishihood Campus"
+              loading="lazy"
+              decoding="async"
+            />
+          </div>
+          <div class="campus-img-portrait">
+            <img
+              src="public/mediacarousel/IMG_4604.avif"
+              alt="Rishihood Campus"
+              loading="lazy"
+              decoding="async"
+            />
+          </div>
+          <div class="campus-img-portrait">
+            <img
+              src="public/mediacarousel/IMG_2851.avif"
+              alt="Rishihood Campus"
+              loading="lazy"
+              decoding="async"
+            />
+          </div>
+          <div class="campus-img-portrait">
+            <img
+              src="public/mediacarousel/IMG_3523_converted.avif"
+              alt="Rishihood Campus"
+              loading="lazy"
+              decoding="async"
+            />
+          </div>
+          <div class="campus-img-portrait">
+            <img
+              src="public/mediacarousel/IMG_2749.avif"
+              alt="Rishihood Campus"
+              loading="lazy"
+              decoding="async"
+            />
+          </div>
+          <div class="campus-img-portrait">
+            <img
+              src="public/mediacarousel/IMG_4562_converted.avif"
+              alt="Rishihood Campus"
+              loading="lazy"
+              decoding="async"
+            />
+          </div>
+          <div class="campus-img-portrait">
+            <img
+              src="public/mediacarousel/IMG_3278_converted.avif"
+              alt="Rishihood Campus"
+              loading="lazy"
+              decoding="async"
+            />
+          </div>
+          <div class="campus-img-portrait">
+            <img
+              src="public/mediacarousel/IMG_2799.avif"
+              alt="Rishihood Campus"
+              loading="lazy"
+              decoding="async"
+            />
+          </div>
+          <div class="campus-img-portrait">
+            <img
+              src="public/mediacarousel/IMG_3152_converted.avif"
+              alt="Rishihood Campus"
+              loading="lazy"
+              decoding="async"
+            />
+          </div>
+          <div class="campus-img-portrait">
+            <img
+              src="public/mediacarousel/IMG_4643.avif"
+              alt="Rishihood Campus"
+              loading="lazy"
+              decoding="async"
+            />
+          </div>
+          <div class="campus-img-portrait">
+            <img
+              src="public/mediacarousel/IMG_2904.avif"
+              alt="Rishihood Campus"
+              loading="lazy"
+              decoding="async"
+            />
+          </div>
+          <div class="campus-img-portrait">
+            <img
+              src="public/mediacarousel/IMG_3538_converted.avif"
+              alt="Rishihood Campus"
+              loading="lazy"
+              decoding="async"
+            />
+          </div>
+          <div class="campus-img-portrait">
+            <img
+              src="public/mediacarousel/IMG_2665.avif"
+              alt="Rishihood Campus"
+              loading="lazy"
+              decoding="async"
+            />
+          </div>
+          <div class="campus-img-portrait">
+            <img
+              src="public/mediacarousel/IMG_4642_converted.avif"
+              alt="Rishihood Campus"
+              loading="lazy"
+              decoding="async"
+            />
+          </div>
+          <div class="campus-img-portrait">
+            <img
+              src="public/mediacarousel/IMG_3299_converted.avif"
+              alt="Rishihood Campus"
+              loading="lazy"
+              decoding="async"
+            />
+          </div>
+          <div class="campus-img-portrait">
+            <img
+              src="public/mediacarousel/image 254_converted.avif"
+              alt="Rishihood Campus"
+              loading="lazy"
+              decoding="async"
+            />
+          </div>
+          <div class="campus-img-portrait">
+            <img
+              src="public/mediacarousel/image 255_converted.avif"
+              alt="Rishihood Campus"
+              loading="lazy"
+              decoding="async"
+            />
+          </div>
+          <!-- Duplicate set for seamless loop -->
+          <div class="campus-img-portrait">
+            <img
+              src="public/mediacarousel/IMG_2620.avif"
+              alt="Rishihood Campus"
+              loading="lazy"
+              decoding="async"
+            />
+          </div>
+          <div class="campus-img-portrait">
+            <img
+              src="public/mediacarousel/IMG_3174_converted.avif"
+              alt="Rishihood Campus"
+              loading="lazy"
+              decoding="async"
+            />
+          </div>
+          <div class="campus-img-portrait">
+            <img
+              src="public/mediacarousel/IMG_4548.avif"
+              alt="Rishihood Campus"
+              loading="lazy"
+              decoding="async"
+            />
+          </div>
+          <div class="campus-img-portrait">
+            <img
+              src="public/mediacarousel/IMG_2898.avif"
+              alt="Rishihood Campus"
+              loading="lazy"
+              decoding="async"
+            />
+          </div>
+          <div class="campus-img-portrait">
+            <img
+              src="public/mediacarousel/IMG_3211_converted.avif"
+              alt="Rishihood Campus"
+              loading="lazy"
+              decoding="async"
+            />
+          </div>
+          <div class="campus-img-portrait">
+            <img
+              src="public/mediacarousel/IMG_2638.avif"
+              alt="Rishihood Campus"
+              loading="lazy"
+              decoding="async"
+            />
+          </div>
+          <div class="campus-img-portrait">
+            <img
+              src="public/mediacarousel/IMG_3640_converted.avif"
+              alt="Rishihood Campus"
+              loading="lazy"
+              decoding="async"
+            />
+          </div>
+          <div class="campus-img-portrait">
+            <img
+              src="public/mediacarousel/IMG_4604.avif"
+              alt="Rishihood Campus"
+              loading="lazy"
+              decoding="async"
+            />
+          </div>
+          <div class="campus-img-portrait">
+            <img
+              src="public/mediacarousel/IMG_2851.avif"
+              alt="Rishihood Campus"
+              loading="lazy"
+              decoding="async"
+            />
+          </div>
+          <div class="campus-img-portrait">
+            <img
+              src="public/mediacarousel/IMG_3523_converted.avif"
+              alt="Rishihood Campus"
+              loading="lazy"
+              decoding="async"
+            />
+          </div>
+          <div class="campus-img-portrait">
+            <img
+              src="public/mediacarousel/IMG_2749.avif"
+              alt="Rishihood Campus"
+              loading="lazy"
+              decoding="async"
+            />
+          </div>
+          <div class="campus-img-portrait">
+            <img
+              src="public/mediacarousel/IMG_4562_converted.avif"
+              alt="Rishihood Campus"
+              loading="lazy"
+              decoding="async"
+            />
+          </div>
+          <div class="campus-img-portrait">
+            <img
+              src="public/mediacarousel/IMG_3278_converted.avif"
+              alt="Rishihood Campus"
+              loading="lazy"
+              decoding="async"
+            />
+          </div>
+          <div class="campus-img-portrait">
+            <img
+              src="public/mediacarousel/IMG_2799.avif"
+              alt="Rishihood Campus"
+              loading="lazy"
+              decoding="async"
+            />
+          </div>
+          <div class="campus-img-portrait">
+            <img
+              src="public/mediacarousel/IMG_3152_converted.avif"
+              alt="Rishihood Campus"
+              loading="lazy"
+              decoding="async"
+            />
+          </div>
+          <div class="campus-img-portrait">
+            <img
+              src="public/mediacarousel/IMG_4643.avif"
+              alt="Rishihood Campus"
+              loading="lazy"
+              decoding="async"
+            />
+          </div>
+          <div class="campus-img-portrait">
+            <img
+              src="public/mediacarousel/IMG_2904.avif"
+              alt="Rishihood Campus"
+              loading="lazy"
+              decoding="async"
+            />
+          </div>
+          <div class="campus-img-portrait">
+            <img
+              src="public/mediacarousel/IMG_3538_converted.avif"
+              alt="Rishihood Campus"
+              loading="lazy"
+              decoding="async"
+            />
+          </div>
+          <div class="campus-img-portrait">
+            <img
+              src="public/mediacarousel/IMG_2665.avif"
+              alt="Rishihood Campus"
+              loading="lazy"
+              decoding="async"
+            />
+          </div>
+          <div class="campus-img-portrait">
+            <img
+              src="public/mediacarousel/IMG_4642_converted.avif"
+              alt="Rishihood Campus"
+              loading="lazy"
+              decoding="async"
+            />
+          </div>
+          <div class="campus-img-portrait">
+            <img
+              src="public/mediacarousel/IMG_3299_converted.avif"
+              alt="Rishihood Campus"
+              loading="lazy"
+              decoding="async"
+            />
+          </div>
+          <div class="campus-img-portrait">
+            <img
+              src="public/mediacarousel/image 254_converted.avif"
+              alt="Rishihood Campus"
+              loading="lazy"
+              decoding="async"
+            />
+          </div>
+          <div class="campus-img-portrait">
+            <img
+              src="public/mediacarousel/image 255_converted.avif"
+              alt="Rishihood Campus"
+              loading="lazy"
+              decoding="async"
+            />
+          </div>
+        </div>
+      </div>
+    </section>
 
     <!-- Footer -->
     <footer>
