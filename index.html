@@ -6004,7 +6004,10 @@
       // Close dropdown when clicking outside
       document.addEventListener("click", function (e) {
         var wrapper = document.getElementById("connectBtnWrapper");
-        if (wrapper && !wrapper.contains(e.target)) {
+        var panel = document.getElementById("connectDropdownPanel");
+        var clickedInsideWrapper = wrapper && wrapper.contains(e.target);
+        var clickedInsidePanel = panel && panel.contains(e.target);
+        if (!clickedInsideWrapper && !clickedInsidePanel) {
           closeConnectDropdown();
         }
       });
