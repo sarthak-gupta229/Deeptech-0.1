@@ -97,10 +97,11 @@
       }
 
       .nav-content {
-        height: 4.5rem; /* h-18 equivalent approx 72px */
+        min-height: 4.5rem; /* h-18 equivalent approx 72px */
         display: flex;
         align-items: center;
         justify-content: space-between;
+        flex-wrap: nowrap;
       }
 
       /* Logo */
@@ -251,6 +252,8 @@
       .mobile-menu-btn-container {
         display: flex;
         align-items: center;
+        margin-left: auto;
+        flex-shrink: 0;
       }
 
       @media (min-width: 1280px) {
@@ -1055,7 +1058,7 @@
       }
 
       .quote-text {
-        font-size: 1.125rem;
+        font-size: 0.875rem;
         color: #555;
         margin-bottom: 1rem;
         line-height: 1.6;
@@ -1130,7 +1133,7 @@
           padding-bottom: 2.5rem; /* Lift text up */
         }
         .quote-text {
-          font-size: 1.1rem;
+          font-size: 0.95rem;
           margin-bottom: 0.75rem;
         }
 
@@ -1674,7 +1677,7 @@
       .logo-animation-section {
         position: relative;
         height: 40vh;
-        background-color: #ffffff;
+        background: linear-gradient(to bottom, #fcf7ef 0%, #ffffff 100%);
         overflow: hidden;
         display: flex;
         align-items: flex-end;
@@ -2642,104 +2645,136 @@
         font-size: 0.75rem;
       }
 
-      .connect-modal-overlay {
+      /* Connect Dropdown Panel */
+      .connect-btn-wrapper {
+        position: relative;
+      }
+      .connect-dropdown-panel {
         position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background-color: rgba(0, 0, 0, 0.7);
+        top: 72px;
+        right: 0;
+        width: 440px;
+        background-color: #fcf7ef;
+        border-radius: 0 0 0 0.85rem;
+        padding: 1.1rem 1.4rem 1.4rem;
+        box-shadow:
+          -4px 8px 32px rgba(0, 0, 0, 0.18),
+          0 2px 8px rgba(0, 0, 0, 0.08);
+        border: 1px solid #e8d9be;
+        border-right: none;
+        border-top: none;
         z-index: 10000;
-        display: flex;
-        align-items: center;
-        justify-content: center;
         opacity: 0;
         pointer-events: none;
-        transition: opacity 0.3s ease;
+        transform: translateY(-8px);
+        transition:
+          opacity 0.25s ease,
+          transform 0.25s ease;
       }
-      .connect-modal-overlay.active {
+      .connect-dropdown-panel.active {
         opacity: 1;
         pointer-events: auto;
-      }
-      .connect-modal {
-        background-color: #fcf7ef;
-        width: 90%;
-        max-width: 400px;
-        border-radius: 1rem;
-        padding: 1.5rem 1.75rem;
-        position: relative;
-        transform: translateY(20px);
-        transition: transform 0.3s ease;
-        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
-        max-height: 90vh;
-        overflow-y: auto;
-      }
-      .connect-modal-overlay.active .connect-modal {
         transform: translateY(0);
       }
-      .connect-modal-close {
-        position: absolute;
-        top: 0.75rem;
-        right: 1rem;
+
+      @media (max-width: 480px) {
+        .connect-dropdown-panel {
+          width: 100vw;
+          right: 0;
+          left: 0;
+          border-radius: 0 0 0.85rem 0.85rem;
+          border-right: 1px solid #e8d9be;
+          padding: 1rem 1rem 1.2rem;
+          box-sizing: border-box;
+        }
+      }
+
+      .connect-dropdown-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 1rem;
+        padding-bottom: 0.6rem;
+        border-bottom: 1px solid #e8d9be;
+      }
+      .connect-dropdown-title {
+        font-size: 0.95rem;
+        font-weight: 700;
+        color: #cc0033;
+        font-family: "Montserrat", sans-serif;
+        letter-spacing: 0.01em;
+      }
+      .connect-dropdown-close {
         background: none;
         border: none;
-        font-size: 1.5rem;
+        font-size: 1.25rem;
         cursor: pointer;
-        color: #333;
+        color: #888;
         line-height: 1;
+        padding: 0;
+        transition: color 0.2s;
       }
-      .connect-modal-close:hover {
+      .connect-dropdown-close:hover {
         color: #cc0033;
       }
       .connect-form {
         display: flex;
         flex-direction: column;
-        gap: 0.85rem;
+        gap: 0.6rem;
       }
       .connect-form-group {
         display: flex;
         flex-direction: column;
-        gap: 0.3rem;
+        gap: 0.25rem;
       }
       .connect-form-group label {
         font-family: inherit;
-        font-size: 0.75rem;
+        font-size: 0.72rem;
         font-weight: 600;
         color: #1a1a1a;
+        text-transform: uppercase;
+        letter-spacing: 0.03em;
       }
       .connect-form-group input,
       .connect-form-group select,
       .connect-form-group textarea {
         width: 100%;
-        padding: 0.5rem 0.75rem;
+        padding: 0.45rem 0.7rem;
         border: 1px solid #e0cba8;
         border-radius: 0.4rem;
         font-family: inherit;
-        font-size: 0.85rem;
+        font-size: 0.82rem;
         background-color: #ffffff;
         outline: none;
-        transition: border-color 0.2s;
+        transition:
+          border-color 0.2s,
+          box-shadow 0.2s;
+        box-sizing: border-box;
       }
       .connect-form-group input:focus,
       .connect-form-group select:focus,
       .connect-form-group textarea:focus {
-        border-color: #c8861a;
+        border-color: #cc0033;
+        box-shadow: 0 0 0 2px rgba(204, 0, 51, 0.1);
       }
       .connect-form-group textarea {
         resize: vertical;
-        min-height: 80px;
+        min-height: 48px;
       }
       .connect-submit-btn {
         background-color: #d00737;
         color: white;
-        font-weight: 600;
-        padding: 0.6rem 1rem;
+        font-weight: 700;
+        padding: 0.55rem 1rem;
         border: none;
         border-radius: 0.4rem;
-        font-size: 0.9rem;
+        font-size: 0.875rem;
         cursor: pointer;
         transition: background-color 0.2s;
-        margin-top: 0.25rem;
+        margin-top: 0.15rem;
+        width: 100%;
+        font-family: "Montserrat", sans-serif;
+        letter-spacing: 0.02em;
       }
       .connect-submit-btn:hover {
         background-color: #a0052a;
@@ -2878,15 +2913,40 @@
               </a>
             </div>
 
-            <div style="display: flex; gap: 0.75rem; align-items: stretch">
+            <div style="display: flex; gap: 0.75rem; align-items: center">
               <!-- Connect With Us Button -->
-              <button class="connect-nav-btn" onclick="openConnectModal()">
-                <span>Connect with us</span>
-              </button>
+              <div class="connect-btn-wrapper" id="connectBtnWrapper">
+                <button
+                  class="connect-nav-btn"
+                  id="connectNavBtn"
+                  onclick="toggleConnectDropdown(event)"
+                >
+                  <span>Connect with us</span>
+                  <svg
+                    class="connect-dropdown-arrow"
+                    style="
+                      width: 0.75rem;
+                      height: 0.75rem;
+                      transition: transform 0.25s;
+                    "
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M19 9l-7 7-7-7"
+                    />
+                  </svg>
+                </button>
+              </div>
 
               <!-- Apply Now Button -->
               <a
-                href="#apply-now"
+                href="https://docs.google.com/forms/d/e/1FAIpQLSdQ453BqPFAwKdNPhBOyOJrxbPktwdAUg-7cm3fSHSwVeCNfA/viewform?usp=dialog"
+                target="_blank"
                 class="apply-btn"
                 style="text-decoration: none"
               >
@@ -3070,7 +3130,7 @@
           <button
             class="mobile-connect-btn"
             onclick="
-              openConnectModal();
+              toggleConnectDropdown(event);
               document.getElementById('mobile-menu').classList.remove('show');
               document.getElementById('icon-menu-open').style.display = 'block';
               document.getElementById('icon-menu-close').style.display = 'none';
@@ -3089,7 +3149,8 @@
 
           <!-- Apply Now -->
           <a
-            href="#apply-now"
+            href="https://docs.google.com/forms/d/e/1FAIpQLSdQ453BqPFAwKdNPhBOyOJrxbPktwdAUg-7cm3fSHSwVeCNfA/viewform?usp=dialog"
+            target="_blank"
             class="mobile-apply-btn"
             style="
               text-decoration: none;
@@ -3142,7 +3203,8 @@
         <div class="carousel-actions">
           <button class="btn-outline">Download Brochure</button>
           <a
-            href="#apply-now"
+            href="https://docs.google.com/forms/d/e/1FAIpQLSdQ453BqPFAwKdNPhBOyOJrxbPktwdAUg-7cm3fSHSwVeCNfA/viewform?usp=dialog"
+            target="_blank"
             class="btn-primary"
             style="
               text-decoration: none;
@@ -3211,19 +3273,31 @@
             <div class="quote-wrapper">
               <div class="quote-img-wrapper">
                 <img
-                  src="public/logo/swami_vivekanand.png"
-                  alt="Swami Vivekananda"
+                  src="public/photos/Modiji.png"
+                  alt="Shri Narendra Modi Ji"
                   class="quote-img"
                 />
               </div>
-              <div class="quote-text-wrapper">
-                <p class="quote-text">
-                  "We must also remember that the leaders of our societies have
-                  never been either generals or kings, but Rishis... If there
-                  have been sages and Rishis in the past, be sure that there
-                  will be many now."
+              <div
+                class="quote-text-wrapper"
+                style="font-family: &quot;Montserrat&quot;, sans-serif"
+              >
+                <p
+                  class="quote-text"
+                  style="font-family: &quot;Montserrat&quot;, sans-serif"
+                >
+                  "It is encouraging to see that institutions such as Rishihood
+                  University are valuable contributors to this vision with
+                  dynamic curricula and unique programs to nurture the leaders
+                  of tomorrow. This aligns seamlessly with India's broader goal
+                  of empowering its youth to build a Viksit Bharat by 2047."
                 </p>
-                <p class="quote-author">— Swami Vivekananda</p>
+                <p
+                  class="quote-author"
+                  style="font-family: &quot;Montserrat&quot;, sans-serif"
+                >
+                  — Shri Narendra Modi Ji
+                </p>
               </div>
             </div>
           </div>
@@ -3355,7 +3429,7 @@
                       src="public/photos/Keynotes-Dialogues.JPG"
                       alt="Keynotes & Dialogues Front"
                       class="highlight-img scaled-img-sm"
-                      style="object-position: left center;"
+                      style="object-position: left center"
                     />
                   </div>
                   <div class="flip-card-back">
@@ -3658,50 +3732,6 @@
       </div>
     </section>
 
-    <!-- PM Modi Quote Section -->
-    <section class="modi-quote-section">
-      <h2 class="modi-quote-title">
-        Recognized by India's Prime Minister<br />
-        & Visionary Leaders
-      </h2>
-      <div class="modi-quote-card">
-        <!-- Portrait photo -->
-        <div class="modi-quote-img-col">
-          <img
-            src="public/photos/NarendraModi1.avif"
-            alt="Shri Narendra Modi Ji"
-            class="modi-quote-img"
-          />
-        </div>
-        <!-- Quote text -->
-        <div class="modi-quote-text-col">
-          <!-- Top: open-quote + rule -->
-          <div class="modi-quote-header">
-            <span class="modi-quote-open">&ldquo;</span>
-            <div class="modi-quote-rule"></div>
-          </div>
-          <!-- Body -->
-          <p class="modi-quote-text">
-            It is encouraging to see that institutions such as Rishihood
-            University are valuable contributors to this vision with dynamic
-            curricula and unique programs to nurture the leaders of tomorrow.
-            This aligns seamlessly with India's broader goal of empowering its
-            youth to build a Viksit Bharat by 2047."
-          </p>
-          <!-- Attribution -->
-          <p class="modi-quote-author">
-            Shri Narendra Modi Ji<br />
-            (Prime Minister of India)
-          </p>
-          <!-- Bottom: rule + close-quote -->
-          <div class="modi-quote-footer">
-            <div class="modi-quote-rule"></div>
-            <span class="modi-quote-close">&rdquo;</span>
-          </div>
-        </div>
-      </div>
-    </section>
-
     <!-- Logo Animation Section -->
     <section class="logo-animation-section" id="logo-animation">
       <div class="logo-animation-container">
@@ -3752,9 +3782,9 @@
               <input type="text" placeholder="Full Name" required />
               <input type="email" placeholder="Email" required />
               <input type="tel" placeholder="Contact No." required />
-              <button type="submit" class="submit-link">
+              <a href="https://docs.google.com/forms/d/e/1FAIpQLSdQ453BqPFAwKdNPhBOyOJrxbPktwdAUg-7cm3fSHSwVeCNfA/viewform?usp=dialog" target="_blank" class="submit-link" style="text-decoration: none; display: flex; justify-content: center; align-items: center; box-sizing: border-box;">
                 Apply Now &rarr;
-              </button>
+              </a>
             </form>
           </div>
         </div>
@@ -4084,10 +4114,9 @@
             <div class="faq-answer-wrapper">
               <div class="faq-answer-inner">
                 <div class="faq-answer-text">
-                  Not necessarily. While some sessions are technical, the
-                  program is designed to provide value for both technical and
-                  non-technical participants interested in innovation and
-                  strategy.
+                  Technical students will find strong value in the sessions,
+                  with additional takeaways for non-technical participants
+                  interested in innovation and strategic thinking.
                 </div>
               </div>
             </div>
@@ -5319,7 +5348,7 @@
             >
           </div>
           <a
-            href="https://apply.rishihood.edu.in/"
+            href="https://docs.google.com/forms/d/e/1FAIpQLSdQ453BqPFAwKdNPhBOyOJrxbPktwdAUg-7cm3fSHSwVeCNfA/viewform?usp=dialog"
             target="_blank"
             rel="noopener noreferrer"
             class="footer-apply-btn"
@@ -5527,19 +5556,35 @@
             image: "public/mentors/SahilAggarwal.avif",
           },
           {
-            name: "Sachin Gupta",
-            designation: "Founder and CEO, Probo",
-            image: "public/mentors/sachin-gupta .jpeg",
+            name: "Abhishek Shivhare",
+            designation: "Head, Sajjan Agarwal School of Technology",
+            image: "public/mentors/AbhishekShivhare.png",
           },
           {
-            name: "Cmde Bharat Nagpal",
-            designation: "CEO, Merlinhawk Composites and Engineering Pvt. Ltd.",
-            image: "public/mentors/Cmde-Bharat-Bhushan-Nagpal.png",
+            name: "Apurva Mittal",
+            designation: "Software Developer, Ex-Apple",
+            image: "public/mentors/ApurvaMittal.jpeg",
           },
           {
             name: "Prof. K. Gopinath",
             designation: "Professor, Rishihood University",
             image: "public/mentors/Prof.-K.-Gopinath.webp",
+          },
+          {
+            name: "Sachin Gupta",
+            designation: "Founder and CEO, Probo",
+            image: "public/mentors/sachin-gupta .jpeg",
+          },
+          {
+            name: "Prof. Gautam R Desiraju",
+            designation:
+              "Professor, Rishihood University | Author and Thought Leader",
+            image: "public/mentors/Gautam_R_Desiraju-01.jpg",
+          },
+          {
+            name: "Cmde Bharat Nagpal",
+            designation: "CEO, Merlinhawk Composites and Engineering Pvt. Ltd.",
+            image: "public/mentors/Cmde-Bharat-Bhushan-Nagpal.png",
           },
           {
             name: "Rahul Seth",
@@ -5562,12 +5607,6 @@
             designation:
               "Corporate Lawyer, Author & Analyst on Geopolitics and Technology",
             image: "public/mentors/deekhit-bhattacharya.png",
-          },
-          {
-            name: "Prof. Gautam R Desiraju",
-            designation:
-              "Professor, Rishihood University | Author and Thought Leader",
-            image: "public/mentors/Gautam_R_Desiraju-01.jpg",
           },
         ];
 
@@ -5840,99 +5879,145 @@
         setTimeout(type, 1000);
       });
     </script>
-    <!-- Connect With Us Modal -->
-    <div class="connect-modal-overlay" id="connectModalOverlay">
-      <div class="connect-modal">
-        <button class="connect-modal-close" onclick="closeConnectModal()">
-          &times;
-        </button>
-        <form
-          class="connect-form"
-          onsubmit="
-            event.preventDefault();
-            closeConnectModal();
-            alert(
-              'Thank you for connecting with us! We will get back to you shortly.',
-            );
-          "
-        >
-          <div class="connect-form-group">
-            <label for="connectName">Name</label>
-            <input
-              type="text"
-              id="connectName"
-              placeholder="Jane Smith"
-              required
-            />
-          </div>
-          <div class="connect-form-group">
-            <label for="connectEmail">Email</label>
-            <input
-              type="email"
-              id="connectEmail"
-              placeholder="jane@gmail.com"
-              required
-            />
-          </div>
-          <div class="connect-form-group">
-            <label for="connectPhone">Phone Number</label>
-            <input
-              type="tel"
-              id="connectPhone"
-              placeholder="Enter phone no."
-              required
-            />
-          </div>
-          <div class="connect-form-group">
-            <label for="connectInterest">I am interested in</label>
-            <select id="connectInterest" required>
-              <option value="" disabled selected>Select an option</option>
-              <option value="Joining the Bootcamp">Joining the Bootcamp</option>
-              <option value="Mentorship">Mentorship</option>
-              <option value="Curriculum Details">Curriculum Details</option>
-              <option value="Career Support / Placements">
-                Career Support / Placements
-              </option>
-              <option value="Partnerships">Partnerships</option>
-              <option value="General Inquiry">General Inquiry</option>
-            </select>
-          </div>
-          <div class="connect-form-group">
-            <label for="connectHelp"
-              >If Others, please specify / What would you like help with?</label
-            >
-            <textarea
-              id="connectHelp"
-              placeholder="write here..."
-              required
-            ></textarea>
-          </div>
-          <button type="submit" class="connect-submit-btn">Submit</button>
-        </form>
-      </div>
-    </div>
+
+                <!-- Connect Dropdown Panel -->
+                <div class="connect-dropdown-panel" id="connectDropdownPanel">
+                  <div class="connect-dropdown-header">
+                    <span class="connect-dropdown-title">Connect with us</span>
+                    <button
+                      class="connect-dropdown-close"
+                      onclick="closeConnectDropdown()"
+                    >
+                      &times;
+                    </button>
+                  </div>
+                  <form
+                    class="connect-form"
+                    onsubmit="
+                      event.preventDefault();
+                      closeConnectDropdown();
+                      alert('Thank you for connecting with us! We will get back to you shortly.');
+                    "
+                  >
+                    <div class="connect-form-group">
+                      <label for="connectName">Name</label>
+                      <input
+                        type="text"
+                        id="connectName"
+                        placeholder="Jane Smith"
+                        required
+                      />
+                    </div>
+                    <div class="connect-form-group">
+                      <label for="connectEmail">Email</label>
+                      <input
+                        type="email"
+                        id="connectEmail"
+                        placeholder="jane@gmail.com"
+                        required
+                      />
+                    </div>
+                    <div class="connect-form-group">
+                      <label for="connectPhone">Phone Number</label>
+                      <input
+                        type="tel"
+                        id="connectPhone"
+                        placeholder="Enter phone no."
+                        required
+                      />
+                    </div>
+                    <div class="connect-form-group">
+                      <label for="connectInterest">I am interested in</label>
+                      <select id="connectInterest" required>
+                        <option value="" disabled selected>Select an option</option>
+                        <option value="Joining the Bootcamp">Joining the Bootcamp</option>
+                        <option value="Mentorship">Mentorship</option>
+                        <option value="Curriculum Details">Curriculum Details</option>
+                        <option value="Career Support / Placements">Career Support / Placements</option>
+                        <option value="Partnerships">Partnerships</option>
+                        <option value="General Inquiry">General Inquiry</option>
+                      </select>
+                    </div>
+                    <div class="connect-form-group">
+                      <label for="connectHelp">If Others, please specify / What would you like help with?</label>
+                      <textarea
+                        id="connectHelp"
+                        placeholder="write here..."
+                        required
+                      ></textarea>
+                    </div>
+                    <button type="submit" class="connect-submit-btn">Submit</button>
+                  </form>
+                </div>
 
     <script>
-      function openConnectModal() {
-        document.getElementById("connectModalOverlay").classList.add("active");
-        document.body.style.overflow = "hidden"; // Prevent background scroll
+      let formInactivityTimer;
+
+      function resetFormInactivityTimer() {
+        clearTimeout(formInactivityTimer);
+        var panel = document.getElementById("connectDropdownPanel");
+        if (panel && panel.classList.contains("active")) {
+          // Close after 15 seconds of inactivity
+          formInactivityTimer = setTimeout(checkAndCloseForm, 15000);
+        }
       }
 
-      function closeConnectModal() {
-        document
-          .getElementById("connectModalOverlay")
-          .classList.remove("active");
-        document.body.style.overflow = "";
+      function checkAndCloseForm() {
+        var panel = document.getElementById("connectDropdownPanel");
+        if (!panel || !panel.classList.contains("active")) return;
+
+        var name = document.getElementById("connectName") ? document.getElementById("connectName").value.trim() : "";
+        var email = document.getElementById("connectEmail") ? document.getElementById("connectEmail").value.trim() : "";
+        var phone = document.getElementById("connectPhone") ? document.getElementById("connectPhone").value.trim() : "";
+        var interest = document.getElementById("connectInterest") ? document.getElementById("connectInterest").value : "";
+        var help = document.getElementById("connectHelp") ? document.getElementById("connectHelp").value.trim() : "";
+
+        if (name === "" && email === "" && phone === "" && (!interest || interest === "") && help === "") {
+          closeConnectDropdown();
+        }
       }
 
-      // Close modal on outside click
-      document
-        .getElementById("connectModalOverlay")
-        .addEventListener("click", function (e) {
-          if (e.target === this) {
-            closeConnectModal();
-          }
-        });
+      function toggleConnectDropdown(e) {
+        e.stopPropagation();
+        var panel = document.getElementById("connectDropdownPanel");
+        var arrow = document.querySelector("#connectNavBtn svg");
+        var isOpen = panel.classList.contains("active");
+        if (isOpen) {
+          panel.classList.remove("active");
+          if (arrow) arrow.style.transform = "rotate(0deg)";
+          clearTimeout(formInactivityTimer);
+        } else {
+          panel.classList.add("active");
+          if (arrow) arrow.style.transform = "rotate(180deg)";
+          resetFormInactivityTimer();
+        }
+      }
+
+      function closeConnectDropdown() {
+        var panel = document.getElementById("connectDropdownPanel");
+        var arrow = document.querySelector("#connectNavBtn svg");
+        if (panel) panel.classList.remove("active");
+        if (arrow) arrow.style.transform = "rotate(0deg)";
+        clearTimeout(formInactivityTimer);
+      }
+
+      // Close dropdown when clicking outside
+      document.addEventListener("click", function (e) {
+        var wrapper = document.getElementById("connectBtnWrapper");
+        if (wrapper && !wrapper.contains(e.target)) {
+          closeConnectDropdown();
+        }
+      });
+
+      // Close on Escape key
+      document.addEventListener("keydown", function (e) {
+        if (e.key === "Escape") closeConnectDropdown();
+      });
+
+      // Reset inactivity timer on any user interaction
+      ["mousemove", "mousedown", "keypress", "scroll", "touchstart"].forEach(function(evt) {
+        document.addEventListener(evt, resetFormInactivityTimer, { passive: true });
+      });
     </script>
   </body>
 </html>
